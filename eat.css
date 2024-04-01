@@ -1,20 +1,28 @@
-.search {
-    position: relative;
-    width: 10px;
-  }
-  
-  input {
-    width: 100%;
-    border: 1px solid #bbb;
-    border-radius: 8px;
-    padding: 10px 12px;
-    font-size: 14px;
-  }
-  
-  img {
-    position : absolute;
-    width: 17px;
-    top: 10px;
-    right: 12px;
-    margin: 0;
-  }
+.input-text{
+  font-size: 1rem;
+  font-weight: 400;
+  text-align: center;
+  padding: 7px;
+  background-color:rgb(84, 223, 75);
+  position:relative;
+  top: 3px;
+  left:6px;
+}
+.input-group{
+  position:relative;
+  width:350px;
+  margin: auto;
+  line-height:200px;
+}
+.input{
+  width:200px;
+  height:30px;
+  border: 2px solid rgb(78, 227, 119);
+}
+.button{
+  height:36px;
+  background-color:rgb(64, 219, 52);
+  position:relative;
+  left:-7px;
+  top:1.5px;
+}
