@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>ebs</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="eat.css" rel="stylesheet" type="text/css" />
-    </head>
-    <body>
-        <h1>ebs</h1>
-        <form action="https://search.naver.com/search.naver" method="GET">
-            <div class="input-group">
-              <span class="input-text">NAVER</span>
-              <input name="query" type="text" class="input" placeholder="검색어를 입력하세요.">
-              <input type="button" value="검색" class="button">
-            </div>
-            </form>
-        
-    </body>
+<head>
+    <title>ebs</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body>
+    <!-- 회원 정보 수정 링크 -->
+    <a href="#" onclick="openUpdatePage()">회원 정보 수정</a>
+
+    <!-- JavaScript 코드 -->
+    <script>
+        function openUpdatePage() {
+            // 새 창을 열기 위한 옵션 설정
+            var windowFeatures = "width=600,height=400,scrollbars=yes,resizable=yes";
+            // 새 창 열기
+            window.open("update.html", "UpdateUserInfo", windowFeatures);
+        }
+    </script>
+</body>
 </html>

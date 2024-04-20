@@ -1,0 +1,14 @@
+/* 폼 요소들을 가운데 정렬하기 위한 CSS */
+.profile-container {
+    display: flex;
+    align-items: center;
+}
+
+.profile-image {
+    margin-left: 20px; /* 이미지와 폼 사이 여백 설정 */
+}
+
+.profile-image img {
+    width: 150px; /* 이미지 크기 설정 */
+    height: 150px;
+}
