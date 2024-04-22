@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>레시피 관리 웹사이트</title>
+<title>ebs</title>
 <style>
     body {
         font-family: Arial, sans-serif;
@@ -12,7 +12,7 @@
         align-items: center;
         justify-content: space-between;
         padding: 10px 50px;
-        background-color: #f3f3f3;
+        background-color: #fff;
     }
     #logo {
         width: 100px;
@@ -24,6 +24,19 @@
     }
     #user-name {
         font-size: 20px;
+        display: flex;
+        align-items: center;
+    }
+    .dropdown-icon {
+        margin-left: 10px;
+        width: 20px;
+        height: 20px;
+        background-color: #f3f3f3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        border: 1px solid #ccc;
     }
     nav {
         display: flex;
@@ -48,12 +61,21 @@
         margin-bottom: 20px;
     }
 </style>
+<script>
+    // 회원 정보 수정 페이지 열기
+    function openUpdatePage() {
+        var windowFeatures = "width=600,height=400,scrollbars=yes,resizable=yes";
+        window.open("3_update.html", "UpdateUserInfo", windowFeatures);
+    }
+</script>
 </head>
 <body>
 <header>
     <img id="logo" src="logo.png" alt="Logo">
     <input id="search-bar" type="text" placeholder="레시피 검색...">
-    <div id="user-name">사용자 이름</div>
+    <div id="user-name">사용자 이름
+        <div class="dropdown-icon" onclick="openUpdatePage()">&#9660;</div>
+    </div>
 </header>
 <nav>
     <a href="#">냉장고</a>
@@ -82,8 +104,5 @@
         </div>
     </div>
 </div>
-<script>
-    // JavaScript로 사용자 상호작용 추가 가능
-</script>
 </body>
 </html>
