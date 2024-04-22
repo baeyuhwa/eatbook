@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-}
+} 
 
 .container {
     max-width: 400px;
@@ -12,7 +12,7 @@ body {
     text-align: center;
     display: block;
     margin: 20px auto 0;
-}
+} 
 
 .sinup-group {
     margin-bottom: 20px;
