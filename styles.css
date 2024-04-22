@@ -5,7 +5,7 @@ body {
 
 .logo img {
     width: 100px; /* Adjust size as needed */
-    height: auto;
+    height: auto; 
     display: block;
     margin: 0 auto 20px auto; /* Centering the logo and adding space below */
 }
