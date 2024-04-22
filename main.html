@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>레시피 관리 웹사이트</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 50px;
+        background-color: #f3f3f3;
+    }
+    #logo {
+        width: 100px;
+        height: auto;
+    }
+    #search-bar {
+        flex-grow: 1;
+        margin: 0 20px;
+    }
+    #user-name {
+        font-size: 20px;
+    }
+    nav {
+        display: flex;
+        justify-content: center;
+        padding: 10px;
+        background-color: #ddd;
+    }
+    nav a {
+        margin: 0 10px;
+        text-decoration: none;
+        color: black;
+        font-size: 16px;
+    }
+    .content {
+        display: flex;
+    }
+    .left-content, .right-content {
+        flex: 1;
+        padding: 20px;
+    }
+    .section {
+        margin-bottom: 20px;
+    }
+</style>
+</head>
+<body>
+<header>
+    <img id="logo" src="logo.png" alt="Logo">
+    <input id="search-bar" type="text" placeholder="레시피 검색...">
+    <div id="user-name">사용자 이름</div>
+</header>
+<nav>
+    <a href="#">냉장고</a>
+    <a href="#">내 레시피</a>
+    <a href="#">레시피 만들기</a>
+    <a href="#">소통</a>
+    <a href="#">문의 사항</a>
+</nav>
+<div class="content">
+    <div class="left-content">
+        <h2>내 냉장고</h2>
+        <!-- 내용 추가 예정 -->
+    </div>
+    <div class="right-content">
+        <div class="section">
+            <h3>인기 레시피</h3>
+            <!-- 내용 추가 예정 -->
+        </div>
+        <div class="section">
+            <h3>내 레시피</h3>
+            <!-- 내용 추가 예정 -->
+        </div>
+        <div class="section">
+            <h3>내가 만든 레시피</h3>
+            <!-- 내용 추가 예정 -->
+        </div>
+    </div>
+</div>
+<script>
+    // JavaScript로 사용자 상호작용 추가 가능
+</script>
+</body>
+</html>
