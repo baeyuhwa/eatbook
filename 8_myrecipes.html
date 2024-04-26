@@ -2,10 +2,11 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>ebs</title>
+<title>내 레시피</title>
 <style>
     body {
         font-family: Arial, sans-serif;
+        margin: 20px;
     }
     header {
         display: flex;
@@ -50,36 +51,38 @@
         color: black;
         font-size: 16px;
     }
-    .content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+    th, td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+    th {
+        background-color: #f9f9f9;
     }
 </style>
-<script>
-    function openUpdatePage() {
-        var windowFeatures = "width=600,height=400,scrollbars=yes,resizable=yes";
-        window.open("3_update.html", "UpdateUserInfo", windowFeatures);
-    }
-</script>
 </head>
 <body>
 <header>
     <img id="logo" src="logo.png" alt="Logo">
     <input id="search-bar" type="text" placeholder="레시피 검색...">
     <div id="user-name">사용자 이름
-        <div class="dropdown-icon" onclick="openUpdatePage()">&#9660;</div>
+        <div class="dropdown-icon">&#9660;</div>
     </div>
 </header>
 <nav>
-    <a href="#">냉장고</a>
-    <a href="8_myrecipes.html">내 레시피</a>
-    <a href="#">레시피 만들기</a>
-    <a href="#">소통</a>
-    <a href="#">문의 사항</a>
+    <a href="index.html">냉장고</a>
+    <a href="my_recipes.html">내 레시피</a>
+    <a href="create_recipe.html">레시피 만들기</a>
+    <a href="communicate.html">소통</a>
+    <a href="inquiry.html">문의 사항</a>
 </nav>
 <div class="content">
-    <!-- 메인 콘텐츠는 여기에 표시됩니다 -->
+    
 </div>
 </body>
 </html>
