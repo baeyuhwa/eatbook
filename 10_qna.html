@@ -11,13 +11,9 @@
         box-sizing: border-box;
     }
     .container {
-        width: 80%; /* 너비를 전체의 80%로 설정 */
+        width:  100%; /* 너비를 전체의 80%로 설정 */
         margin: 0 auto; /* 중앙 정렬 */
         padding: 20px; /* 주변 여백 */
-    }
-    .nav-container {
-        width: 100%; /* 네비게이션 바는 전체 너비 사용 */
-        background-color: #ddd; /* 배경색 설정 */
     }
     header {
         display: flex;
@@ -54,6 +50,7 @@
         display: flex;
         justify-content: center;
         padding: 10px;
+        background-color: #ddd;
     }
     nav a {
         margin: 0 10px;
@@ -76,8 +73,9 @@
         box-sizing: border-box;
     }
     table {
-        width: 100%;
+        width: 70%;
         border-collapse: collapse;
+        margin: 1%;
     }
     th, td {
         padding: 8px;
@@ -89,6 +87,10 @@
     }
     th {
         background-color: #f9f9f9;
+        font-size: 14px; /* 글자 크기 감소 */
+    }
+    td {
+        font-size: 14px; /* 글자 크기 감소 */
     }
     .create-button {
         position: fixed;
@@ -105,15 +107,6 @@
 </style>
 </head>
 <body>
-<div class="nav-container">
-    <nav>
-        <a href="#">냉장고</a>
-        <a href="8_myrecipes.html">내 레시피</a>
-        <a href="7_newrecipe.html">레시피 만들기</a>
-        <a href="9_commincation.html">소통</a>
-        <a href="10_qna.html">문의 사항</a>
-    </nav>
-</div>
 <div class="container">
     <header>
         <img id="logo" src="logo.png" alt="Logo">
@@ -122,6 +115,13 @@
             <div class="dropdown-icon">&#9660;</div>
         </div>
     </header>
+    <nav>
+        <a href="#">냉장고</a>
+        <a href="8_myrecipes.html">내 레시피</a>
+        <a href="7_newrecipe.html">레시피 만들기</a>
+        <a href="9_commincation.html">소통</a>
+        <a href="10_qna.html">문의 사항</a>
+    </nav>
     <div class="content">
         <table>
             <thead>
@@ -135,7 +135,7 @@
             </tbody>
         </table>  
     </div>
-    <button class="create-button" onclick="window.location.href='7_newrecipe.html';">작성하기</button>
+    <button class="create-button" onclick="window.location.href='10_newqna.html';">작성하기</button>
 </div>
 </body>
 </html>
