@@ -4,19 +4,19 @@
 <meta charset="UTF-8">
 <title>레시피 관리 웹사이트</title>
 <style>
-    body {
+   body {
         font-family: Arial, sans-serif;
         display: flex;
         flex-direction: column;
-        min-height: 100vh;
         margin: 0;
+        min-height: 100vh;
     }
     header {
         display: flex;
         align-items: center;
         justify-content: space-between;
         padding: 10px 50px;
-        background-color: #f3f3f3;
+        background-color: #fff;
     }
     #logo {
         width: 100px;
@@ -28,6 +28,19 @@
     }
     #user-name {
         font-size: 20px;
+        display: flex;
+        align-items: center;
+    }
+    .dropdown-icon {
+        margin-left: 10px;
+        width: 20px;
+        height: 20px;
+        background-color: #f3f3f3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        border: 1px solid #ccc;
     }
     nav {
         display: flex;
@@ -48,6 +61,16 @@
         align-items: center;
         padding: 20px;
     }
+    input[id="search-bar"] {
+        width: 100%;
+        padding: 12px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
     .form-section {
         width: 100%;
         margin-bottom: 20px;
@@ -91,14 +114,16 @@
 <header>
     <img id="logo" src="logo.png" alt="Logo">
     <input id="search-bar" type="text" placeholder="레시피 검색...">
-    <div id="user-name">사용자 이름</div>
+    <div id="user-name">사용자 이름
+        <div class="dropdown-icon">&#9660;</div>
+    </div>
 </header>
 <nav>
-    <a href="#">냉장고</a>
-    <a href="#">내 레시피</a>
-    <a href="#">레시피 만들기</a>
-    <a href="#">소통</a>
-    <a href="#">문의 사항</a>
+    <a href="5 listADD.html">냉장고</a>
+    <a href="8_myrecipes.html">내 레시피</a>
+    <a href="7_newrecipe.html">레시피 만들기</a>
+    <a href="9_commincation.html">소통</a>
+    <a href="10_qna.html">문의 사항</a>
 </nav>
 <div class="content">
     <div class="form-section">
