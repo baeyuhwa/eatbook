@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>ebs</title>
+<title>문의사항</title>
 <style>
     body {
         font-family: Arial, sans-serif;
@@ -34,11 +34,6 @@
         font-size: 20px;
         display: flex;
         align-items: center;
-
-        padding-right: 34px;
-
-        background-image: url(search.png);
-        background-position: right 10px center;
     }
     .dropdown-icon {
         margin-left: 10px;
@@ -88,7 +83,7 @@
         border-bottom: 1px solid #ddd;
     }
     th:last-child, td:last-child {
-        text-align: right;
+        text-align: center;
     }
     th {
         background-color: #f9f9f9;
@@ -98,7 +93,7 @@
         font-size: 14px; /* 글자 크기 감소 */
     }
     .create-button {
-        position: fixed;
+        position: auto;
         bottom: 20px;
         right: 20px;
         padding: 10px 20px;
@@ -106,7 +101,7 @@
         background-color: #4CAF50;
         color: white;
         border: none;
-        border-radius: 5px;
+        border-radius: 10px;
         cursor: pointer;
     }
 </style>
@@ -131,16 +126,15 @@
         <table>
             <thead>
                 <tr>
-                    <th>제목</th>
-                    <th colspan="2" style="text-align: right;">작성자 / 작성일</th>
+                    <th>제목 작성자 작성일</th>
                 </tr>
             </thead>
             <tbody>
                 <!-- 테이블 데이터 행은 이곳에 추가됩니다 -->
             </tbody>
         </table>  
-    </div>
-    <button class="create-button" onclick="window.location.href='10-1_newqna.html';">작성하기</button>
+        <button class="create-button" onclick="window.location.href='10-1_newqna.html';">작성하기</button>
+    </div> 
 </div>
 </body>
 </html>
