@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>ebs</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    .container {
+        max-width: 900px; /* 최대 너비를 줄임 */
+        margin: 0 auto; /* 중앙 정렬 */
+        padding: 20px; /* 주변 여백 */
+    }
+    header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 50px;
+        background-color: #fff;
+    }
+    #logo {
+        width: 100px;
+        height: auto;
+    }
+    #search-bar {
+        flex-grow: 1;
+        margin: 0 20px;
+    }
+    #user-name {
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+    }
+    .dropdown-icon {
+        margin-left: 10px;
+        width: 20px;
+        height: 20px;
+        background-color: #f3f3f3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        border: 1px solid #ccc;
+    }
+    nav {
+        display: flex;
+        justify-content: center;
+        padding: 10px;
+        background-color: #ddd;
+        margin-bottom: 20px; /* 여백 추가 */
+    }
+    nav a {
+        margin: 0 10px;
+        text-decoration: none;
+        color: black;
+        font-size: 16px;
+    }
+    .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    input[type=text] {
+        width: 100%;
+        padding: 12px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    th, td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+    th:last-child, td:last-child {
+        text-align: right;
+    }
+    th {
+        background-color: #f9f9f9;
+    }
+    .create-button {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <img id="logo" src="logo.png" alt="Logo">
+        <input id="search-bar" type="text" placeholder="레시피 검색...">
+        <div id="user-name">사용자 이름
+            <div class="dropdown-icon">&#9660;</div>
+        </div>
+    </header>
+    <nav>
+        <a href="#">냉장고</a>
+        <a href="8_myrecipes.html">내 레시피</a>
+        <a href="7_newrecipe.html">레시피 만들기</a>
+        <a href="9_commincation.html">소통</a>
+        <a href="10_qna.html">문의 사항</a>
+    </nav>
+    <div class="content">
+        <table>
+            <thead>
+                <tr>
+                    <th>제목</th>
+                    <th colspan="2" style="text-align: right;">작성자 / 작성일</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- 테이블 데이터 행은 이곳에 추가됩니다 -->
+            </tbody>
+        </table>  
+    </div>
+    <button class="create-button" onclick="window.location.href='7_newrecipe.html';">작성하기</button>
+</div>
+</body>
+</html>
