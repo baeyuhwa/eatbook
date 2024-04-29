@@ -1,5 +1,6 @@
 body {
     font-family: Arial, sans-serif;
+    margin: 20px;
 }
 header {
     display: flex;
@@ -71,7 +72,7 @@ nav a {
     max-width: 200px;
     max-height: 200px;
   }
-input[type=text], select {
+input[type=text], select, textarea {
     width: 100%;
     padding: 12px;
     margin: 8px 0;
