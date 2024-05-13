@@ -12,6 +12,7 @@
             flex-direction: column;
             align-items: center;
             background-color: #ffff;
+            position: relative; /* 이 부분이 중요합니다 */
         }
         .header {
             width: 100%;
@@ -29,59 +30,28 @@
         }
         .main-content {
             display: flex;
-            width: 60%; /* 전체 섹션을 화면 중앙으로 조정합니다 */
+            width: 60%; 
             justify-content: space-around;
             padding: 20px;
-            align-items: start; /* 섹션들을 화면의 중간보다 살짝 위에 위치하게 합니다 */
-            height: 60vh; /* 섹션의 높이를 조절하여 상단에 여유를 둡니다 */
+            align-items: start;
+            height: 60vh;
         }
         .popular-recipes {
             flex: 1;
             padding: 20px;
             margin-right: 10px;
         }
-        .login-form {
-            flex: 1;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end; /* 로그인 폼 내 요소들을 오른쪽 정렬합니다 */
-        }
-        .form-group {
-            display: flex;
-            margin-bottom: 10px;
-            align-items: center; /* 입력란과 레이블을 수직 중앙 정렬합니다 */
-        }
-        label {
-            margin-right: 10px;
-            white-space: nowrap;
-        }
-        input[type="text"], input[type="password"] {
-            padding: 8px;
-            margin-bottom: 8px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            flex: 1; /* 입력란이 가능한 최대 공간을 차지하도록 합니다 */
-        }
-        .form-group button {
-            padding: 8px 15px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            margin-left: 10px; /* 버튼과 입력란 사이의 간격을 추가합니다 */
-        }
-        .login-button {
-            background-color: #5cb85c;
-            color: white;
-        }
-        .signup-button {
-            background-color: #f0ad4e;
-            color: white;
+        .right-logo {
+            position: absolute;
+            right: 200px; /* 우측에서 20픽셀 떨어진 위치 */
+            top: 50%;
+            transform: translateY(-50%); /* 중간 정렬을 위해 이동 */
         }
     </style>
 </head>
 <body>
     <img src="LOGO.png" alt="로고 이미지" class="center" style="width: 100px">
+    <img src="KAKAO LOGO.png" class="right-logo" style="width: 200px">
     <div class="header">
         <div class="header-logo">
             <span class="header-title">EBS 요리 레시피 북</span>
@@ -91,20 +61,6 @@
         <div class="popular-recipes">
             <h2>인기 레시피 음식</h2>
             <!-- 인기 레시피 음식 사진과 이름을 추가하세요 -->
-        </div>
-        <div class="login-form">
-            <div class="form-group">
-                <label for="username">아이디</label>
-                <input type="text" id="username" name="username" required>
-            </div>
-            <div class="form-group">
-                <label for="password">비밀번호</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            <div class="form-group">
-                <button type="submit" class="login-button">로그인</button>
-                <button type="button" class="signup-button" onclick="location.href='signup.html'">회원가입</button>
-            </div>
         </div>
     </div>
 </body>
