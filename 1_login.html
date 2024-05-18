@@ -1,3 +1,11 @@
+<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script>
+  // SDK 초기화
+  Kakao.init('8382196ca251c7706e3b7e1df97883e7'); 
+  console.log(Kakao.isInitialized()); // SDK 초기화 확인
+</script>
+
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -46,12 +54,49 @@
             right: 200px; /* 우측에서 20픽셀 떨어진 위치 */
             top: 50%;
             transform: translateY(-50%); /* 중간 정렬을 위해 이동 */
+            cursor: pointer; /* 클릭 가능하도록 포인터 변경 */
+        }
+        .login-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #ffeb00;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
         }
     </style>
+    <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+    <script>
+        // SDK 초기화
+        Kakao.init('YOUR_JAVASCRIPT_KEY'); // YOUR_JAVASCRIPT_KEY를 실제 키로 대체하세요.
+        console.log(Kakao.isInitialized()); // SDK 초기화 확인
+
+        function loginWithKakao() {
+            Kakao.Auth.login({
+                success: function(authObj) {
+                    console.log(authObj);
+                    // 로그인 성공 시 사용자 정보 가져오기
+                    Kakao.API.request({
+                        url: '/v2/user/me',
+                        success: function(res) {
+                            console.log(res);
+                            // 사용자 정보를 이용한 처리
+                        },
+                        fail: function(error) {
+                            console.log(error);
+                        }
+                    });
+                },
+                fail: function(err) {
+                    console.log(err);
+                }
+            });
+        }
+    </script>
 </head>
 <body>
     <img src="LOGO.png" alt="로고 이미지" class="center" style="width: 100px">
-    <img src="KAKAO LOGO.png" class="right-logo" style="width: 200px">
+    <img src="KAKAO LOGO.png" class="right-logo" style="width: 200px" onclick="loginWithKakao()">
     <div class="header">
         <div class="header-logo">
             <span class="header-title">EBS 요리 레시피 북</span>
