@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>소통</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    .container {
+        width:  100%; /* 너비를 전체의 80%로 설정 */
+        margin: 0 auto; /* 중앙 정렬 */
+        padding: 20px; /* 주변 여백 */
+    }
+    header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 50px;
+        background-color: #fff;
+    }
+    #logo {
+        width: 100px;
+        height: auto;
+    }
+    #search-bar {
+        flex-grow: 1;
+        margin: 0 20px;
+    }
+    #user-name {
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+    }
+    .dropdown-icon {
+        margin-left: 10px;
+        width: 20px;
+        height: 20px;
+        background-color: #f3f3f3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        border: 1px solid #ccc;
+    }
+    nav {
+        display: flex;
+        justify-content: center;
+        padding: 10px;
+        background-color: #ddd;
+    }
+    nav a {
+        margin: 0 10px;
+        text-decoration: none;
+        color: black;
+        font-size: 16px;
+    }
+    .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    input[type=text] {
+        width: 100%;
+        padding: 12px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    table {
+        width: 70%;
+        border-collapse: collapse;
+        margin: 1%;
+    }
+    th, td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+    th:last-child, td:last-child {
+        text-align: center;
+    }
+    th {
+        background-color: #f9f9f9;
+        font-size: 14px; /* 글자 크기 감소 */
+    }
+    td {
+        font-size: 14px; /* 글자 크기 감소 */
+    }
+    .create-button {
+        position: auto;
+        bottom: 20px;
+        right: 20px;
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #ff960cfe;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <img id="logo" src="logo.png" alt="Logo">
+        <input id="search-bar" type="text" placeholder="레시피 검색...">
+        <div id="user-name">사용자 이름
+            <div class="dropdown-icon">&#9660;</div>
+        </div>
+    </header>
+    <nav>
+        <a href="5_listADD.html">냉장고</a>
+        <a href="8_myrecipes.html">내 레시피</a>
+        <a href="7_newrecipe.html">레시피 만들기</a>
+        <a href="9_commincation.html">소통</a>
+        <a href="10_qna.html">문의 사항</a>
+    </nav>
+</div>
+<script>
+    // 제목 목록
+    var titles = [
+        { title: "첫 번째 제목", author: "작성자1", date: "2024-05-20", content: "첫 번째 제목에 대한 내용입니다." }
+        // 필요에 따라 제목과 내용을 추가할 수 있습니다.
+    ];
+
+    // content 요소 가져오기
+    var contentDiv = document.querySelector('.content');
+
+    // 제목 목록을 nav에서 가져와서 클릭 이벤트 추가
+    var navLinks = document.querySelectorAll('nav a');
+    navLinks.forEach(function(link, index) {
+        link.addEventListener('click', function(event) {
+            event.preventDefault(); // 링크의 기본 동작 방지
+
+            // 클릭한 링크의 href 속성 가져오기
+            var href = link.getAttribute('href');
+
+            // href 속성 값에 해당하는 인덱스 찾기
+            var index = parseInt(href.split('_')[0]); // 링크에 숫자가 있는 경우를 가정하여 분리 후 변환
+
+            // 해당 인덱스에 해당하는 제목 정보 가져오기
+            var titleInfo = titles[index - 1];
+
+            // 제목 정보를 화면에 표시
+            var titleElement = document.createElement('h2');
+            titleElement.textContent = titleInfo.title;
+            contentDiv.innerHTML = ''; // 기존 내용 지우기
+            contentDiv.appendChild(titleElement);
+
+            // 이름과 작성일 추가
+            var infoParagraph = document.createElement('p');
+            infoParagraph.textContent = '작성자: ' + titleInfo.author + ', 작성일: ' + titleInfo.date;
+            contentDiv.appendChild(infoParagraph);
+
+            // 내용 추가
+            var contentParagraph = document.createElement('p');
+            contentParagraph.textContent = titleInfo.content;
+            contentDiv.appendChild(contentParagraph);
+        });
+    });
+</script>
+</body>
+</html>
