@@ -1,258 +1,102 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-<meta charset="UTF-8">
-<title>레시피 관리 웹사이트</title>
-<style>
-   body {
-        font-family: Arial, sans-serif;
-        display: flex;
-        flex-direction: column;
-        margin: 0;
-        min-height: 100vh;
-    }
-    header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 10px 50px;
-        background-color: #fff;
-    }
-    #logo {
-        width: 100px;
-        height: auto;
-    }
-    #search-bar {
-        flex-grow: 1;
-        margin: 0 20px;
-    }
-    #user-name {
-        font-size: 20px;
-        display: flex;
-        align-items: center;
-    }
-    .dropdown-icon {
-        margin-left: 10px;
-        width: 20px;
-        height: 20px;
-        background-color: #f3f3f3;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-        border: 1px solid #ccc;
-    }
-    nav {
-        display: flex;
-        justify-content: center;
-        padding: 10px;
-        background-color: #ddd;
-    }
-    nav a {
-        margin: 0 10px;
-        text-decoration: none;
-        color: black;
-        font-size: 16px;
-    }
-    .content {
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 20px;
-    }
-    input[id="search-bar"] {
-        width: 100%;
-        padding: 12px;
-        margin: 8px 0;
-        display: inline-block;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box;
-    }
+    <head>
+        <meta charset="UTF-8">
+        <title>레시피 관리 웹사이트</title>
+        <link rel="stylesheet" href="6_recipe.css">
+    </head>
+    <body>
+        <header>
+            <img id="logo" src="logo.png" alt="Logo">
+            <input id="search-bar" type="text" placeholder="레시피 검색...">
+            <div id="user-name">사용자 이름
+                <div class="dropdown-icon">&#9660;</div>
+            </div>
+        </header>
+        <nav>
+            <a href="5_listADD.html">냉장고</a>
+            <a href="8_myrecipes.html">내 레시피</a>
+            <a href="7_newrecipe.html">레시피 만들기</a>
+            <a href="9_commincation.html">소통</a>
+            <a href="10_qna.html">문의 사항</a>
+        </nav>
+        <div class="content">
+            <div class="form-section">
+                <h3>냉장고 리스트 추가</h3>
+                <form id="fridge-form">
+                    <input type="text" id="ingredient-name" placeholder="재료" required>
+                    <input type="text" id="ingredient-quantity" placeholder="양" required>
+                    <select id="ingredient-unit">
+                        <option value="g">그램(g)</option>
+                        <option value="kg">킬로그램(kg)</option>
+                        <option value="ml">밀리리터(ml)</option>
+                        <option value="l">리터(l)</option>
+                        <!-- More units as required -->
+                    </select>
+                    <input type="date" id="expiration-date" required>
+                    <button type="submit">추가</button>
+                </form>
+            </div>
+            <div class="fridge-list">
+                <h3>내 냉장고 리스트</h3>
+                <table class="fridge-table">
+                    <thead>
+                        <tr>
+                            <th>재료</th>
+                            <th>양</th>
+                            <th>단위</th>
+                            <th>유통기한</th>
+                            <th>수정</th>
+                            <th>삭제</th>
+                        </tr>
+                    </thead>
+                    <tbody id="fridge-list-items">
+                        <!-- List items will be added here with JavaScript -->
+                    </tbody>
+                </table>
+            </div>
 
-    .form-section {
-        width: 100%;
-        margin-bottom: 20px;
-        border: 1px solid #ccc;
-        padding: 20px;
-    }
-    .form-section h3 {
-        margin-bottom: 10px;
-    }
-    .form-section form {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-    }
-    .form-section input,
-    .form-section select {
-        flex: 1;
-        min-width: 150px;
-        padding: 5px;
-    }
-    .fridge-list {
-        width: 100%;
-        margin-top: 40px;
-    }
-    .fridge-table {
-        width: 100%;
-        border-collapse: collapse;
-    }
-    .fridge-table th, .fridge-table td {
-        border: 1px solid #ddd;
-        text-align: left;
-        padding: 8px;
-    }
-    .fridge-table th {
-        background-color: #6C7B8B;
-        color: white;
-    }
+            <div class="content">
+                <button id="searchRecipes" onclick="searchIngredient()">검색</button>
+            </div>
 
-    h2 {
-    margin-top: 20px;
-    margin-bottom: 10px;
-}
+            <div class="container">
+                <div id="recipe-results">
 
-.step-container {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.img-container img {
-    width: 300px; /* 이미지 크기 조정 */
-    height: auto;
-    margin-right: 10px; /* 이미지와 설명 사이의 공간 */
-}
-
-.text-container {
-    flex: 1;
-}
-
-#searchRecipes {
-    width: 100px;
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-#searchRecipes:hover {
-    background-color: #45a049;
-}
-
-/* 레시피 결과를 4열로 나열하기 위한 스타일 */
-.recipe-column {
-    float: left;
-    width: 100%;
-    padding: 10px;
-    box-sizing: border-box;
-}
-
-/* 반응형 디자인을 위한 클리어픽스 적용 */
-#recipe-results::after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
-</style>
-</head>
-<body>
-<header>
-    <img id="logo" src="logo.png" alt="Logo">
-    <input id="search-bar" type="text" placeholder="레시피 검색...">
-    <div id="user-name">사용자 이름
-        <div class="dropdown-icon">&#9660;</div>
-    </div>
-</header>
-<nav>
-    <a href="5_listADD.html">냉장고</a>
-    <a href="8_myrecipes.html">내 레시피</a>
-    <a href="7_newrecipe.html">레시피 만들기</a>
-    <a href="9_commincation.html">소통</a>
-    <a href="10_qna.html">문의 사항</a>
-</nav>
-<div class="content">
-    <div class="form-section">
-        <h3>냉장고 리스트 추가</h3>
-        <form id="fridge-form">
-            <input type="text" id="ingredient-name" placeholder="재료" required>
-            <input type="text" id="ingredient-quantity" placeholder="양" required>
-            <select id="ingredient-unit">
-                <option value="g">그램(g)</option>
-                <option value="kg">킬로그램(kg)</option>
-                <option value="ml">밀리리터(ml)</option>
-                <option value="l">리터(l)</option>
-                <!-- More units as required -->
-            </select>
-            <input type="date" id="expiration-date" required>
-            <button type="submit">추가</button>
-        </form>
-    </div>
-    <div class="fridge-list">
-        <h3>내 냉장고 리스트</h3>
-        <table class="fridge-table">
-            <thead>
-                <tr>
-                    <th>재료</th>
-                    <th>양</th>
-                    <th>단위</th>
-                    <th>유통기한</th>
-                    <th>수정</th>
-                    <th>삭제</th>
-                </tr>
-            </thead>
-            <tbody id="fridge-list-items">
-                <!-- List items will be added here with JavaScript -->
-            </tbody>
-        </table>
-    </div>
-
-    <div class="content">
-        <button id="searchRecipes" onclick="searchIngredient()">검색</button>
-    </div>
-
-    <div class="container">
-        <div id="recipe-results">
+                </div>
+            </div> 
 
         </div>
-    </div> 
+        <script>
+        document.getElementById('fridge-form').addEventListener('submit', function(event) {
+            event.preventDefault();
 
-</div>
-<script>
-document.getElementById('fridge-form').addEventListener('submit', function(event) {
-    event.preventDefault();
+            var ingredient = document.getElementById('ingredient-name').value;
+            var quantity = document.getElementById('ingredient-quantity').value;
+            var unit = document.getElementById('ingredient-unit').value;
+            var expiration = document.getElementById('expiration-date').value;
 
-    var ingredient = document.getElementById('ingredient-name').value;
-    var quantity = document.getElementById('ingredient-quantity').value;
-    var unit = document.getElementById('ingredient-unit').value;
-    var expiration = document.getElementById('expiration-date').value;
+            var list = document.getElementById('fridge-list-items');
+            var row = document.createElement('tr');
+            
+            row.innerHTML = `
+                <td>${ingredient}</td>
+                <td>${quantity}</td>
+                <td>${unit}</td>
+                <td>${expiration}</td>
+                <td><button>Edit</button></td>
+                <td><button>Delete</button></td>
+            `;
+            
+            list.appendChild(row);
 
-    var list = document.getElementById('fridge-list-items');
-    var row = document.createElement('tr');
-    
-    row.innerHTML = `
-        <td>${ingredient}</td>
-        <td>${quantity}</td>
-        <td>${unit}</td>
-        <td>${expiration}</td>
-        <td><button>Edit</button></td>
-        <td><button>Delete</button></td>
-    `;
-    
-    list.appendChild(row);
-
-    // Reset the form fields
-    document.getElementById('ingredient-name').value = '';
-    document.getElementById('ingredient-quantity').value = '';
-    document.getElementById('ingredient-unit').value = '';
-    document.getElementById('expiration-date').value = '';
-});
-</script>
-<script src="6_recipe.js"></script>
-</body>
+            // Reset the form fields
+            document.getElementById('ingredient-name').value = '';
+            document.getElementById('ingredient-quantity').value = '';
+            document.getElementById('ingredient-unit').value = '';
+            document.getElementById('expiration-date').value = '';
+        });
+        </script>
+        <script src="6_recipe.js"></script>
+    </body>
 </html>
