@@ -1,0 +1,100 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container {
+    width:  100%; /* 너비를 전체의 80%로 설정 */
+    margin: 0 auto; /* 중앙 정렬 */
+    padding: 20px; /* 주변 여백 */
+}
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 50px;
+    background-color: #fff;
+}
+#logo {
+    width: 100px;
+    height: auto;
+}
+#search-bar {
+    flex-grow: 1;
+    margin: 0 20px;
+}
+#user-name {
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+}
+.dropdown-icon {
+    margin-left: 10px;
+    width: 20px;
+    height: 20px;
+    background-color: #f3f3f3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: 1px solid #ccc;
+}
+nav {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    background-color: #ddd;
+}
+nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+}
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+input[type=text] {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+table {
+    width: 70%;
+    border-collapse: collapse;
+    margin: 1%;
+}
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+th:last-child, td:last-child {
+    text-align: center;
+}
+th {
+    background-color: #f9f9f9;
+    font-size: 14px; /* 글자 크기 감소 */
+}
+td {
+    font-size: 14px; /* 글자 크기 감소 */
+}
+.create-button {
+    position: auto;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #ff960cfe;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
