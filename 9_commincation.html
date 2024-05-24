@@ -1,10 +1,27 @@
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
 <title>소통</title>
 <link rel="stylesheet" href="9_commincation.css">
+<script>
+    window.onload = function() {
+        // 작성된 게시물이 있는지 확인 후 표시
+        var storedPost = localStorage.getItem('newPost');
+        if (storedPost) {
+            var post = JSON.parse(storedPost);
+            displayPost(post);
+        }
+    };
+
+    function displayPost(post) {
+        var tableBody = document.querySelector('.content table tbody');
+        var row = document.createElement('tr');
+        row.innerHTML = "<td>" + post.title + "</td><td>" + post.content + "</td><td>" + new Date().toLocaleDateString() + "</td>";
+        tableBody.appendChild(row);
+    }
+</script>
+    
 </head>
 <body>
 <div class="container">
@@ -31,10 +48,26 @@
                     <th>작성일</th> <!-- 작성일을 추가 -->
                 </tr>
             </thead>
+            <tbody id="postLsit">
+
             </tbody>
         </table>  
         <button class="create-button" onclick="window.location.href='9-1_newcommuni.html';">작성하기</button>
     </div> 
 </div>
+<script src="9_commincation.js">
+    var storedPost = localStorage.getItem('newPost');
+    if (storedPost) {
+        var post = JSON.parse(storedPost);
+        displayPost(post);
+    }
+
+    function displayPost(post) {
+        var tableBody = document.getElementById('postList'); // 게시물을 표시할 위치 지정
+        var row = document.createElement('tr');
+        row.innerHTML = "<td>" + post.title + "</td><td>" + post.content + "</td><td>" + new Date().toLocaleDateString() + "</td>";
+        tableBody.appendChild(row);
+    }
+</script>
 </body>
 </html>

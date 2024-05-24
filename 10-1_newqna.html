@@ -21,7 +21,7 @@
             <a href="10_qna.html">문의 사항</a>
         </nav>
         <div class="container">
-            <form action="/submitPostURL" method="post">
+            <form id="qnaForm" onsubmit="saveQnaPost(event)">
                 <label for="title">제목: </label>
                 <input type="text" id="title" name="title">
 
@@ -33,5 +33,15 @@
                 </div>
             </form>            
         </div>
+        <script>
+            function saveQnaPost(event) {
+                event.preventDefault();
+                var title = document.getElementById('title').value;
+                var content = document.getElementById('content').value;
+                var post = { title: title, content: content };
+                localStorage.setItem('newQnaPost', JSON.stringify(post));
+                window.location.href='10_qna.html';
+            }
+        </script>
     </body>
 </html>

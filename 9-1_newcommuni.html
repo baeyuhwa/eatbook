@@ -22,7 +22,7 @@
     </nav>
     <div class="container">
         <!-- 스키마 마크업이 추가된 폼 -->
-        <form action="submit_post.php" method="post" itemscope itemtype="https://schema.org/DiscussionForumPosting">
+        <form id="9_communication" onsubmit="savePost(event)">
             <label for="title">제목: </label>
             <input type="text" id="title" name="title" itemprop="headline" required>
 
@@ -39,5 +39,15 @@
             </div>
         </form>                     
     </div>
+    <script>
+        function savePost(event) {
+            event.preventDefault();
+            var title = document.getElementById('title').value;
+            var content = document.getElementById('content').value;
+            var post = { title: title, content: content };
+            localStorage.setItem('newPost', JSON.stringify(post));
+            window.location.href='9_commincation.html';
+        }
+    </script>
 </body>
 </html>

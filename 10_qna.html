@@ -4,6 +4,23 @@
 <meta charset="UTF-8">
 <title>문의사항</title>
 <link rel="stylesheet" href="10_qna.css">
+<script>
+    window.onload = function() {
+        // 작성된 게시물이 있는지 확인 후 표시
+        var storedPost = localStorage.getItem('newQnaPost');
+        if (storedPost) {
+            var post = JSON.parse(storedPost);
+            displayPost(post);
+        }
+    };
+
+    function displayPost(post) {
+        var tableBody = document.querySelector('.content table tbody');
+        var row = document.createElement('tr');
+        row.innerHTML = "<td>" + post.title + "</td><td>" + post.content + "</td><td>" + new Date().toLocaleDateString() + "</td>";
+        tableBody.appendChild(row);
+    }
+</script>
 </head>
 <body>
 <div class="container">
@@ -25,15 +42,30 @@
         <table>
             <thead>
                 <tr>
-                    <th>제목 작성자 작성일</th>
+                    <th>제목</th>
+                    <th>내용</th>
+                    <th>작성일</th> <!-- 작성일을 추가 -->
                 </tr>
             </thead>
-            <tbody>
-                <!-- 테이블 데이터 행은 이곳에 추가됩니다 -->
+            <tbody id="postLsit">
             </tbody>
-        </table>  
+        </table> 
         <button class="create-button" onclick="window.location.href='10-1_newqna.html';">작성하기</button>
     </div> 
 </div>
+<script src="10_qna.js">
+    var storedPost = localStorage.getItem('newQnaPost');
+    if (storedPost) {
+        var post = JSON.parse(storedPost);
+        displayPost(post);
+    }
+
+    function displayPost(post) {
+        var tableBody = document.getElementById('postList'); // 게시물을 표시할 위치 지정
+        var row = document.createElement('tr');
+        row.innerHTML = "<td>" + post.title + "</td><td>" + post.content + "</td><td>" + new Date().toLocaleDateString() + "</td>";
+        tableBody.appendChild(row);
+    }
+</script>
 </body>
 </html>
