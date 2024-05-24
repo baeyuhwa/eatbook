@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>레시피 상세 정보</title>
+    <link rel="stylesheet" href="6_recipe3.css">
+</head>
+<body>
+    <header>
+        <img id="logo" src="logo.png" alt="Logo">
+        <input id="search-bar" type="text" placeholder="레시피 검색...">
+        <div id="user-name">사용자 이름
+            <div class="dropdown-icon">&#9660;</div>
+        </div>
+    </header>
+    <nav>
+        <a href="5_listADD.html">냉장고</a>
+        <a href="8_myrecipes.html">내 레시피</a>
+        <a href="7_newrecipe.html">레시피 만들기</a>
+        <a href="9_commincation.html">소통</a>
+        <a href="10_qna.html">문의 사항</a>
+    </nav>
+    <div class="content">
+        <div id="recipe-detail">
+            <!-- 레시피 상세 정보가 여기 표시됩니다 -->
+        </div>
+    </div>
+    <script>
+        window.onload = function() {
+            const recipeDetail = document.getElementById('recipe-detail');
+            const selectedRecipe = JSON.parse(localStorage.getItem('selectedRecipe'));
+
+            if (selectedRecipe) {
+                const recipeTitle = document.createElement('h2');
+                recipeTitle.textContent = selectedRecipe.name;
+                recipeDetail.appendChild(recipeTitle);
+
+                const recipeImage = document.createElement('img');
+                recipeImage.src = selectedRecipe.image;
+                recipeImage.alt = `이미지: ${selectedRecipe.name}`;
+                recipeImage.style.maxWidth = '100%';
+                recipeDetail.appendChild(recipeImage);
+
+                const ingredients = document.createElement('h3');
+                ingredients.textContent = `재료: ${selectedRecipe.ingredients}`;
+                recipeDetail.appendChild(ingredients);
+
+                selectedRecipe.recipe.forEach((step, index) => {
+                    const stepContainer = document.createElement('div');
+                    stepContainer.classList.add('step-container');
+
+                    const imgContainer = document.createElement('div');
+                    imgContainer.classList.add('img-container');
+                    const imgElement = document.createElement('img');
+                    const imgUrl = selectedRecipe.recipeImg[index].split(' ').pop();
+                    if (imgUrl != "undefined" && imgUrl != null) {
+                        imgElement.src = imgUrl;
+                        imgElement.alt = `${index + 1}단계 이미지`;
+                        imgElement.style.maxWidth = '100%';
+                        imgContainer.appendChild(imgElement);
+                        stepContainer.appendChild(imgContainer);
+                    }
+
+                    const textContainer = document.createElement('div');
+                    textContainer.classList.add('text-container');
+                    textContainer.innerHTML = `<p>${step}</p>`;
+
+                    stepContainer.appendChild(textContainer);
+                    recipeDetail.appendChild(stepContainer);
+                });
+            } else {
+                recipeDetail.innerHTML = '레시피 정보를 불러오는데 실패했습니다.';
+            }
+        };
+    </script>
+</body>
+</html>

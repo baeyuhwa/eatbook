@@ -22,8 +22,8 @@ async function foodInfo(name) {
             return [];
         }
         
-        // 첫 5개의 항목을 선택
-        const selectedFoods = Array.from(foodList).slice(0, 5);
+        // 첫 10개의 항목 선택
+        const selectedFoods = Array.from(foodList).slice(0, 10);
         const results = [];
 
         for (const food of selectedFoods) {
@@ -74,44 +74,25 @@ async function searchRecipe(foodName) {
     const results = await foodInfo(foodName);
     if (results.length > 0) {
         results.forEach(result => {
-            const recipeTitle = document.createElement('h2'); // 레시피 제목을 위한 요소
-            recipeTitle.textContent = result.name; // 레시피 이름 설정
-            resultsContainer.appendChild(recipeTitle); // 결과 컨테이너에 레시피 제목 추가
+            const recipeColumn = document.createElement('div');
+            recipeColumn.classList.add('recipe-column');
 
-            const recipeImage = document.createElement('img'); // 레시피 이미지를 위한 요소
-            recipeImage.src = result.image; // 이미지 소스 설정
-            recipeImage.alt = `이미지: ${result.name}`; // 대체 텍스트 설정
-            recipeImage.style.maxWidth = '100%';
-            resultsContainer.appendChild(recipeImage); // 결과 컨테이너에 이미지 추가
+            const recipeTitle = document.createElement('h2');
+            recipeTitle.textContent = result.name;
+            recipeColumn.appendChild(recipeTitle);
 
-            const ingredients = document.createElement('h3');
-            ingredients.textContent = `재료: ${result.ingredients}`;
-            resultsContainer.appendChild(ingredients);
-
-            result.recipe.forEach((step, index) => {
-                const stepContainer = document.createElement('div'); // 각 단계를 위한 컨테이너
-                stepContainer.classList.add('step-container');
-
-                const imgContainer = document.createElement('div'); // 이미지 컨테이너
-                imgContainer.classList.add('img-container');
-                const imgElement = document.createElement('img');
-                const imgUrl = result.recipeImg[index].split(' ').pop();
-                if (imgUrl != "undefined" && imgUrl != null) {
-                    imgElement.src = imgUrl;
-                    imgElement.alt = `${index + 1}단계 이미지`;
-                    imgElement.style.maxWidth = '100%';
-                    imgContainer.appendChild(imgElement);
-                    stepContainer.appendChild(imgContainer);
-                }
-
-                const textContainer = document.createElement('div'); // 텍스트 컨테이너
-                textContainer.classList.add('text-container');
-                textContainer.innerHTML = `<p>${step}</p>`;
-
-                stepContainer.appendChild(textContainer); // 단계 컨테이너에 텍스트 컨테이너 추가
-
-                resultsContainer.appendChild(stepContainer); // 전체 결과 컨테이너에 단계별 컨테이너 추가
+            const recipeImage = document.createElement('img');
+            recipeImage.src = result.image;
+            recipeImage.alt = `이미지: ${result.name}`;
+            recipeImage.addEventListener('click', () => {
+                // 로컬 스토리지에 레시피 정보 저장
+                localStorage.setItem('selectedRecipe', JSON.stringify(result));
+                // 새로운 페이지로 이동
+                window.location.href = '6_recipe_detail.html';
             });
+            recipeColumn.appendChild(recipeImage);
+
+            resultsContainer.appendChild(recipeColumn);
         });
     } else {
         resultsContainer.innerHTML = '음식 정보를 가져오는데 실패했습니다.';
@@ -120,29 +101,15 @@ async function searchRecipe(foodName) {
 
 async function searchIngredient() {
     const fridgeItems = document.querySelectorAll('#fridge-list-items tr');
-    const resultsContainer = document.getElementById('recipe-results');
-    resultsContainer.innerHTML = ''; // 결과 컨테이너 초기화
 
+    //냉장고 리스트에서 재료를 가져오고 배열에 저장
     let fridgeIngredients = [];
     fridgeItems.forEach(item => {
         const ingredientName = item.cells[0].textContent.trim().toLowerCase(); // 재료 이름
         fridgeIngredients.push(ingredientName);
     });
 
-    // Perform ingredient search for each item in the fridge
     for (let ingredient of fridgeIngredients) {
-        const results = await foodInfo(ingredient);
-        if (results.length > 0) {
-            results.forEach(result => {
-                const recipeElement = document.createElement('div'); // 레시피를 담을 새로운 div 요소
-                recipeElement.className = 'recipe-column'; // CSS 클래스 적용
-
-                const recipeTitle = document.createElement('h2');
-                recipeTitle.textContent = result.name;
-                recipeElement.appendChild(recipeTitle); // 레시피 제목을 div 요소에 추가
-
-                resultsContainer.appendChild(recipeElement); // 결과 컨테이너에 레시피 컨테이너 추가
-            });
-        }
+        searchRecipe(ingredient);
     }
 }

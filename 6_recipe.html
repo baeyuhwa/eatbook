@@ -59,44 +59,80 @@
             <div class="content">
                 <button id="searchRecipes" onclick="searchIngredient()">검색</button>
             </div>
-
-            <div class="container">
-                <div id="recipe-results">
-
-                </div>
-            </div> 
-
+        </div>
+        <div class="container">
+            <div id="recipe-results"></div>
         </div>
         <script>
-        document.getElementById('fridge-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            var ingredient = document.getElementById('ingredient-name').value;
-            var quantity = document.getElementById('ingredient-quantity').value;
-            var unit = document.getElementById('ingredient-unit').value;
-            var expiration = document.getElementById('expiration-date').value;
-
-            var list = document.getElementById('fridge-list-items');
-            var row = document.createElement('tr');
+            document.getElementById('fridge-form').addEventListener('submit', function(event) {
+                event.preventDefault();
             
-            row.innerHTML = `
-                <td>${ingredient}</td>
-                <td>${quantity}</td>
-                <td>${unit}</td>
-                <td>${expiration}</td>
-                <td><button>Edit</button></td>
-                <td><button>Delete</button></td>
-            `;
+                // 수정 모드인지 식별하기 위한 변수
+                var isEditMode = document.getElementById('fridge-form').hasAttribute('data-editing-index');
+                var ingredient = document.getElementById('ingredient-name').value;
+                var quantity = document.getElementById('ingredient-quantity').value;
+                var unit = document.getElementById('ingredient-unit').value;
+                var expiration = document.getElementById('expiration-date').value;
             
-            list.appendChild(row);
-
-            // Reset the form fields
-            document.getElementById('ingredient-name').value = '';
-            document.getElementById('ingredient-quantity').value = '';
-            document.getElementById('ingredient-unit').value = '';
-            document.getElementById('expiration-date').value = '';
-        });
-        </script>
-        <script src="6_recipe.js"></script>
+                var list = document.getElementById('fridge-list-items');
+                if (isEditMode) {
+                    // 수정 모드일 경우
+                    var editingIndex = document.getElementById('fridge-form').getAttribute('data-editing-index');
+                    var row = list.children[editingIndex];
+            
+                    row.innerHTML = `
+                        <td>${ingredient}</td>
+                        <td>${quantity}</td>
+                        <td>${unit}</td>
+                        <td>${expiration}</td>
+                        <td><button class="edit-btn">수정</button></td>
+                        <td><button class="delete-btn">삭제</button></td>
+                    `;
+            
+                    // 수정 모드 해제
+                    document.getElementById('fridge-form').removeAttribute('data-editing-index');
+                } else {
+                    // 추가 모드일 경우
+                    var row = document.createElement('tr');
+                    
+                    row.innerHTML = `
+                        <td>${ingredient}</td>
+                        <td>${quantity}</td>
+                        <td>${unit}</td>
+                        <td>${expiration}</td>
+                        <td><button class="edit-btn">수정</button></td>
+                        <td><button class="delete-btn">삭제</button></td>
+                    `;
+                    
+                    list.appendChild(row);
+                }
+            
+                // Reset the form fields
+                document.getElementById('ingredient-name').value = '';
+                document.getElementById('ingredient-quantity').value = '';
+                document.getElementById('ingredient-unit').selectedIndex = 0; // 단위를 기본값으로 설정
+                document.getElementById('expiration-date').value = '';
+            
+                // 삭제 버튼 이벤트 리스너
+                row.querySelector('.delete-btn').addEventListener('click', function() {
+                    list.removeChild(row);
+                });
+            
+                // 수정 버튼 이벤트 리스너
+                row.querySelector('.edit-btn').addEventListener('click', function() {
+                    // 입력 필드로 데이터 이동
+                    document.getElementById('ingredient-name').value = ingredient;
+                    document.getElementById('ingredient-quantity').value = quantity;
+                    document.getElementById('ingredient-unit').value = unit;
+                    document.getElementById('expiration-date').value = expiration;
+            
+                    // 수정 모드 활성화
+                    var index = Array.from(list.children).indexOf(row);
+                    document.getElementById('fridge-form').setAttribute('data-editing-index', index);
+                });
+            });
+            
+            </script>
+            <script src="6_recipe.js"></script>
     </body>
 </html>
