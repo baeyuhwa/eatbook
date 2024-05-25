@@ -1,47 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>문의사항 게시글 작성</title>
-        <link rel="stylesheet" href="10-1_newqna.css">
-    </head> 
-    <body>
-        <header>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>문의사항 게시글 작성</title>
+    <link rel="stylesheet" href="10-1_newqna.css">
+</head> 
+<body>
+    <header>
+        <a href="4_main.html">
             <img id="logo" src="logo.png" alt="Logo">
-            <input id="search-bar" type="text" placeholder="레시피 검색...">
-            <div id="user-name">사용자 이름
-                <div class="dropdown-icon">&#9660;</div>
-            </div>
-        </header>
-        <nav>
-            <a href="5_listADD.html">냉장고</a>
-            <a href="8_myrecipes.html">내 레시피</a>
-            <a href="7_newrecipe.html">레시피 만들기</a>
-            <a href="9_communication.html">소통</a>
-            <a href="10_qna.html">문의 사항</a>
-        </nav>
-        <div class="container">
-            <form id="qnaForm" onsubmit="saveQnaPost(event)">
-                <label for="title">제목: </label>
-                <input type="text" id="title" name="title">
-
-                <label for="content">내용:</label>
-                <textarea id="content" name="content"></textarea>
-
-                <div class="button-container">
-                    <button type="submit">등록</button>
-                </div>
-            </form>            
+        </a>
+        <input id="search-bar" type="text" placeholder="레시피 검색...">
+        <div id="user-name">사용자 이름
+            <div class="dropdown-icon">&#9660;</div>
         </div>
-        <script>
-            function saveQnaPost(event) {
-                event.preventDefault();
-                var title = document.getElementById('title').value;
-                var content = document.getElementById('content').value;
-                var post = { title: title, content: content };
-                localStorage.setItem('newQnaPost', JSON.stringify(post));
-                window.location.href='10_qna.html';
-            }
-        </script>
-    </body>
+    </header>
+    <nav>
+        <a href="5_listADD.html">냉장고</a>
+        <a href="8_myrecipes.html">내 레시피</a>
+        <a href="7_newrecipe.html">레시피 만들기</a>
+        <a href="9_communication.html">소통</a>
+        <a href="10_qna.html">문의 사항</a>
+    </nav>
+    <div class="container">
+        <form id="qnaForm" onsubmit="saveQnaPost(event)">
+            <label for="title">제목: </label>
+            <input type="text" id="title" name="title">
+
+            <label for="content">내용:</label>
+            <textarea id="content" name="content"></textarea>
+
+            <div class="button-container">
+                <button type="submit">등록</button>
+            </div>
+        </form>            
+    </div>
+    <script>
+        function saveQnaPost(event) {
+            event.preventDefault();
+            var title = document.getElementById('title').value;
+            var content = document.getElementById('content').value;
+            var date = new Date().toLocaleDateString();
+            var post = { title: title, content: content, date: date };
+            
+            // 현재 저장된 게시물들을 localStorage에서 가져오기
+            var storedPosts = localStorage.getItem('newQnaPosts');
+            var posts = storedPosts ? JSON.parse(storedPosts) : [];
+            
+            // 새로운 게시물을 배열에 추가
+            posts.push(post);
+            
+            // 업데이트된 배열을 다시 localStorage에 저장
+            localStorage.setItem('newQnaPosts', JSON.stringify(posts));
+            
+            // QnA 페이지로 리디렉션
+            window.location.href = '10_qna.html';
+        }
+    </script>
+</body>
 </html>

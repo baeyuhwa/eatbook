@@ -2,13 +2,37 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>소통</title>
+<title>소통 상세</title>
 <link rel="stylesheet" href="9-2_see.css">
+<script>
+    window.onload = function() {
+        var postId = localStorage.getItem('selectedPostId');
+        if (postId !== null) {
+            var storedPosts = localStorage.getItem('newPosts');
+            if (storedPosts) {
+                var posts = JSON.parse(storedPosts);
+                displayPostDetail(posts[postId]);
+            }
+        }
+    };
+
+    function displayPostDetail(post) {
+        var contentDiv = document.querySelector('.content');
+        contentDiv.innerHTML = `
+            <h2>${post.title}</h2>
+            <p>작성자: 사용자 이름, 작성일: ${post.date}</p>
+            <p>${post.content}</p>
+            <button class="create-button" onclick="window.location.href='9_commincation.html';">목록으로 돌아가기</button>
+        `;
+    }
+</script>
 </head>
 <body>
 <div class="container">
     <header>
-        <img id="logo" src="logo.png" alt="Logo">
+        <a href="4_main.html">
+            <img id="logo" src="logo.png" alt="Logo">
+        </a>
         <input id="search-bar" type="text" placeholder="레시피 검색...">
         <div id="user-name">사용자 이름
             <div class="dropdown-icon">&#9660;</div>
@@ -21,49 +45,9 @@
         <a href="9_commincation.html">소통</a>
         <a href="10_qna.html">문의 사항</a>
     </nav>
+    <div class="content">
+        <!-- 내용이 여기에 표시됩니다 -->
+    </div> 
 </div>
-<script>
-    // 제목 목록
-    var titles = [
-        { title: "첫 번째 제목", author: "작성자1", date: "2024-05-20", content: "첫 번째 제목에 대한 내용입니다." }
-        // 필요에 따라 제목과 내용을 추가할 수 있습니다.
-    ];
-
-    // content 요소 가져오기
-    var contentDiv = document.querySelector('.content');
-
-    // 제목 목록을 nav에서 가져와서 클릭 이벤트 추가
-    var navLinks = document.querySelectorAll('nav a');
-    navLinks.forEach(function(link, index) {
-        link.addEventListener('click', function(event) {
-            event.preventDefault(); // 링크의 기본 동작 방지
-
-            // 클릭한 링크의 href 속성 가져오기
-            var href = link.getAttribute('href');
-
-            // href 속성 값에 해당하는 인덱스 찾기
-            var index = parseInt(href.split('_')[0]); // 링크에 숫자가 있는 경우를 가정하여 분리 후 변환
-
-            // 해당 인덱스에 해당하는 제목 정보 가져오기
-            var titleInfo = titles[index - 1];
-
-            // 제목 정보를 화면에 표시
-            var titleElement = document.createElement('h2');
-            titleElement.textContent = titleInfo.title;
-            contentDiv.innerHTML = ''; // 기존 내용 지우기
-            contentDiv.appendChild(titleElement);
-
-            // 이름과 작성일 추가
-            var infoParagraph = document.createElement('p');
-            infoParagraph.textContent = '작성자: ' + titleInfo.author + ', 작성일: ' + titleInfo.date;
-            contentDiv.appendChild(infoParagraph);
-
-            // 내용 추가
-            var contentParagraph = document.createElement('p');
-            contentParagraph.textContent = titleInfo.content;
-            contentDiv.appendChild(contentParagraph);
-        });
-    });
-</script>
 </body>
 </html>

@@ -98,3 +98,7 @@ td {
     border-radius: 10px;
     cursor: pointer;
 }
+a {
+    color: black;
+    text-decoration: none; /* 밑줄 제거 */
+}

@@ -7,26 +7,38 @@
 <script>
     window.onload = function() {
         // 작성된 게시물이 있는지 확인 후 표시
-        var storedPost = localStorage.getItem('newPost');
-        if (storedPost) {
-            var post = JSON.parse(storedPost);
-            displayPost(post);
+        var storedPosts = localStorage.getItem('newPosts');
+        if (storedPosts) {
+            var posts = JSON.parse(storedPosts);
+            displayPosts(posts);
         }
     };
 
-    function displayPost(post) {
-        var tableBody = document.querySelector('.content table tbody');
-        var row = document.createElement('tr');
-        row.innerHTML = "<td>" + post.title + "</td><td>" + post.content + "</td><td>" + new Date().toLocaleDateString() + "</td>";
-        tableBody.appendChild(row);
+    function displayPosts(posts) {
+        var tableBody = document.getElementById('postList'); // 게시물을 표시할 위치 지정
+        posts.forEach((post, index) => {
+            var row = document.createElement('tr');
+            row.innerHTML = "<td>" + (index + 1) + "</td><td><a href='9-2_see.html' data-id='" + index + "'>" + post.title + "</a></td><td>" + post.date + "</td>";
+            tableBody.appendChild(row);
+        });
+
+        // 제목에 클릭 이벤트 추가
+        var links = tableBody.querySelectorAll('a');
+        links.forEach(link => {
+            link.addEventListener('click', function(event) {
+                var id = this.getAttribute('data-id');
+                localStorage.setItem('selectedPostId', id);
+            });
+        });
     }
 </script>
-    
 </head>
 <body>
 <div class="container">
     <header>
-        <img id="logo" src="logo.png" alt="Logo">
+        <a href="4_main.html">
+            <img id="logo" src="logo.png" alt="Logo">
+        </a>
         <input id="search-bar" type="text" placeholder="레시피 검색...">
         <div id="user-name">사용자 이름
             <div class="dropdown-icon">&#9660;</div>
@@ -43,31 +55,16 @@
         <table>
             <thead>
                 <tr>
+                    <th>순번</th>
                     <th>제목</th>
-                    <th>내용</th>
-                    <th>작성일</th> <!-- 작성일을 추가 -->
+                    <th>작성일</th>
                 </tr>
             </thead>
-            <tbody id="postLsit">
-
+            <tbody id="postList">
             </tbody>
         </table>  
         <button class="create-button" onclick="window.location.href='9-1_newcommuni.html';">작성하기</button>
     </div> 
 </div>
-<script src="9_commincation.js">
-    var storedPost = localStorage.getItem('newPost');
-    if (storedPost) {
-        var post = JSON.parse(storedPost);
-        displayPost(post);
-    }
-
-    function displayPost(post) {
-        var tableBody = document.getElementById('postList'); // 게시물을 표시할 위치 지정
-        var row = document.createElement('tr');
-        row.innerHTML = "<td>" + post.title + "</td><td>" + post.content + "</td><td>" + new Date().toLocaleDateString() + "</td>";
-        tableBody.appendChild(row);
-    }
-</script>
 </body>
 </html>
