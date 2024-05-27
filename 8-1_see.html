@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>레시피 보기</title>
     <link rel="stylesheet" href="8-1_see.css">
-    <script src="8-1_see.js" defer></script>
 </head>
 <body>
 <header>
@@ -25,11 +24,42 @@
 </nav>
 <div class="content">
     <h1 id="recipe-name"></h1>
+    <div id="photo-container"></div>
     <p><strong>재료:</strong> <span id="recipe-ingredient"></span></p>
     <p><strong>카테고리:</strong> <span id="recipe-category"></span></p>
     <p><strong>조리 과정:</strong></p>
     <p id="recipe-process"></p>
     <p><strong>레시피 요약:</strong> <span id="recipe-sumup"></span></p>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const params = new URLSearchParams(window.location.search);
+        const recipeIndex = params.get('index');
+        const recipes = JSON.parse(localStorage.getItem('recipes')) || [];
+
+        if (recipeIndex !== null && recipes[recipeIndex]) {
+            const recipe = recipes[recipeIndex];
+            document.getElementById('recipe-name').textContent = recipe.name;
+            document.getElementById('recipe-ingredient').textContent = recipe.ingredient;
+            document.getElementById('recipe-category').textContent = recipe.category;
+            document.getElementById('recipe-process').textContent = recipe.process;
+            document.getElementById('recipe-sumup').textContent = recipe.sumup;
+        } else {
+            alert('레시피 정보를 불러올 수 없습니다.');
+            window.location.href = '8_myrecipes.html'; // 레시피 정보가 없으면 레시피 목록 페이지로 리다이렉트
+        }
+    });
+    document.addEventListener('DOMContentLoaded', function() {
+        // 기존 코드 유지
+
+        if (recipeIndex !== null && recipes[recipeIndex]) {
+            const recipe = recipes[recipeIndex];
+            document.getElementById('recipe-name').textContent = recipe.name;
+            // 기존 내용 유지
+            document.getElementById('photo-container').innerHTML = recipe.photo;
+        }
+    });
+</script>
 </body>
 </html>

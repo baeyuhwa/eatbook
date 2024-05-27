@@ -51,6 +51,11 @@
             <div class="button-container">
                 <button type="submit">등록</button>
             </div>
+            <div class="left">
+                <label for="photo">레시피 사진: </label>
+                <input type="file" id="photo" name="photo" accept="image/*" onchange="previewPhoto()">
+                <div id="photo-preview"></div>
+            </div>
         </form>
     </div>
 </body>
