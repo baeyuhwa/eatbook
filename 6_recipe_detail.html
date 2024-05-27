@@ -37,6 +37,10 @@
                 recipeTitle.textContent = selectedRecipe.name;
                 recipeDetail.appendChild(recipeTitle);
 
+                const recipeAuthor = document.createElement('h4');
+                recipeAuthor.textContent = "작성자: " + selectedRecipe.author;
+                recipeDetail.appendChild(recipeAuthor);
+
                 const recipeImage = document.createElement('img');
                 recipeImage.src = selectedRecipe.image;
                 recipeImage.alt = `이미지: ${selectedRecipe.name}`;

@@ -1,6 +1,7 @@
 window.onload = function() {
     document.getElementById('search-bar').addEventListener('keyup', function(event) {
         if(event.key == "Enter") {
+            currentPage = 1;
             console.log(this.value);
             searchRecipe(this.value);
         }
@@ -39,6 +40,8 @@ async function foodInfo(name) {
                 const result = JSON.parse(foodInfoElement.textContent);
                 const foodName = result.name;
                 const foodImg = result.image ? result.image[0] : '이미지 없음';
+                const author = result.author["name"];
+                const description = result.description;
                 const ingredient = result.recipeIngredient ? result.recipeIngredient.join(',') : '재료 정보 없음';
                 const recipeImg = Array.isArray(result.recipeInstructions) ? result.recipeInstructions.map((instruction, index) => 
                     `${index + 1}. ${instruction.image}`): [];
@@ -51,6 +54,8 @@ async function foodInfo(name) {
                 results.push({
                     name: foodName,
                     image: foodImg,
+                    author: author,
+                    description: description,
                     ingredients: ingredient,
                     recipeImg: recipeImg,
                     recipe: recipe
@@ -84,14 +89,22 @@ async function searchRecipe(foodName) {
             const recipeImage = document.createElement('img');
             recipeImage.src = result.image;
             recipeImage.alt = `이미지: ${result.name}`;
-            recipeImage.addEventListener('click', () => {
+            recipeColumn.appendChild(recipeImage);
+
+            const recipeAuthor = document.createElement('div');
+            recipeAuthor.textContent = "작성자: " + result.author;
+            recipeColumn.append(recipeAuthor);
+
+            const recipeDescription = document.createElement('div');
+            recipeDescription.textContent = result.description;
+            recipeColumn.append(recipeDescription);
+
+            recipeColumn.addEventListener('click', () => {
                 // 로컬 스토리지에 레시피 정보 저장
                 localStorage.setItem('selectedRecipe', JSON.stringify(result));
                 // 새로운 페이지로 이동
-                window.location.href = '6_recipe_detail.html';
+                window.open('6_recipe_detail.html', '_blank');
             });
-            recipeColumn.appendChild(recipeImage);
-
             resultsContainer.appendChild(recipeColumn);
         });
     } else {
@@ -113,3 +126,4 @@ async function searchIngredient() {
         searchRecipe(ingredient);
     }
 }
+
