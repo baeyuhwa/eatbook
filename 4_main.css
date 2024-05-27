@@ -2,7 +2,7 @@ body {
     font-family: Arial, sans-serif;
     display: flex;
     flex-direction: column;
-    margin: 0;
+    margin: 20px;
     min-height: 100vh;
 }
 header {
@@ -135,7 +135,7 @@ border-radius: 4px;
 cursor: pointer;
 }
 #searchRecipes:hover {
-background-color: #45a049;
+background-color: #4CAF50;
 }
 
 .container {

@@ -99,7 +99,7 @@ input[id="search-bar"] {
     padding: 8px;
 }
 .fridge-table th {
-    background-color: #6C7B8B;
+    background-color: #4CAF50;
     color: white;
 }
 
@@ -135,7 +135,7 @@ border-radius: 4px;
 cursor: pointer;
 }
 #searchRecipes:hover {
-background-color: #45a049;
+background-color: #4CAF50;
 }
 
 .container {

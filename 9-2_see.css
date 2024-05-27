@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    margin: 0;
+    margin: 20px;
     padding: 0;
     box-sizing: border-box;
 }
@@ -92,7 +92,7 @@ td {
     right: 20px;
     padding: 10px 20px;
     font-size: 16px;
-    background-color: #ff960cfe;
+    background-color: #4CAF50;
     color: white;
     border: none;
     border-radius: 10px;
