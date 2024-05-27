@@ -1,9 +1,54 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<title>ebs</title>
-<link rel="stylesheet" href="8_myrecipes.css">
+    <meta charset="UTF-8">
+    <title>ebs</title>
+    <link rel="stylesheet" href="8_myrecipes.css">
+    <script src="8_myrecipes.js" defer></script>
+    <script>
+        window.onload = function() {
+            var storedRecipes = localStorage.getItem('recipes');
+            if (storedRecipes) {
+                var recipes = JSON.parse(storedRecipes);
+                displayPosts(recipes);
+            }
+        };
+
+        function displayPosts(posts) {
+            var tableBody = document.getElementById('recipe-list'); // 테이블 바디 참조
+            tableBody.innerHTML = ''; // 이전 내용을 지움
+
+            posts.forEach((post, index) => {
+                var row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${post.name}</td>
+                    <td>${post.summary}</td>
+                    <td><button class='delete-button' data-id='${index}'>&#10006;</button></td>
+                `;
+                tableBody.appendChild(row);
+            });
+
+            // 삭제 버튼에 클릭 이벤트 추가
+            var deleteButtons = tableBody.querySelectorAll('.delete-button');
+            deleteButtons.forEach(button => {
+                button.addEventListener('click', function(event) {
+                    var id = this.getAttribute('data-id');
+                    deletePost(id);
+                });
+            });
+        }
+
+        function deletePost(id) {
+            var storedPosts = localStorage.getItem('recipes');
+            if (storedPosts) {
+                var posts = JSON.parse(storedPosts);
+                posts.splice(id, 1); // 해당 게시물을 배열에서 삭제
+                localStorage.setItem('recipes', JSON.stringify(posts)); // 변경된 게시물 목록을 저장
+                displayPosts(posts); // 게시물 목록 갱신
+            }
+        }
+    </script>
 </head>
 <body>
 <header>
@@ -29,19 +74,18 @@
                 <th>순번</th>
                 <th>레시피 이름</th>
                 <th>레시피 요약</th>
+                <th></th> <!-- 추가된 열 -->
             </tr>
         </thead>
-        <tbody>
+        <tbody id="recipe-list">
             <!-- 테이블 데이터 행은 이곳에 추가됩니다 -->
-            <!--<tr>
-                <td>1</td>
-                <td>예시 레시피 이름</td>
-                <td>이곳에 레시피 요약을 적어주세요.</td>
-            </tr>
-            추가 데이터 행을 계속해서 여기에 삽입할 수 있습니다 -->
         </tbody>
-    </table>  
-    
+    </table>
+    <div class="button-container">
+        <a href="7_newrecipe.html">
+            <button type="button">레시피 작성</button>
+        </a>
+    </div>
 </div>
 </body>
 </html>

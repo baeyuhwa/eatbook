@@ -5,9 +5,9 @@ body {
     box-sizing: border-box;
 }
 .container {
-    width:  100%; /* 너비를 전체의 80%로 설정 */
-    margin: 0 auto; /* 중앙 정렬 */
-    padding: 20px; /* 주변 여백 */
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
 }
 header {
     display: flex;
@@ -81,10 +81,10 @@ th:last-child, td:last-child {
 }
 th {
     background-color: #f9f9f9;
-    font-size: 14px; /* 글자 크기 감소 */
+    font-size: 14px;
 }
 td {
-    font-size: 14px; /* 글자 크기 감소 */
+    font-size: 14px;
 }
 .create-button {
     position: auto;
@@ -98,7 +98,21 @@ td {
     border-radius: 10px;
     cursor: pointer;
 }
+.create-button:hover {
+    background-color: #e0890c;
+}
 a {
-    color: black;
-    text-decoration: none; /* 밑줄 제거 */
+    text-decoration: none;
+}
+.delete-button {
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 4px 8px;
+}
+.delete-button:hover {
+    background-color: darkred;
 }

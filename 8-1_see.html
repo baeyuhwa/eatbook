@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>레시피 보기</title>
+    <link rel="stylesheet" href="8-1_see.css">
+    <script src="8-1_see.js" defer></script>
+</head>
+<body>
+<header>
+    <a href="4_main.html">
+        <img id="logo" src="logo.png" alt="Logo">
+    </a>
+    <input id="search-bar" type="text" placeholder="레시피 검색...">
+    <div id="user-name">사용자 이름
+        <div class="dropdown-icon">&#9660;</div>
+    </div>
+</header>
+<nav>
+    <a href="5_listADD.html">냉장고</a>
+    <a href="8_myrecipes.html">내 레시피</a>
+    <a href="7_newrecipe.html">레시피 만들기</a>
+    <a href="9_commincation.html">소통</a>
+    <a href="10_qna.html">문의 사항</a>
+</nav>
+<div class="content">
+    <h1 id="recipe-name"></h1>
+    <p><strong>재료:</strong> <span id="recipe-ingredient"></span></p>
+    <p><strong>카테고리:</strong> <span id="recipe-category"></span></p>
+    <p><strong>조리 과정:</strong></p>
+    <p id="recipe-process"></p>
+    <p><strong>레시피 요약:</strong> <span id="recipe-sumup"></span></p>
+</div>
+</body>
+</html>

@@ -1,62 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>레시피 등록</title>
-        <link rel="stylesheet" href="7_newrecipe.css">
-        <script src="7_newrecipe.js"></script>
-    </head>
-    <body>
-        <header>
-            <a href="4_main.html">
-                <img id="logo" src="logo.png" alt="Logo">
-            </a>
-            <input id="search-bar" type="text" placeholder="레시피 검색...">
-            <div id="user-name">사용자 이름
-                <div class="dropdown-icon" onclick="openUpdatePage()">&#9660;</div>
-            </div>
-        </header>
-        <nav>
-            <a href="5_listADD.html">냉장고</a>
-            <a href="8_myrecipes.html">내 레시피</a>
-            <a href="7_newrecipe.html">레시피 만들기</a>
-            <a href="9_commincation.html">소통</a>
-            <a href="10_qna.html">문의 사항</a>
-        </nav>
-        <div class="container">
-            <div class="left">
-                    <label for="photo">레시피 사진: </label>
-                    <input type="file" id="photo" name="photo" accept="image/*">
-                    <div id="photo-preview"></div>
-                    
-            </div>
-            <form id="newrecipe">
-                <div class="right">
-                    <label for="recipe">이름: </label>
-                    <input type="text" id="recipe" name="recipe">
-
-                    <label for="ingredient">재료: </label>
-                    <input type="text" id="ingredient" name="ingredient">
-
-                    <label for="category">카테고리: </label>
-                    <select id="category" name="category">
-                        <option value="korean">한식</option>
-                        <option value="chinese">중식</option>
-                        <option value="japanese">일식</option>
-                        <option value="western">양식</option>
-                        <option value="etc">기타</option>
-                    </select>
-     
-                    <label for="process">조리 과정: </label>
-                    <textarea type="text" id="process" name="process"></textarea>
-
-                    <label for="sumup">레시피 요약: </label>
-                    <input type="text" id="sumup" name="sumup">
-                </div>
-            </form>
+<head>
+    <meta charset="UTF-8">
+    <title>레시피 등록</title>
+    <link rel="stylesheet" href="7_newrecipe.css">
+    <script src="7_newrecipe.js" defer></script>
+</head>
+<body>
+    <header>
+        <a href="4_main.html">
+            <img id="logo" src="logo.png" alt="Logo">
+        </a>
+        <input id="search-bar" type="text" placeholder="레시피 검색...">
+        <div id="user-name">사용자 이름
+            <div class="dropdown-icon" onclick="openUpdatePage()">&#9660;</div>
         </div>
-        <div class="button-container">
-            <button type="submit">등록</button>
+    </header>
+    <nav>
+        <a href="5_listADD.html">냉장고</a>
+        <a href="8_myrecipes.html">내 레시피</a>
+        <a href="7_newrecipe.html">레시피 만들기</a>
+        <a href="9_commincation.html">소통</a>
+        <a href="10_qna.html">문의 사항</a>
+    </nav>
+    <div class="container">
+        <div class="left">
+            <label for="photo">레시피 사진: </label>
+            <input type="file" id="photo" name="photo" accept="image/*">
+            <div id="photo-preview"></div>
         </div>
-    </body>
+        <form id="newrecipe" onsubmit="saveRecipe(event)">
+            <div class="right">
+                <label for="recipe">이름: </label>
+                <input type="text" id="recipe" name="recipe" required>
+                <label for="ingredient">재료: </label>
+                <input type="text" id="ingredient" name="ingredient" required>
+                <label for="category">카테고리: </label>
+                <select id="category" name="category" required>
+                    <option value="korean">한식</option>
+                    <option value="chinese">중식</option>
+                    <option value="japanese">일식</option>
+                    <option value="western">양식</option>
+                    <option value="etc">기타</option>
+                </select>
+                <label for="process">조리 과정: </label>
+                <textarea id="process" name="process" required></textarea>
+                <label for="sumup">레시피 요약: </label>
+                <input type="text" id="sumup" name="sumup" required>
+            </div>
+            <div class="button-container">
+                <button type="submit">등록</button>
+            </div>
+        </form>
+    </div>
+</body>
 </html>

@@ -14,6 +14,7 @@
                 displayPostDetail(posts[postId]);
             }
         }
+        displayComments(); // 댓글을 로드하는 함수 호출
     };
 
     function displayPostDetail(post) {
@@ -22,8 +23,43 @@
             <h2>${post.title}</h2>
             <p>작성자: 사용자 이름, 작성일: ${post.date}</p>
             <p>${post.content}</p>
+            <textarea id="comment" placeholder="댓글을 입력하세요" rows="4" cols="50"></textarea>
+            <button class="create-button" onclick="submitComment()">댓글 전송</button>
+            <div id="communication-comments"></div> <!-- 수정된 id -->
             <button class="create-button" onclick="window.location.href='9_commincation.html';">목록으로 돌아가기</button>
         `;
+    }
+
+    function displayComments() {
+        var storedComments = localStorage.getItem('comments');
+        if (storedComments) {
+            var comments = JSON.parse(storedComments);
+            var commentsDiv = document.getElementById('communication-comments'); // 수정된 id
+            commentsDiv.innerHTML = ''; // 기존 댓글 초기화
+            comments.forEach(function(comment) {
+                var commentElement = document.createElement('p');
+                commentElement.textContent = comment;
+                commentsDiv.appendChild(commentElement);
+            });
+        }
+    }
+
+    function submitComment() {
+        var comment = document.getElementById('comment').value;
+        if (comment.trim() === '') {
+            alert('댓글을 입력하세요.');
+            return;
+        }
+        
+        // 로컬 스토리지에 저장하는 부분
+        var storedComments = localStorage.getItem('comments');
+        var comments = storedComments ? JSON.parse(storedComments) : [];
+        comments.push(comment);
+        localStorage.setItem('comments', JSON.stringify(comments));
+
+        alert('댓글이 전송되었습니다.');
+        document.getElementById('comment').value = ''; // 댓글 입력창 비우기
+        displayComments(); // 댓글 목록 갱신
     }
 </script>
 </head>

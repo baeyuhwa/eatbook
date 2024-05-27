@@ -44,14 +44,14 @@
             var post = { title: title, content: content, date: date };
             
             // 현재 저장된 게시물들을 localStorage에서 가져오기
-            var storedPosts = localStorage.getItem('newQnaPosts');
+            var storedPosts = localStorage.getItem('qnaPosts'); // 수정된 부분: 'qnaPosts' 키 사용
             var posts = storedPosts ? JSON.parse(storedPosts) : [];
             
             // 새로운 게시물을 배열에 추가
             posts.push(post);
             
             // 업데이트된 배열을 다시 localStorage에 저장
-            localStorage.setItem('newQnaPosts', JSON.stringify(posts));
+            localStorage.setItem('qnaPosts', JSON.stringify(posts)); // 수정된 부분: 'qnaPosts' 키 사용
             
             // QnA 페이지로 리디렉션
             window.location.href = '10_qna.html';
