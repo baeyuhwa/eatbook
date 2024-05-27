@@ -11,12 +11,12 @@
         <img id="logo" src="logo.png" alt="Logo">
     </a>
     <input id="search-bar" type="text" placeholder="레시피 검색...">
-    <div id="user-name">사용자 이름</div>
+    <div id="user-name"></div>
 </header>
 <nav>
     <a href="5_listADD.html">냉장고</a>
     <a href="8_myrecipes.html">내 레시피</a>
-    <a href="7_newrecipe.css">레시피 만들기</a>
+    <a href="7_newrecipe.html">레시피 만들기</a>
     <a href="9_communication.html">소통</a>
     <a href="10_qna.html">문의 사항</a>
 </nav>
@@ -38,5 +38,17 @@
         </div>
     </div>
 </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const kakaoNickname = localStorage.getItem('kakaoNickname');
+        if (kakaoNickname) {
+            const userNameElement = document.getElementById('user-name');
+            userNameElement.textContent = kakaoNickname;
+        } else {
+            // 로그인 정보가 없으면 로그인 페이지로 리디렉션
+            window.location.href = "1_login.html";
+        }
+    });
+</script>
 </body>
 </html>
