@@ -110,19 +110,3 @@ async function searchRecipe(foodName) {
         resultsContainer.innerHTML = '음식 정보를 가져오는데 실패했습니다.';
     }
 }
-
-async function searchIngredient() {
-    const fridgeItems = document.querySelectorAll('#fridge-list-items tr');
-
-    //냉장고 리스트에서 재료를 가져오고 배열에 저장
-    let fridgeIngredients = [];
-    fridgeItems.forEach(item => {
-        const ingredientName = item.cells[0].textContent.trim().toLowerCase(); // 재료 이름
-        fridgeIngredients.push(ingredientName);
-    });
-
-    for (let ingredient of fridgeIngredients) {
-        searchRecipe(ingredient);
-    }
-}
-
