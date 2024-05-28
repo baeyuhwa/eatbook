@@ -136,7 +136,7 @@ margin-bottom: 10px;
     cursor: pointer;
     }
 #searchRecipes:hover {
-background-color: #4CAF50;
+background-color: #45a049;
 }
 
 .container {
@@ -148,7 +148,7 @@ background-color: #4CAF50;
 }
 
 .recipe-column img {
-    width: 300px; /* 이미지 크기 조정 */
+    width: 280px; /* 이미지 크기 조정 */
     height: auto;
     margin-bottom: 10px;
 }
@@ -189,4 +189,11 @@ background-color: #4CAF50;
         font-size: 14px; /* 더 작은 화면에서 제목 크기 조정 */
     }
 }
+
+.scroll-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 

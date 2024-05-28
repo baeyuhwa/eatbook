@@ -2,7 +2,7 @@
 <html lang="ko">
     <head>
         <meta charset="UTF-8">
-        <title>레시피 관리 웹사이트</title>
+        <title>검색 결과</title>
         <link rel="stylesheet" href="6_recipe.css">
     </head>
     <body>
@@ -24,6 +24,10 @@
         </nav>
         <div class="container">
             <div id="recipe-results"></div>
+        </div>
+        <div  class="scroll-container">
+            <img id="to-top" src="scroll.png" onclick="go_top()" style="width: 50px; z-index: 9; display:none;">
+            <!--<a href="https://kr.freepik.com/icon/down-arrow_152427#fromView=search&page=3&position=33&uuid=609ff4b8-2830-401f-9edb-980f8fd8866d">Freepik 제작 아이콘</a>-->
         </div>
         <script src="5_recipe_result.js"></script>
     </body>

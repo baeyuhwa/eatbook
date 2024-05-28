@@ -22,8 +22,7 @@ async function foodInfo(name) {
             return [];
         }
         
-        // 첫 10개의 항목 선택
-        const selectedFoods = Array.from(foodList).slice(0, 10);
+        const selectedFoods = Array.from(foodList);
         const results = [];
 
         for (const food of selectedFoods) {
@@ -36,6 +35,10 @@ async function foodInfo(name) {
                 const newDoc = parser.parseFromString(newHtml, 'text/html');
                 
                 const foodInfoElement = newDoc.querySelector('[type="application/ld+json"]');
+                if (!foodInfoElement) {
+                    console.log(`레시피 정보 요소를 찾을 수 없습니다: ${newUrl}`);
+                    continue; // foodInfoElement가 null인 경우 건너뜁니다.
+                }
                 const result = JSON.parse(foodInfoElement.textContent);
                 const foodName = result.name;
                 const foodImg = result.image ? result.image[0] : '이미지 없음';
@@ -105,6 +108,8 @@ async function searchRecipe(foodName) {
                 window.open('6_recipe_detail.html', '_blank');
             });
             resultsContainer.appendChild(recipeColumn);
+
+            document.getElementById('to-top').style.display = 'flex';
         });
     } else {
         resultsContainer.innerHTML = '음식 정보를 가져오는데 실패했습니다.';
@@ -126,3 +131,39 @@ async function searchIngredient() {
     }
 }
 
+function go_top(orix, oriy, desx, desy) {
+	var Timer;
+
+	if (document.body.scrollTop == 0) {
+		var winHeight = document.documentElement.scrollTop;
+	} else {
+		var winHeight = document.body.scrollTop;
+	}
+
+	if (Timer) clearTimeopt(Timer);
+	startx = 0;
+	starty = winHeight;
+
+	if (!orix || orix < 0) orix = 0;
+	if (!oriy || oriy < 0) oriy = 0;
+
+	var speed = 7;
+
+	if (!desx) desx = 0 + startx;
+	if (!desy) desy = 0 + starty;
+	desx += (orix - startx) /speed;
+	if (desx < 0) desx = 0;
+	desy += (oriy - starty) / speed;
+	if (desy < 0) desy = 0;
+
+	var posX = Math.ceil(desx); var posY = Math.ceil(desy);
+	window.scrollTo(posX, posY);
+	if ((Math.floor(Math.abs(startx - orix)) < 1) && (Math.floor(Math.abs(starty - oriy)) < 1)) {
+		clearTimeout(Timer);
+		window.scroll(orix, oriy);
+	} else if (posX != orix || posY != oriy) {
+		Timer = setTimeout("go_top(" + orix + ", " + oriy + ", " + desx + ", " + desy + ")", 15);
+	} else {
+		clearTimeout(Timer);
+	}
+}
