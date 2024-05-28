@@ -63,4 +63,3 @@ function saveRecipe(event) {
     document.getElementById('newrecipe').reset();
     alert("레시피가 등록되었습니다.");
 }
-

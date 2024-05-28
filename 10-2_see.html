@@ -4,65 +4,6 @@
 <meta charset="UTF-8">
 <title>문의사항 상세</title>
 <link rel="stylesheet" href="10-2_see.css">
-<script>
-    window.onload = function() {
-        var postId = localStorage.getItem('selectedPostId');
-        if (postId !== null) {
-            var storedPosts = localStorage.getItem('newPosts');
-            if (storedPosts) {
-                var posts = JSON.parse(storedPosts);
-                displayPostDetail(posts[postId]);
-            }
-        }
-        displayComments(); // 댓글을 로드하는 함수 호출
-    };
-
-    function displayPostDetail(post) {
-        var contentDiv = document.querySelector('.content');
-        contentDiv.innerHTML = `
-            <h2>${post.title}</h2>
-            <p>작성자: 사용자 이름, 작성일: ${post.date}</p>
-            <p>${post.content}</p>
-            <textarea id="comment" placeholder="댓글을 입력하세요" rows="4" cols="50"></textarea>
-            <button class="create-button" onclick="submitComment()">댓글 전송</button>
-            <div id="qna-comments"></div> <!-- 수정된 id -->
-            <button class="create-button" onclick="window.location.href='9_commincation.html';">목록으로 돌아가기</button>
-        `;
-    }
-
-    function displayComments() {
-        var storedComments = localStorage.getItem('9_comments'); // 9번 페이지와는 다른 키 값 사용
-        if (storedComments) {
-            var comments = JSON.parse(storedComments);
-            var commentsDiv = document.getElementById('comments');
-            commentsDiv.innerHTML = ''; // 기존 댓글 초기화
-            comments.forEach(function(comment) {
-                var commentElement = document.createElement('p');
-                commentElement.textContent = comment;
-                commentsDiv.appendChild(commentElement);
-            });
-        }
-        displayComments();
-    }
-
-    function submitComment() {
-        var comment = document.getElementById('comment').value;
-        if (comment.trim() === '') {
-            alert('댓글을 입력하세요.');
-            return;
-        }
-        
-        // 로컬 스토리지에 저장하는 부분
-        var storedComments = localStorage.getItem('comments');
-        var comments = storedComments ? JSON.parse(storedComments) : [];
-        comments.push(comment);
-        localStorage.setItem('comments', JSON.stringify(comments));
-
-        alert('댓글이 전송되었습니다.');
-        document.getElementById('comment').value = ''; // 댓글 입력창 비우기
-        displayComments(); // 댓글 목록 갱신
-    }
-</script>
 </head>
 <body>
 <div class="container">
@@ -83,10 +24,20 @@
         <a href="10_qna.html">문의 사항</a>
     </nav>
     <div class="content">
-        <div id="comments"></div>
-        <!-- 내용이 여기에 표시됩니다 -->
-    </div> 
+        <h1 id="postTitle">제목</h1>
+        <p id="postDate">작성일</p>
+        <div id="postContent">내용</div>
+        <div id="commentSection">
+            <h3>댓글</h3>
+            <textarea id="commentInput" placeholder="댓글을 입력하세요..."></textarea>
+            <button id="commentButton">댓글 남기기</button>
+            <div id="commentList">
+                <!-- 여기에 댓글이 추가됩니다 -->
+            </div>
+        </div>
+    </div>
 </div>
 <script src="5_recipe.js"></script>
+<script src="10-2_see.js"></script>
 </body>
 </html>

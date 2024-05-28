@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>레시피 등록</title>
     <link rel="stylesheet" href="7_newrecipe.css">
-    <script src="7_newrecipe.js" defer></script>
 </head>
 <body>
     <header>
@@ -25,7 +24,7 @@
     <div class="container">
         <div class="left">
             <label for="photo">레시피 사진: </label>
-            <input type="file" id="photo" name="photo" accept="image/*">
+            <input type="file" id="photo" name="photo" accept="image/*" onchange="previewPhoto()">
             <div id="photo-preview"></div>
         </div>
         <form id="newrecipe" onsubmit="saveRecipe(event)">
@@ -50,13 +49,9 @@
             <div class="button-container">
                 <button type="submit">등록</button>
             </div>
-            <div class="left">
-                <label for="photo">레시피 사진: </label>
-                <input type="file" id="photo" name="photo" accept="image/*" onchange="previewPhoto()">
-                <div id="photo-preview"></div>
-            </div>
         </form>
     </div>
     <script src="5_recipe.js"></script>
+    <script src="7_newrecipe.js"></script>
 </body>
 </html>

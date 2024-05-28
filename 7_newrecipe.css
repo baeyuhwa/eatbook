@@ -103,3 +103,7 @@ button:hover {
     justify-content: center;
     padding: 20px;
 }
+#photo-preview img {
+    max-width: 100px; /* 최대 너비 */
+    max-height: 100px; /* 최대 높이 */
+}
