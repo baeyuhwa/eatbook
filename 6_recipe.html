@@ -122,10 +122,13 @@
                 document.getElementById('ingredient-quantity').value = '';
                 document.getElementById('ingredient-unit').selectedIndex = 0; // 단위를 기본값으로 설정
                 document.getElementById('expiration-date').value = '';
+
+                saveFridgeList();
             
                 // 삭제 버튼 이벤트 리스너
                 row.querySelector('.delete-btn').addEventListener('click', function() {
                     list.removeChild(row);
+                    saveFridgeList();
                 });
             
                 // 수정 버튼 이벤트 리스너
@@ -141,7 +144,23 @@
                     document.getElementById('fridge-form').setAttribute('data-editing-index', index);
                 });
             });
-            
+
+            function saveFridgeList() {
+                var list = document.getElementById('fridge-list-items');
+                var items = [];
+
+                list.querySelectorAll('tr').forEach(row => {
+                    var item = {
+                        ingredient: row.cells[0].textContent,
+                        quantity: row.cells[1].textContent,
+                        unit: row.cells[2].textContent,
+                        expiration: row.cells[3].textContent
+                    };
+                    items.push(item);
+                });
+
+                localStorage.setItem('fridgeList', JSON.stringify(items));
+            }
             </script>
             <script src="6_recipe.js"></script>
     </body>

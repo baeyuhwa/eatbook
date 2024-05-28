@@ -5,6 +5,7 @@ window.onload = function() {
             searchRecipe(this.value);
         }
     });
+    loadFridgeList();
 }
 
 async function foodInfo(name) {
@@ -64,6 +65,7 @@ async function foodInfo(name) {
 
                 // 진행 상황 업데이트
                 const progress = Math.floor(((i + 1) / totalFoods) * 100);
+                document.getElementById('progress-bar').style.display = 'flex';
                 document.getElementById('progress-bar').style.width = progress + '%';
                 document.getElementById('progress-percentage').style.display = 'flex';
                 document.getElementById('progress-percentage').textContent = '검색 결과를 표시하는 중입니다... ' + progress + '%';
@@ -125,6 +127,7 @@ async function searchRecipe(foodName) {
 }
 
 async function searchIngredient() {
+    document.getElementById('to-top').style.display = 'none';
     const fridgeItems = document.querySelectorAll('#fridge-list-items tr');
 
     //냉장고 리스트에서 재료를 가져오고 배열에 저장
@@ -141,4 +144,43 @@ async function searchIngredient() {
 
 function go_top() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function loadFridgeList() {
+    var list = document.getElementById('fridge-list-items');
+    var items = JSON.parse(localStorage.getItem('fridgeList')) || [];
+
+    items.forEach(item => {
+        var row = document.createElement('tr');
+        
+        row.innerHTML = `
+            <td>${item.ingredient}</td>
+            <td>${item.quantity}</td>
+            <td>${item.unit}</td>
+            <td>${item.expiration}</td>
+            <td><button class="edit-btn">수정</button></td>
+            <td><button class="delete-btn">삭제</button></td>
+        `;
+        
+        list.appendChild(row);
+
+        // 삭제 버튼 이벤트 리스너
+        row.querySelector('.delete-btn').addEventListener('click', function() {
+            list.removeChild(row);
+            saveFridgeList(); // 수정한 부분: 로컬 스토리지에 저장
+        });
+
+        // 수정 버튼 이벤트 리스너
+        row.querySelector('.edit-btn').addEventListener('click', function() {
+            // 입력 필드로 데이터 이동
+            document.getElementById('ingredient-name').value = item.ingredient;
+            document.getElementById('ingredient-quantity').value = item.quantity;
+            document.getElementById('ingredient-unit').value = item.unit;
+            document.getElementById('expiration-date').value = item.expiration;
+    
+            // 수정 모드 활성화
+            var index = Array.from(list.children).indexOf(row);
+            document.getElementById('fridge-form').setAttribute('data-editing-index', index);
+        });
+    });
 }
