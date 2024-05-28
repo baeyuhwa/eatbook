@@ -10,7 +10,7 @@
             <a href="4_main.html">
                 <img id="logo" src="logo.png" alt="Logo">
             </a>
-            <input id="search-bar" type="text" placeholder="레시피 검색...">
+            <input id="search-bar" type="text" placeholder="레시피 검색..." onkeypress="if(event.key === 'Enter') searchRecipe(this.value)">
             <div id="user-name">사용자 이름
                 <div class="dropdown-icon">&#9660;</div>
             </div>
@@ -24,6 +24,10 @@
         </nav>
         <div class="container">
             <div id="recipe-results"></div>
+        </div>
+        <div id="progress-container">
+            <div id="progress-bar" style="width: 0%; height: 15px; background-color: #4CAF50;"></div>
+            <div id="progress-percentage" style="display: none;">0%</div>
         </div>
         <div  class="scroll-container">
             <img id="to-top" src="scroll.png" onclick="go_top()" style="width: 50px; z-index: 9; display:none;">

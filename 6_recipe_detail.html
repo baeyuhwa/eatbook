@@ -10,7 +10,7 @@
         <a href="4_main.html">
             <img id="logo" src="logo.png" alt="Logo">
         </a>
-        <input id="search-bar" type="text" placeholder="레시피 검색...">
+        <input id="search-bar" type="text" placeholder="레시피 검색..." onkeypress="if(event.key === 'Enter') searchRecipe(this.value)">
         <div id="user-name">사용자 이름
             <div class="dropdown-icon">&#9660;</div>
         </div>
@@ -27,57 +27,17 @@
             <!-- 레시피 상세 정보가 여기 표시됩니다 -->
         </div>
     </div>
-    <script>
-        window.onload = function() {
-            const recipeDetail = document.getElementById('recipe-detail');
-            const selectedRecipe = JSON.parse(localStorage.getItem('selectedRecipe'));
-
-            if (selectedRecipe) {
-                const recipeTitle = document.createElement('h2');
-                recipeTitle.textContent = selectedRecipe.name;
-                recipeDetail.appendChild(recipeTitle);
-
-                const recipeAuthor = document.createElement('h4');
-                recipeAuthor.textContent = "작성자: " + selectedRecipe.author;
-                recipeDetail.appendChild(recipeAuthor);
-
-                const recipeImage = document.createElement('img');
-                recipeImage.src = selectedRecipe.image;
-                recipeImage.alt = `이미지: ${selectedRecipe.name}`;
-                recipeImage.style.maxWidth = '100%';
-                recipeDetail.appendChild(recipeImage);
-
-                const ingredients = document.createElement('h3');
-                ingredients.textContent = `재료: ${selectedRecipe.ingredients}`;
-                recipeDetail.appendChild(ingredients);
-
-                selectedRecipe.recipe.forEach((step, index) => {
-                    const stepContainer = document.createElement('div');
-                    stepContainer.classList.add('step-container');
-
-                    const imgContainer = document.createElement('div');
-                    imgContainer.classList.add('img-container');
-                    const imgElement = document.createElement('img');
-                    const imgUrl = selectedRecipe.recipeImg[index].split(' ').pop();
-                    if (imgUrl != "undefined" && imgUrl != null) {
-                        imgElement.src = imgUrl;
-                        imgElement.alt = `${index + 1}단계 이미지`;
-                        imgElement.style.maxWidth = '100%';
-                        imgContainer.appendChild(imgElement);
-                        stepContainer.appendChild(imgContainer);
-                    }
-
-                    const textContainer = document.createElement('div');
-                    textContainer.classList.add('text-container');
-                    textContainer.innerHTML = `<p>${step}</p>`;
-
-                    stepContainer.appendChild(textContainer);
-                    recipeDetail.appendChild(stepContainer);
-                });
-            } else {
-                recipeDetail.innerHTML = '레시피 정보를 불러오는데 실패했습니다.';
-            }
-        };
-    </script>
+    <div class="container">
+        <div id="recipe-results"></div>
+    </div>
+    <div id="progress-container">
+        <div id="progress-bar" style="width: 0%; height: 15px; background-color: #4CAF50;"></div>
+        <div id="progress-percentage" style="display: none;">0%</div>
+    </div>
+    <div  class="scroll-container">
+        <img id="to-top" src="scroll.png" onclick="go_top()" style="width: 50px; z-index: 9; display:none;">
+        <!--<a href="https://kr.freepik.com/icon/down-arrow_152427#fromView=search&page=3&position=33&uuid=609ff4b8-2830-401f-9edb-980f8fd8866d">Freepik 제작 아이콘</a>-->
+    </div>
+    <script src="6_recipe_detail.js"></script>
 </body>
 </html>

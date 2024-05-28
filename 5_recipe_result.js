@@ -22,9 +22,11 @@ async function foodInfo(name) {
         
         // 첫 10개의 항목 선택
         const selectedFoods = Array.from(foodList);
+        const totalFoods = selectedFoods.length;
         const results = [];
 
-        for (const food of selectedFoods) {
+        for (let i = 0; i < totalFoods; i++) {
+            const food = selectedFoods[i];
             const foodId = food.getAttribute('href').split('/').pop();
             const newUrl = 'https://cors-anywhere-o5bm.onrender.com/' + `http://www.10000recipe.com/recipe/${foodId}`;
             const newResponse = await fetch(newUrl);
@@ -57,6 +59,12 @@ async function foodInfo(name) {
                     recipeImg: recipeImg,
                     recipe: recipe
                 });
+                
+                // 진행 상황 업데이트
+                const progress = Math.floor(((i + 1) / totalFoods) * 100);
+                document.getElementById('progress-bar').style.width = progress + '%';
+                document.getElementById('progress-percentage').style.display = 'flex';
+                document.getElementById('progress-percentage').textContent = '검색 결과를 표시하는 중입니다... ' + progress + '%';
             } else {
                 console.log("HTTP response error:", newResponse.status);
             }
@@ -104,6 +112,8 @@ async function searchRecipe(foodName) {
             });
             resultsContainer.appendChild(recipeColumn);
 
+            document.getElementById('progress-bar').style.display = 'none';
+            document.getElementById('progress-percentage').style.display = 'none';
             document.getElementById('to-top').style.display = 'flex';
         });
     } else {
@@ -111,39 +121,6 @@ async function searchRecipe(foodName) {
     }
 }
 
-function go_top(orix, oriy, desx, desy) {
-	var Timer;
-
-	if (document.body.scrollTop == 0) {
-		var winHeight = document.documentElement.scrollTop;
-	} else {
-		var winHeight = document.body.scrollTop;
-	}
-
-	if (Timer) clearTimeopt(Timer);
-	startx = 0;
-	starty = winHeight;
-
-	if (!orix || orix < 0) orix = 0;
-	if (!oriy || oriy < 0) oriy = 0;
-
-	var speed = 7;
-
-	if (!desx) desx = 0 + startx;
-	if (!desy) desy = 0 + starty;
-	desx += (orix - startx) /speed;
-	if (desx < 0) desx = 0;
-	desy += (oriy - starty) / speed;
-	if (desy < 0) desy = 0;
-
-	var posX = Math.ceil(desx); var posY = Math.ceil(desy);
-	window.scrollTo(posX, posY);
-	if ((Math.floor(Math.abs(startx - orix)) < 1) && (Math.floor(Math.abs(starty - oriy)) < 1)) {
-		clearTimeout(Timer);
-		window.scroll(orix, oriy);
-	} else if (posX != orix || posY != oriy) {
-		Timer = setTimeout("go_top(" + orix + ", " + oriy + ", " + desx + ", " + desy + ")", 15);
-	} else {
-		clearTimeout(Timer);
-	}
+function go_top() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
