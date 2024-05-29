@@ -15,7 +15,7 @@ function displayPosts(posts) {
         row.innerHTML = `
             <td>${index + 1}</td>
             <td><a href="8-1_see.html?index=${index}" class="recipe-link">${post.name}</a></td>
-            <td>${post.summary}</td>
+            <td>${post.sumup}</td> <!-- 수정된 부분: summary 대신 sumup을 사용 -->
             <td><button class='delete-button' data-id='${index}'>&#10006;</button></td>
         `;
         tableBody.appendChild(row);
