@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>레시피 보기</title>
     <link rel="stylesheet" href="8-1_see.css">
+    <script src="qrcode.min.js"></script>
 </head>
 <body>
 <header>
@@ -30,12 +31,18 @@
             <img id="recipe-photo" src="" alt="Recipe Photo">
         </div>
     </div>
-    <p><strong>재료:</strong> <span id="recipe-ingredient"></span></p>
-    <p><strong>카테고리:</strong> <span id="recipe-category"></span></p>
-    <p><strong>조리 과정:</strong> <span  id="recipe-process"></span></p>
-    <p><strong>레시피 요약:</strong> <span id="recipe-sumup"></span></p>
+    <p><strong>재료</strong></p>
+    <div id="recipe-ingredient"></div>
+    <p><strong>카테고리</strong></p>
+    <div id="recipe-category"></div>
+    <p><strong>조리 과정</strong></p> 
+    <div id="recipe-process"></div>
+    <p><strong>레시피 요약</strong></p>
+    <div id="recipe-sumup"></div>
+    <div id="qrcode"></div>
 </div>
 <script src="5_recipe.js"></script>
 <script src="8-1_see.js"></script>
+<script src="8-1_qr.js"></script>
 </body>
 </html>
