@@ -11,7 +11,7 @@
             <img id="logo" src="logo.png" alt="Logo">
         </a>
         <input id="search-bar" type="text" placeholder="레시피 검색...">
-        <div id="user-name"></div>
+        <div id="user-name">사용자 이름
         </div>
     </header>
     <nav>
@@ -24,7 +24,7 @@
     <div class="container">
         <div class="left">
             <label for="photo">레시피 사진: </label>
-            <input type="file" id="photo" name="photo" accept="image/*" >
+            <input type="file" id="photo" name="photo" accept="image/*" onchange="previewPhoto()">
             <div id="photo-preview"></div>
         </div>
         <form id="newrecipe" onsubmit="saveRecipe(event)">
@@ -51,15 +51,6 @@
             </div>
         </form>
     </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const kakaoNickname = localStorage.getItem('kakaoNickname');
-            if (kakaoNickname) {
-                const userNameElement = document.getElementById('user-name');
-                userNameElement.textContent = kakaoNickname;
-            }
-        });
-    </script>
     <script src="5_recipe.js"></script>
     <script src="7_newrecipe.js"></script>
 </body>
