@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>레시피 관리 웹사이트</title>
-    <link rel="stylesheet" href="4_main.css">
+    <link id="main-css" rel="stylesheet" href="4_main.css">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
 </head>
 <body>
 <header>
@@ -16,7 +19,7 @@
 <nav>
     <a href="6_recipe.html">냉장고</a>
     <a href="8_myrecipes.html">내 레시피</a>
-    <a href="7_newrecipe.html">레시피 만들기</a>
+    <a href="7_newrecipe.html" onclick="goToNewRecipePage()">레시피 만들기</a>
     <a href="9_communication.html">소통</a>
     <a href="10_qna.html">문의 사항</a>
 </nav>
@@ -35,6 +38,7 @@
         </div>
         <div class="community">
             <h3>소통</h3>
+            <ul id="communication-list"></ul> <!-- 소통 리스트를 추가합니다 -->
         </div>
     </div>
 </div>
@@ -44,12 +48,34 @@
         if (kakaoNickname) {
             const userNameElement = document.getElementById('user-name');
             userNameElement.textContent = kakaoNickname;
-        } else {
-            // 로그인 정보가 없으면 로그인 페이지로 리디렉션
-            window.location.href = "1_login.html";
         }
+
+        // "레시피 만들기" 페이지로 이동하는 기능
+        function goToNewRecipePage() {
+            location.href = "7_newrecipe.html";
+        }
+
+        // 통신 관련 데이터를 동적으로 추가하는 함수
+        function addCommunicationListItem(data) {
+            var list = document.getElementById("communication-list");
+            var listItem = document.createElement("li");
+            listItem.textContent = data;
+            list.appendChild(listItem);
+        }
+
+        // 통신 관련 데이터를 받아오고 리스트에 추가하는 예시
+        setTimeout(function() {
+            var mockData = ["소통 내용 1", "소통 내용 2", "소통 내용 3"];
+            mockData.forEach(function(item) {
+                addCommunicationListItem(item);
+            });
+        }, 1000);
     });
 </script>
 <script src="5_recipe.js"></script>
+<script>
+    // 캐시 방지용 CSS 재로드
+    document.getElementById('main-css').href = '4_main.css?v=' + new Date().getTime();
+</script>
 </body>
 </html>
