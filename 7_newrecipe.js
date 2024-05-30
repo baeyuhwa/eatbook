@@ -45,6 +45,7 @@ function saveRecipe(event) {
         request.onsuccess = function() {
             console.log("Recipe has been added to your database.");
             document.getElementById('newrecipe').reset();
+            document.getElementById('photo-preview').innerHTML='';
             alert("레시피가 등록되었습니다.");
         };
 
@@ -72,6 +73,7 @@ function saveRecipe(event) {
         request.onsuccess = function() {
             console.log("Recipe has been added to your database.");
             document.getElementById('newrecipe').reset();
+            document.getElementById('photo-preview').innerHTML='';
             alert("레시피가 등록되었습니다.");
         };
 
