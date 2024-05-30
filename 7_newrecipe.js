@@ -1,28 +1,86 @@
-function openUpdatePage() {
-    var windowFeatures = "width=600,height=400,scrollbars=yes,resizable=yes";
-    window.open("3_update.html", "UpdateUserInfo", windowFeatures);
-}
+let db;
+const request = indexedDB.open("recipesDatabase", 1);
+
+request.onupgradeneeded = function(event) {
+    db = event.target.result;
+    const objectStore = db.createObjectStore("recipes", { keyPath: "id", autoIncrement: true });
+    objectStore.createIndex("name", "name", { unique: false });
+};
+
+request.onsuccess = function(event) {
+    db = event.target.result;
+};
+
+request.onerror = function(event) {
+    console.error("Database error: " + event.target.errorCode);
+};
 
 function saveRecipe(event) {
     event.preventDefault();
 
-    const recipe = {
-        name: document.getElementById('recipe').value,
-        ingredient: document.getElementById('ingredient').value,
-        category: document.getElementById('category').value,
-        process: document.getElementById('process').value,
-        sumup: document.getElementById('sumup').value,
-        // 사진을 로컬 스토리지에 저장할 수 없으므로 이 예에서는 생략
+    const name = document.getElementById('recipe').value;
+    const ingredient = document.getElementById('ingredient').value;
+    const category = document.getElementById('category').value;
+    const process = document.getElementById('process').value;
+    const sumup = document.getElementById('sumup').value;
+    const photoInput = document.getElementById('photo');
+    const photoFile = photoInput.files[0];
+
+    const reader = new FileReader();
+
+    reader.onload = function(event) {
+        const transaction = db.transaction(["recipes"], "readwrite");
+        const objectStore = transaction.objectStore("recipes");
+
+        const recipe = {
+            name: name,
+            ingredient: ingredient,
+            category: category,
+            process: process,
+            sumup: sumup,
+            photo: event.target.result // Blob 데이터
+        };
+
+        const request = objectStore.add(recipe);
+        request.onsuccess = function() {
+            console.log("Recipe has been added to your database.");
+            document.getElementById('newrecipe').reset();
+            alert("레시피가 등록되었습니다.");
+        };
+
+        request.onerror = function() {
+            console.error("Unable to add data", request.error);
+        };
     };
 
-    let recipes = JSON.parse(localStorage.getItem('recipes')) || [];
-    recipes.push(recipe);
-    localStorage.setItem('recipes', JSON.stringify(recipes));
+    if (photoFile) {
+        reader.readAsDataURL(photoFile);
+    } else {
+        const transaction = db.transaction(["recipes"], "readwrite");
+        const objectStore = transaction.objectStore("recipes");
 
-    // 등록 후 폼 초기화
-    document.getElementById('newrecipe').reset();
-    alert("레시피가 등록되었습니다.");
+        const recipe = {
+            name: name,
+            ingredient: ingredient,
+            category: category,
+            process: process,
+            sumup: sumup,
+            photo: null
+        };
+
+        const request = objectStore.add(recipe);
+        request.onsuccess = function() {
+            console.log("Recipe has been added to your database.");
+            document.getElementById('newrecipe').reset();
+            alert("레시피가 등록되었습니다.");
+        };
+
+        request.onerror = function() {
+            console.error("Unable to add data", request.error);
+        };
+    }
 }
+
 function previewPhoto() {
     const photoInput = document.getElementById('photo');
     const photoPreview = document.getElementById('photo-preview');
@@ -42,24 +100,4 @@ function previewPhoto() {
     } else {
         photoPreview.innerHTML = '이미지를 선택해주세요.';
     }
-}
-function saveRecipe(event) {
-    event.preventDefault();
-
-    const recipe = {
-        name: document.getElementById('recipe').value,
-        ingredient: document.getElementById('ingredient').value,
-        category: document.getElementById('category').value,
-        process: document.getElementById('process').value,
-        sumup: document.getElementById('sumup').value,
-        photo: document.getElementById('photo-preview').innerHTML // 이미지를 HTML 형식의 문자열로 저장 (이 예제에서는 간단하게 처리)
-    };
-
-    let recipes = JSON.parse(localStorage.getItem('recipes')) || [];
-    recipes.push(recipe);
-    localStorage.setItem('recipes', JSON.stringify(recipes));
-
-    // 등록 후 폼 초기화
-    document.getElementById('newrecipe').reset();
-    alert("레시피가 등록되었습니다.");
 }

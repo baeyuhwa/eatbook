@@ -70,3 +70,10 @@ p {
 strong {
     font-weight: bold;
 }
+
+/* Add the styles for the recipe photo */
+#recipe-photo {
+    max-width: 300px;
+    height: auto;
+    margin-bottom: 20px;
+}

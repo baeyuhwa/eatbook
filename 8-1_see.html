@@ -11,7 +11,7 @@
         <img id="logo" src="logo.png" alt="Logo">
     </a>
     <input id="search-bar" type="text" placeholder="레시피 검색...">
-    <div id="user-name"></div>
+    <div id="user-name">사용자 이름
         <div class="dropdown-icon">&#9660;</div>
     </div>
 </header>
@@ -32,19 +32,10 @@
     </div>
     <p><strong>재료:</strong> <span id="recipe-ingredient"></span></p>
     <p><strong>카테고리:</strong> <span id="recipe-category"></span></p>
-    <p><strong>조리 과정:</strong></p>
-    <p id="recipe-process"></p>
+    <p><strong>조리 과정:</strong> <span  id="recipe-process"></span></p>
     <p><strong>레시피 요약:</strong> <span id="recipe-sumup"></span></p>
 </div>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const kakaoNickname = localStorage.getItem('kakaoNickname');
-        if (kakaoNickname) {
-            const userNameElement = document.getElementById('user-name');
-            userNameElement.textContent = kakaoNickname;
-        }
-    });
-</script>
+<script src="5_recipe.js"></script>
 <script src="8-1_see.js"></script>
 </body>
 </html>
