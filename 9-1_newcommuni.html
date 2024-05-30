@@ -10,7 +10,7 @@
         <a href="4_main.html">
             <img id="logo" src="logo.png" alt="Logo">
         </a>
-        <input id="search-bar" type="text" placeholder="레시피 검색...">
+        <input id="search-bar" type="text" placeholder="레시피 검색..." onkeypress="if(event.key === 'Enter') performSearch(this.value)">
         <div id="user-name"></div>
             <div class="dropdown-icon">&#9660;</div>
         </div>
