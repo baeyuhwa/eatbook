@@ -24,6 +24,19 @@
     <div class="left-panel">
         <div class="form-section">
             <h3>냉장고 리스트</h3>
+            <table class="fridge-table">
+                <thead>
+                    <tr>
+                        <th>재료</th>
+                        <th>양</th>
+                        <th>단위</th>
+                        <th>유통기한</th>
+                    </tr>
+                </thead>
+                <tbody id="main-fridge-list-items">
+                    <!-- List items will be added here with JavaScript -->
+                </tbody>
+            </table>
         </div>
     </div>
     <div class="right-panel">
@@ -35,6 +48,11 @@
         </div>
         <div class="community">
             <h3>소통</h3>
+            <ul>
+                <li>소통 내용 1</li>
+                <li>소통 내용 2</li>
+                <li>소통 내용 3</li>
+            </ul>
         </div>
     </div>
 </div>
@@ -44,7 +62,27 @@
         if (kakaoNickname) {
             const userNameElement = document.getElementById('user-name');
             userNameElement.textContent = kakaoNickname;
-        } 
+        }
+
+        // 로컬 스토리지에서 냉장고 리스트를 불러와서 표시
+        const fridgeList = JSON.parse(localStorage.getItem('fridgeList')) || [];
+        console.log("Fridge List:", fridgeList); // 콘솔에 로그 추가
+        const fridgeListElement = document.getElementById('main-fridge-list-items');
+
+        if (fridgeList.length === 0) {
+            console.log("No items found in the fridge list.");
+        } else {
+            fridgeList.forEach(item => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${item.ingredient}</td>
+                    <td>${item.quantity}</td>
+                    <td>${item.unit}</td>
+                    <td>${item.expiration}</td>
+                `;
+                fridgeListElement.appendChild(row);
+            });
+        }
     });
 </script>
 <script src="5_recipe.js"></script>
