@@ -5,69 +5,56 @@
     <title>EBS 요리 레시피 북</title>
     <style>
         body {
+            margin: 0;
+            padding: 0;
             font-family: Arial, sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
-            background-color: #ffff;
+            background-color: #fff;
             position: relative;
         }
         .header {
-            width: 97%;
+            width: 100%;
             display: flex;
             justify-content: center;
             padding: 20px;
             background-color: #eee;
         }
+        .header-logo img {
+            max-height: 50px;
+            margin-right: 10px;
+        }
         .header-title {
             font-size: 24px;
         }
+        .main-content {
+            display: flex;
+            width: 60%;
+            justify-content: space-around;
+            padding: 20px;
+            align-items: start;
+            height: 60vh;
+        }
+        .popular-recipes {
+            flex: 1;
+            padding: 20px;
+            margin-right: 10px;
+        }
         .right-logo {
             position: absolute;
-            right: 12%;
+            right: 200px;
             top: 50%;
             transform: translateY(-50%);
             cursor: pointer;
         }
-
-        .container {
-            width: 90%;
-        }
-        .left {
-            float: left;
-            width: 50%;
-            box-sizing: border-box; /* padding 포함한 전체 크기 설정 */
-            padding: 20px;
-        }
-        .right {
-            float: right;
-            width: 50%;
-            box-sizing: border-box; /* padding 포함한 전체 크기 설정 */
-            padding: 20px;
-        }
-        #recipe-results {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* 반응형 그리드 */
-            gap: 20px;
-        }
-        .recipe-column {
-            /*cursor: pointer;*/
-            text-align: center;
-            border: 1px solid #ccc;
-            padding: 10px;
-            box-sizing: border-box;
-        }
-        .recipe-column img {
-            width: 280px; /* 이미지 크기 조정 */
-            height: auto;
-            margin-bottom: 10px;
-        }
-        .recipe-column h2 {
-            font-size: 17px; /* 제목 크기 조정 */
-            margin: 10px 0;
-        }
-        h1 {
-            text-align: center;
+        .login-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #ffeb00;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
         }
     </style>
     <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
@@ -103,21 +90,17 @@
     </script>
 </head>
 <body>
-    <img src="LOGO.png" alt="로고 이미지" class="center" style="width: 150px">
+    <img src="LOGO.png" alt="로고 이미지" class="center" style="width: 100px">
+    <img src="KAKAO LOGO.png" class="right-logo" style="width: 200px" onclick="loginWithKakao()">
     <div class="header">
         <div class="header-logo">
             <span class="header-title">EBS 요리 레시피 북</span>
         </div>
     </div>
-    <div class="container">
-        <div class="left">
-            <h1>인기 레시피</h1>
-            <div id="recipe-results"></div>
-        </div>
-        <div class="right">
-            <img src="KAKAO LOGO.png" class="right-logo" style="width: 250px" onclick="loginWithKakao()">
+    <div class="main-content">
+        <div class="popular-recipes">
+            <h2>인기 레시피 음식</h2>
         </div>
     </div>
-    <script src="1_popularRecipe.js"></script>
 </body>
 </html>
