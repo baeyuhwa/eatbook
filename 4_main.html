@@ -7,11 +7,17 @@
 </head>
 <body>
 <header>
-    <a href="4_main.html">
-        <img id="logo" src="logo.png" alt="Logo">
-    </a>
-    <input id="search-bar" type="text" placeholder="레시피 검색...">
-    <div id="user-name"></div>
+    <div id="search-container">
+        <div id="search-bar-container">
+            <a href="4_main.html">
+                <img id="logo" src="logo.png" alt="Logo">
+            </a>
+            <input id="search-bar" type="text" placeholder="레시피 검색...">
+        </div>
+    </div>
+    <div id="user-name-container">
+        <div id="user-name"></div>
+    </div>
 </header>
 <nav>
     <a href="6_recipe.html">냉장고</a>
@@ -42,9 +48,11 @@
     <div class="right-panel">
         <div class="popular-recipes">
             <h3>인기 레시피</h3>
+            <!-- 인기 레시피 내용 추가 -->
         </div>
         <div class="my-recipes">
             <h3>내 레시피</h3>
+            <!-- 내 레시피 내용 추가 -->
         </div>
         <div class="community">
             <h3>소통</h3>
@@ -62,6 +70,7 @@
         if (kakaoNickname) {
             const userNameElement = document.getElementById('user-name');
             userNameElement.textContent = kakaoNickname;
+            userNameElement.style.color = 'black'; // 이름을 검은색으로 변경
         }
 
         // 로컬 스토리지에서 냉장고 리스트를 불러와서 표시
