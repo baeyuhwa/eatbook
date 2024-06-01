@@ -1,97 +1,89 @@
-/* 6_recipe.css */
 body {
     font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    margin: 20px;
-    min-height: 100vh;
+    background-color: #f4f4f4;
+    color: #333;
 }
 
 header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 50px;
-    background-color: #fff;
+    background-color: #ff6f61;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    position: relative;
 }
 
 #search-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
 }
 
 #search-bar-container {
     position: relative;
     display: flex;
     align-items: center;
-    width: 100%;
 }
 
 #logo {
-    width: 30px; /* 로고 크기 조정 */
+    width: 60px; /* 로고 크기 조정 */
     position: absolute;
-    left: 15px; /* 로고 위치 조정 */
+    left: 5px; /* 로고를 검색 바 안쪽으로 이동 */
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(-50%); /* 로고를 검색 바의 세로 중앙에 맞춤 */
     cursor: pointer;
+    background-color: transparent; /* 로고의 배경색을 투명으로 설정 */
 }
 
 #search-bar {
-    width: 100%;
-    padding: 15px 20px 15px 50px; /* 로고 공간 확보를 위해 padding-left 조정 */
+    width: 700px; /* 검색 바 길이를 늘림 */
+    padding: 15px 60px 15px 60px; /* 로고 공간 확보를 위해 padding-left 조정 */
     border-radius: 30px;
     border: 2px solid #8bc34a;
     background-color: #fff;
     color: #333;
     font-size: 18px;
     outline: none;
+    background-color: white; /* 검색창 배경색을 흰색으로 변경 */
 }
-
 #search-bar::placeholder {
     color: #ccc;
     font-size: 16px; /* placeholder 글자 크기 조정 */
 }
 
-#user-name-container {
-    display: flex;
-    align-items: center;
-}
-
-#user-name {
-    font-size: 20px;
-    color: black; /* 이름 폰트 색상 변경 */
-}
-
-.dropdown-icon {
-    margin-left: 10px;
-    width: 20px;
-    height: 20px;
-    background-color: #f3f3f3;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+#search-icon {
+    width: 24px; /* 돋보기 이미지 크기 */
+    height: 24px; /* 돋보기 이미지 크기 */
+    position: absolute;
+    right: 15px; /* 검색 바 오른쪽 끝에 위치 */
+    top: 50%;
+    transform: translateY(-50%); /* 돋보기 이미지를 검색 바의 세로 중앙에 맞춤 */
     cursor: pointer;
-    border: 1px solid #ccc;
 }
+
+#user-name-container {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    color: black; /* 이름 폰트 색상 변경 */
+    font-size: 18px; /* 이름 폰트 크기 증가 */
+    vertical-align: middle;
+}   
 
 nav {
-    display: flex;
-    justify-content: center;
-    padding: 10px;
     background-color: #ff6f61;
+    overflow: hidden;
+    padding: 10px 0;
 }
 
 nav a {
-    margin: 0 10px;
-    text-decoration: none;
     color: white;
-    font-size: 16px;
+    padding: 10px 20px;
+    text-decoration: none;
+    float: left;
 }
 
 nav a:hover {
-    text-decoration: underline;
+    background-color: #e65c50;
 }
 
 .content {
@@ -143,7 +135,7 @@ nav a:hover {
 }
 
 .fridge-table th {
-    background-color: #6C7B8B;
+    background-color: #ff6f61; /* 헤더 배경색 수정 */
     color: white;
 }
 
@@ -161,7 +153,7 @@ h2 {
 .img-container img {
     width: 300px;
     height: auto;
-    margin-right: 10px;
+    margin-right: 10px; 
 }
 
 .text-container {
