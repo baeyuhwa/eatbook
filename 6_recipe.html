@@ -2,16 +2,23 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>레시피 관리 웹사이트</title>
-    <link rel="stylesheet" href="4_main.css">
+    <title>내 냉장고</title>
+    <link rel="stylesheet" href="6_recipe.css">
 </head>
 <body>
 <header>
-    <a href="4_main.html">
-        <img id="logo" src="logo.png" alt="Logo">
-    </a>
-    <input id="search-bar" type="text" placeholder="레시피 검색...">
-    <div id="user-name"></div>
+    <div id="search-container">
+        <div id="search-bar-container">
+            <a href="4_main.html">
+                <img id="logo" src="logo.png" alt="Logo">
+            </a>
+            <input id="search-bar" type="text" placeholder="레시피 검색...">
+        </div>
+    </div>
+    <div id="user-name-container">
+        <div id="user-name"></div>
+        <div class="dropdown-icon">&#9660;</div>
+    </div>
 </header>
 <nav>
     <a href="6_recipe.html">냉장고</a>
@@ -21,40 +28,54 @@
     <a href="10_qna.html">문의 사항</a>
 </nav>
 <div class="content">
-    <div class="left-panel">
-        <div class="form-section">
-            <h3>냉장고 리스트</h3>
-            <table class="fridge-table">
-                <thead>
-                    <tr>
-                        <th>재료</th>
-                        <th>양</th>
-                        <th>단위</th>
-                        <th>유통기한</th>
-                    </tr>
-                </thead>
-                <tbody id="main-fridge-list-items">
-                    <!-- List items will be added here with JavaScript -->
-                </tbody>
-            </table>
-        </div>
+    <div class="form-section">
+        <h3>냉장고 리스트 추가</h3>
+        <form id="fridge-form">
+            <input type="text" id="ingredient-name" placeholder="재료" required>
+            <input type="text" id="ingredient-quantity" placeholder="양" required>
+            <select id="ingredient-unit">
+                <option value="g">그램(g)</option>
+                <option value="kg">킬로그램(kg)</option>
+                <option value="ml">밀리리터(ml)</option>
+                <option value="l">리터(l)</option>
+                <!-- More units as required -->
+            </select>
+            <input type="date" id="expiration-date" required>
+            <button type="submit">추가</button>
+        </form>
     </div>
-    <div class="right-panel">
-        <div class="popular-recipes">
-            <h3>인기 레시피</h3>
-        </div>
-        <div class="my-recipes">
-            <h3>내 레시피</h3>
-        </div>
-        <div class="community">
-            <h3>소통</h3>
-            <ul>
-                <li>소통 내용 1</li>
-                <li>소통 내용 2</li>
-                <li>소통 내용 3</li>
-            </ul>
-        </div>
+    <div class="fridge-list">
+        <h3>내 냉장고 리스트</h3>
+        <table class="fridge-table">
+            <thead>
+                <tr>
+                    <th>재료</th>
+                    <th>양</th>
+                    <th>단위</th>
+                    <th>유통기한</th>
+                    <th>수정</th>
+                    <th>삭제</th>
+                </tr>
+            </thead>
+            <tbody id="fridge-list-items">
+                <!-- List items will be added here with JavaScript -->
+            </tbody>
+        </table>
     </div>
+
+    <div class="content">
+        <button id="searchRecipes" onclick="searchIngredient()">검색</button>
+    </div>
+</div>
+<div class="container">
+    <div id="recipe-results"></div>
+</div>
+<div id="progress-container">
+    <div id="progress-bar" style="width: 0%; height: 15px; background-color: #4CAF50;"></div>
+    <div id="progress-percentage" style="display: none;">0%</div>
+</div>
+<div class="scroll-container">
+    <img id="to-top" src="scroll.png" onclick="go_top()" style="width: 50px; z-index: 9; display: none;">
 </div>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -63,28 +84,87 @@
             const userNameElement = document.getElementById('user-name');
             userNameElement.textContent = kakaoNickname;
         }
-
-        // 로컬 스토리지에서 냉장고 리스트를 불러와서 표시
-        const fridgeList = JSON.parse(localStorage.getItem('fridgeList')) || [];
-        console.log("Fridge List:", fridgeList); // 콘솔에 로그 추가
-        const fridgeListElement = document.getElementById('main-fridge-list-items');
-
-        if (fridgeList.length === 0) {
-            console.log("No items found in the fridge list.");
-        } else {
-            fridgeList.forEach(item => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${item.ingredient}</td>
-                    <td>${item.quantity}</td>
-                    <td>${item.unit}</td>
-                    <td>${item.expiration}</td>
-                `;
-                fridgeListElement.appendChild(row);
-            });
-        }
     });
+
+    document.getElementById('fridge-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        var isEditMode = document.getElementById('fridge-form').hasAttribute('data-editing-index');
+        var ingredient = document.getElementById('ingredient-name').value;
+        var quantity = document.getElementById('ingredient-quantity').value;
+        var unit = document.getElementById('ingredient-unit').value;
+        var expiration = document.getElementById('expiration-date').value;
+
+        var list = document.getElementById('fridge-list-items');
+        if (isEditMode) {
+            var editingIndex = document.getElementById('fridge-form').getAttribute('data-editing-index');
+            var row = list.children[editingIndex];
+
+            row.innerHTML = `
+                <td>${ingredient}</td>
+                <td>${quantity}</td>
+                <td>${unit}</td>
+                <td>${expiration}</td>
+                <td><button class="edit-btn">수정</button></td>
+                <td><button class="delete-btn">삭제</button></td>
+            `;
+
+            document.getElementById('fridge-form').removeAttribute('data-editing-index');
+        } else {
+            var row = document.createElement('tr');
+
+            row.innerHTML = `
+                <td>${ingredient}</td>
+                <td>${quantity}</td>
+                <td>${unit}</td>
+                <td>${expiration}</td>
+                <td><button class="edit-btn">수정</button></td>
+                <td><button class="delete-btn">삭제</button></td>
+            `;
+
+            list.appendChild(row);
+        }
+
+        document.getElementById('ingredient-name').value = '';
+        document.getElementById('ingredient-quantity').value = '';
+        document.getElementById('ingredient-unit').selectedIndex = 0;
+        document.getElementById('expiration-date').value = '';
+
+        saveFridgeList();
+
+        row.querySelector('.delete-btn').addEventListener('click', function() {
+            list.removeChild(row);
+            saveFridgeList();
+        });
+
+        row.querySelector('.edit-btn').addEventListener('click', function() {
+            document.getElementById('ingredient-name').value = ingredient;
+            document.getElementById('ingredient-quantity').value = quantity;
+            document.getElementById('ingredient-unit').value = unit;
+            document.getElementById('expiration-date').value = expiration;
+
+            var index = Array.from(list.children).indexOf(row);
+            document.getElementById('fridge-form').setAttribute('data-editing-index', index);
+        });
+    });
+
+    function saveFridgeList() {
+        var list = document.getElementById('fridge-list-items');
+        var items = [];
+
+        list.querySelectorAll('tr').forEach(row => {
+            var item = {
+                ingredient: row.cells[0].textContent,
+                quantity: row.cells[1].textContent,
+                unit: row.cells[2].textContent,
+                expiration: row.cells[3].textContent
+            };
+            items.push(item);
+        });
+
+        localStorage.setItem('fridgeList', JSON.stringify(items));
+    }
 </script>
-<script src="5_recipe.js"></script>
+<script src="6_recipe.js"></script>
 </body>
 </html>
