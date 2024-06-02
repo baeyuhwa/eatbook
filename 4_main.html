@@ -7,17 +7,18 @@
 </head>
 <body>
 <header>
-    <div id="search-container"> 
+    <div id="search-container">
         <div id="search-bar-container">
             <a href="4_main.html">
                 <img id="logo" src="logo.png" alt="Logo">
             </a>
             <input id="search-bar" type="text" placeholder="레시피 검색...">
-            <img id="search-icon" src="search.png" alt="Search Icon"> <!-- 돋보기 이미지 추가 -->
+            <img id="search-icon" src="search.png" alt="Search Icon">
         </div>
     </div>
     <div id="user-name-container">
         <div id="user-name"></div>
+        <div class="dropdown-icon">&#9660;</div>
     </div>
 </header>
 <nav>
@@ -93,8 +94,24 @@
                 fridgeListElement.appendChild(row);
             });
         }
+
+        // 검색 기능 추가
+        document.getElementById('search-bar').addEventListener('keyup', function(event) {
+            if (event.key === "Enter") {
+                performSearch();
+            }
+        });
+
+        document.getElementById('search-icon').addEventListener('click', function() {
+            performSearch();
+        });
     });
+
+    function performSearch() {
+        const searchValue = document.getElementById('search-bar').value;
+        localStorage.setItem('searchQuery', searchValue);
+        window.location.href = '5_recipe_result.html';
+    }
 </script>
-<script src="5_recipe.js"></script>
 </body>
 </html>

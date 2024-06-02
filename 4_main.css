@@ -67,6 +67,18 @@ header {
     color: black; /* 이름 폰트 색상 변경 */
     font-size: 18px; /* 이름 폰트 크기 증가 */
     vertical-align: middle;
+}   
+
+.dropdown-icon {
+    margin-left: 10px;
+    width: 20px;
+    height: 20px;
+    background-color: #f3f3f3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: 1px solid #ccc;
 }
 
 nav {
@@ -81,7 +93,6 @@ nav a {
     text-decoration: none;
     float: left;
 }
-
 nav a:hover {
     background-color: #e65c50;
 }
