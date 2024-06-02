@@ -6,8 +6,8 @@ body {
 
 header {
     background-color: #ff6f61;
-    color: white;
-    padding: 5px 0;
+    color: white;   
+    padding: 2px 0;
     text-align: center;
     position: relative;
 }
@@ -34,13 +34,13 @@ header {
 }
 
 #search-bar {
-    width: 900px; /* 검색 바 길이를 늘림 */
+    width: 820px; /* 검색 바 길이를 늘림 */
     padding: 15px 60px 15px 60px; /* 로고 공간 확보를 위해 padding-left 조정 */
     border-radius: 30px;
     border: 2px solid #8bc34a;
     background-color: #fff;
     color: #333;
-    font-size: 24px;
+    font-size: 18px;
     outline: none;
     background-color: white; /* 검색창 배경색을 흰색으로 변경 */
 }
@@ -79,7 +79,6 @@ header {
     cursor: pointer;
     border: 1px solid #ccc;
 }
-
 nav {
     background-color: #ff6f61;
     overflow: hidden;
@@ -91,9 +90,7 @@ nav a {
     padding: 10px 20px;
     text-decoration: none;
     float: left;
-    font-size: 18px; /* 글자 크기 설정 */
 }
-
 nav a:hover {
     background-color: #e65c50;
 }
@@ -133,6 +130,10 @@ nav a:hover {
 .right {
     flex: 2;
 }
+h3 {
+    color: #ff6f61;
+    margin-bottom: 10px;
+}   
 
 .preview {
     max-width: 200px;
