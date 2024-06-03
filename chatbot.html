@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chatbot Simulator</title>
+</head>
+<body>
+<div class="chat-container">
+    <div id="chat-box"></div>
+    <input type="text" id="user-input" placeholder="메시지를 입력하세요...">
+    <button onclick="sendMessage()">전송</button>
+</div>
+
+<script src="chatbot.js"></script>
+<script>
+    // 사용자가 입력한 메시지를 서버로 전송하는 함수
+    function sendMessage() {
+        const userInput = document.getElementById("user-input").value;
+        appendMessage(userInput, "user");
+
+        // 서버에 메시지 전송하는 코드 추가
+        // 이 예시에서는 서버 측 코드가 없으므로 여기서는 시뮬레이션만 진행합니다.
+        simulateServerResponse(userInput);
+    }
+
+    // 서버로부터 받은 메시지를 화면에 출력하는 함수
+    function receiveMessage(message) {
+        appendMessage(message, "bot");
+    }
+
+    // 메시지를 채팅창에 추가하는 함수
+    function appendMessage(message, sender) {
+        const chatBox = document.getElementById("chat-box");
+        const messageElement = document.createElement("div");
+        messageElement.classList.add(sender === "user" ? "user-message" : "bot-message");
+        messageElement.textContent = message;
+        chatBox.appendChild(messageElement);
+    }
+
+    // 서버 응답을 시뮬레이션하는 함수
+    function simulateServerResponse(userInput) {
+        // 여기에 서버 응답 로직을 시뮬레이션하는 코드를 추가합니다.
+        // 이 예시에서는 사용자가 보낸 메시지를 그대로 다시 보내는 것으로 가정합니다.
+        setTimeout(() => {
+            receiveMessage(userInput);
+        }, 1000); // 1초 후에 응답을 받은 것처럼 시뮬레이션
+    }
+</script>
+</body>
+</html>
