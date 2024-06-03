@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('send-btn').addEventListener('click', sendMessage);
     document.getElementById('login-btn').addEventListener('click', loginWithKakao);
 
-    Kakao.init('0b186f985c794d65bc579d504a9a6dc4'); // 여기에 카카오 앱 키를 입력하세요
+    Kakao.init('e43c1a3ded339777a26579c4e86f07dc'); // 여기에 카카오 앱 키를 입력하세요
 });
 
 function loginWithKakao() {
@@ -10,6 +10,7 @@ function loginWithKakao() {
         success: function(authObj) {
             console.log(authObj);
             addMessage('Login successful!', 'bot');
+            addMessage('궁금한 점에 대해서 자세히 적어주세요.\n 예시: 짜장면과 짬뽕 중에서 무엇을 먹을지 골라줘', 'bot');
         },
         fail: function(err) {
             console.log(err);
@@ -25,8 +26,8 @@ function sendMessage() {
     addMessage(userInput, 'user');
     document.getElementById('user-input').value = '';
 
-    // Call Kakao API
-    KakaoTalkChat(userInput);
+    // Call KoGPT API
+    callKoGPT(userInput);
 }
 
 function addMessage(text, sender) {
@@ -35,6 +36,38 @@ function addMessage(text, sender) {
     messageDiv.innerText = text;
     document.getElementById('messages').appendChild(messageDiv);
     messageDiv.scrollIntoView({ behavior: 'smooth' });
+}
+
+async function callKoGPT(prompt) {
+    const REST_API_KEY = '1623e8b7d8927ae0b2de2c12a304c516';
+
+    try {
+        const response = await fetch('https://cors-anywhere-o5bm.onrender.com/' + 'http://api.kakaobrain.com/v1/inference/kogpt/generation', {
+            method: 'POST',
+            headers: {
+                'Authorization': 'KakaoAK ' + REST_API_KEY,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                prompt: prompt,
+                max_tokens: 32,
+                temperature: 1.0,
+                top_p: 0.,
+                n: 5
+            })
+        });
+
+        const data = await response.json();
+        if (data.generations && data.generations.length > 0) {
+            const botResponse = data.generations[0].text.split('. ')[0];
+            addMessage(botResponse, 'bot');
+        } else {
+            addMessage('No response from KoGPT', 'bot');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        addMessage('Failed to get response from KoGPT', 'bot');
+    }
 }
 
 function KakaoTalkChat(message) {
