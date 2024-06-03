@@ -1,31 +1,74 @@
 body {
     font-family: Arial, sans-serif;
-    margin: 20px;
+    background-color: #f4f4f4;
+    color: #333;
 }
 
 header {
+    background-color: #ff6f61;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#search-bar-container {
+    position: relative;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 10px 50px;
-    background-color: #fff;
+    width: 825px; /* 검색 바 길이를 설정 */
 }
 
 #logo {
-    width: 100px;
-    height: auto;
+    width: 60px; /* 로고 크기 조정 */
+    position: absolute;
+    left: 6px; /* 로고를 검색 바 안쪽으로 이동 */
+    top: 50%;
+    transform: translateY(-50%); /* 로고를 검색 바의 세로 중앙에 맞춤 */
+    cursor: pointer;
+    z-index: 2; /* 로고가 검색창 위에 나타나도록 z-index 설정 */
 }
 
 #search-bar {
-    flex-grow: 1;
-    margin: 0 20px;
+    width: 100%; /* 검색 바 길이를 채움 */
+    padding: 15px 60px; /* 돋보기를 위한 padding 조정 */
+    border-radius: 30px;
+    border: 2px solid #8bc34a;
+    background-color: #fff;
+    color: #333;
+    font-size: 18px;
+    outline: none;
+    box-sizing: border-box; /* padding과 border를 포함한 전체 너비를 유지 */
+    padding-left: 60px; /* 로고 공간을 위해 padding-left 조정 */
 }
 
-#user-name {
-    font-size: 20px;
-    display: flex;
-    align-items: center;
+#search-bar::placeholder {
+    color: #ccc;
+    font-size: 16px; /* placeholder 글자 크기 조정 */
 }
+
+#search-icon {
+    width: 24px; /* 돋보기 이미지 크기 */
+    height: 24px; /* 돋보기 이미지 크기 */
+    position: absolute;
+    right: 10px; /* 검색 바 오른쪽 끝에 위치 */
+    top: 50%;
+    transform: translateY(-50%); /* 돋보기 이미지를 검색 바의 세로 중앙에 맞춤 */
+    cursor: pointer;
+    z-index: 2; /* 돋보기가 검색창 위에 나타나도록 z-index 설정 */
+}
+
+#user-name-container {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    color: black; /* 이름 폰트 색상 변경 */
+    font-size: 18px; /* 이름 폰트 크기 증가 */
+    vertical-align: middle;
+}   
 
 .dropdown-icon {
     margin-left: 10px;
@@ -40,23 +83,33 @@ header {
 }
 
 nav {
-    display: flex;
-    justify-content: center;
-    padding: 10px;
-    background-color: #ddd;
+    background-color: #ff6f61;
+    overflow: hidden;
+    padding: 10px 0;
 }
 
 nav a {
-    margin: 0 10px;
+    color: white;
+    padding: 10px 20px;
     text-decoration: none;
-    color: black;
-    font-size: 16px;
+    float: left;
+}
+nav a:hover {
+    background-color: #e65c50;
 }
 
 .content {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+.left-panel {
+    flex: 2;
+}
+
+.right-panel {
+    flex: 1;
+    margin-left: 20px;
 }
 
 h1 {
