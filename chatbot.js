@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('send-btn').addEventListener('click', sendMessage);
     document.getElementById('login-btn').addEventListener('click', loginWithKakao);
 
-    Kakao.init('7b4c43469892854149d653f502531e2f'); // 여기에 카카오 앱 키를 입력하세요
+    Kakao.init('0b186f985c794d65bc579d504a9a6dc4'); // 여기에 카카오 앱 키를 입력하세요
 });
 
 function loginWithKakao() {
