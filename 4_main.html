@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>레시피 관리 웹사이트</title>
     <link rel="stylesheet" href="4_main.css">
+    <link rel="stylesheet" href="chatbot.css">
 </head>
 <body>
 <header>
@@ -66,6 +67,14 @@
         </div>
         <div class="chatbot">
             <h3>chatbot</h3>
+            <div class="chatbot-container">
+                <div id="chat-window">
+                    <div id="messages"></div>
+                </div>
+                <input type="text" id="user-input" placeholder="Type your message here..." />
+                <button id="send-btn">Send</button>
+                <button id="login-btn">Login with Kakao</button>
+            </div>
         </div>
     </div>
 </div>
@@ -116,5 +125,7 @@
         window.location.href = '5_recipe_result.html';
     }
 </script>
+<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script src="chatbot.js"></script>
 </body>
 </html>
