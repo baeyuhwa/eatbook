@@ -9,12 +9,15 @@ function loginWithKakao() {
     Kakao.Auth.login({
         success: function(authObj) {
             console.log(authObj);
-            addMessage('Login successful!', 'bot');
-            addMessage('궁금한 점에 대해서 자세히 적어주세요.\n 예시: 짜장면과 짬뽕 중에서 무엇을 먹을지 골라줘', 'bot');
+            addMessage('로그인이 완료되었습니다.', 'bot');
+            addMessage('메뉴가 고민된다면 추천 받아보세요.', 'bot');
+            addMessage('예시: 점심 메뉴를 추천해줘', 'bot');
+            document.getElementById('send-btn').style.display = 'block';
+            document.getElementById('login-btn').style.display = 'none';
         },
         fail: function(err) {
             console.log(err);
-            addMessage('Login failed!', 'bot');
+            addMessage('로그인 실패', 'bot');
         }
     });
 }
@@ -41,6 +44,17 @@ function addMessage(text, sender) {
 async function callKoGPT(prompt) {
     const REST_API_KEY = '1623e8b7d8927ae0b2de2c12a304c516';
 
+    prompt = `한 단어로 메뉴를 추천합니다.
+    중식 메뉴를 추천해줘=짜장면
+    일식 메뉴를 추천해줘=초밥
+    한식 메뉴를 추천해줘=김치찌개
+    양식 메뉴를 추천해줘=토마토 파스타
+    중식 메뉴 추천해줘=짬뽕
+    일식 메뉴 추천해줘=라멘
+    한식 메뉴 추천해줘=된장찌개
+    양식 메뉴 추천해줘=로제 파스타
+    ${prompt}=`;
+
     try {
         const response = await fetch('https://cors-anywhere-o5bm.onrender.com/' + 'http://api.kakaobrain.com/v1/inference/kogpt/generation', {
             method: 'POST',
@@ -50,16 +64,22 @@ async function callKoGPT(prompt) {
             },
             body: JSON.stringify({
                 prompt: prompt,
-                max_tokens: 32,
-                temperature: 1.0,
-                top_p: 0.,
-                n: 5
+                max_tokens: 10,
+                temperature: 0.6,
+                top_p: 1.0,
+                n: 1
             })
         });
 
         const data = await response.json();
         if (data.generations && data.generations.length > 0) {
-            const botResponse = data.generations[0].text.split('. ')[0];
+            let botResponse = data.generations[0].text.split('\n')[0];
+            if (botResponse) {
+                botResponse = botResponse.split(', ')[0];
+            }
+            if (botResponse) {
+                botResponse = botResponse.split(' ')[0];
+            }
             addMessage(botResponse, 'bot');
         } else {
             addMessage('No response from KoGPT', 'bot');

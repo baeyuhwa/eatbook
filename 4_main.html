@@ -31,8 +31,9 @@
 </nav>
 <div class="content">
     <div class="left-panel">
+        <h3>냉장고 리스트</h3>
         <div class="form-section">
-            <h3>냉장고 리스트</h3>
+            
             <table class="fridge-table">
                 <thead>
                     <tr>
@@ -49,16 +50,17 @@
         </div>
     </div>
     <div class="right-panel">
+        <h3>인기 레시피</h3>
         <div class="popular-recipes">
-            <h3>인기 레시피</h3>
-            <!-- 인기 레시피 내용 추가 -->
+            <div id="recipe-results"></div>
         </div>
+        <h3>내 레시피</h3>
         <div class="my-recipes">
-            <h3>내 레시피</h3>
-            <!-- 내 레시피 내용 추가 -->
+            
         </div>
+        <h3>소통</h3>
         <div class="community">
-            <h3>소통</h3>
+            
             <ul>
                 <li>소통 내용 1</li>
                 <li>소통 내용 2</li>
@@ -66,13 +68,13 @@
             </ul>
         </div>
         <div class="chatbot">
-            <h3>chatbot</h3>
+            <h3>메뉴 추천</h3>
             <div class="chatbot-container">
                 <div id="chat-window">
                     <div id="messages"></div>
                 </div>
                 <input type="text" id="user-input" placeholder="Type your message here..." />
-                <button id="send-btn">Send</button>
+                <button id="send-btn" style="display: none;">Send</button>
                 <button id="login-btn">Login with Kakao</button>
             </div>
         </div>
@@ -125,6 +127,7 @@
         window.location.href = '5_recipe_result.html';
     }
 </script>
+<script src="4_popularRecipe.js"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script src="chatbot.js"></script>
 </body>

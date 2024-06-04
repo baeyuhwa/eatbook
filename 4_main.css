@@ -150,3 +150,41 @@ ul {
 ul li {
     margin-bottom: 5px;
 }
+
+#recipe-results {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* 반응형 그리드 */
+    gap: 20px;
+}
+.recipe-column {
+    cursor: pointer;
+    text-align: center;
+    /*border: 1px solid #ccc;*/
+    padding: 10px;
+    box-sizing: border-box;
+}
+.recipe-column img {
+    width: 280px; /* 이미지 크기 조정 */
+    height: auto;
+    margin-bottom: 10px;
+}
+.recipe-column h2 {
+    font-size: 17px; /* 제목 크기 조정 */
+    margin: 10px 0;
+}
+
+.recipe-title-author {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.recipe-title {
+    font-weight: bold;
+}
+
+.recipe-author {
+    font-style: italic;
+    margin-left: 10px;
+}
