@@ -7,11 +7,17 @@
 </head>
 <body>
     <header>
-        <a href="4_main.html">
-            <img id="logo" src="logo.png" alt="Logo">
-        </a>
-        <input id="search-bar" type="text" placeholder="레시피 검색..." onkeypress="if(event.key === 'Enter') searchRecipe(this.value)">
-        <div id="user-name"></div>
+        <div id="search-container">
+            <div id="search-bar-container">
+                <a href="4_main.html">
+                    <img id="logo" src="logo.png" alt="Logo">
+                </a>
+                <input id="search-bar" type="text" placeholder="레시피 검색..." onkeypress="if(event.key === 'Enter') searchRecipe(this.value)">
+                <img id="search-icon" src="search.png" alt="Search Icon" onclick="searchRecipe()">
+            </div>
+        </div>
+        <div id="user-name-container">
+            <div id="user-name"></div>
             <div class="dropdown-icon">&#9660;</div>
         </div>
     </header>
@@ -34,9 +40,8 @@
         <div id="progress-bar" style="width: 0%; height: 15px; background-color: #4CAF50;"></div>
         <div id="progress-percentage" style="display: none;">0%</div>
     </div>
-    <div  class="scroll-container">
+    <div class="scroll-container">
         <img id="to-top" src="scroll.png" onclick="go_top()" style="width: 50px; z-index: 9; display:none;">
-        <!--<a href="https://kr.freepik.com/icon/down-arrow_152427#fromView=search&page=3&position=33&uuid=609ff4b8-2830-401f-9edb-980f8fd8866d">Freepik 제작 아이콘</a>-->
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
