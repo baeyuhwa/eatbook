@@ -33,7 +33,7 @@ header {
 #logo {
     width: 60px; /* 로고 크기 조정 */
     position: absolute;
-    left: 3px; /* 로고를 검색 바 안쪽으로 이동 */
+    left: 5px; /* 로고를 검색 바 안쪽으로 이동 */
     top: 50%;
     transform: translateY(-50%); /* 로고를 검색 바의 세로 중앙에 맞춤 */
     cursor: pointer;
@@ -60,7 +60,7 @@ header {
     width: 24px; /* 돋보기 이미지 크기 */
     height: 24px; /* 돋보기 이미지 크기 */
     position: absolute;
-    right: 20px; /* 검색 바 오른쪽 끝에 위치 */
+    right: 15px; /* 검색 바 오른쪽 끝에 위치 */
     top: 50%;
     transform: translateY(-50%); /* 돋보기 이미지를 검색 바의 세로 중앙에 맞춤 */
     cursor: pointer;

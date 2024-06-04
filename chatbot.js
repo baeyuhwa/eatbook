@@ -103,7 +103,7 @@ function KakaoTalkChat(message) {
                 object_type: 'text',
                 text: message,
                 link: {
-                    web_url: 'http://localhost:8085',
+                    web_url: 'http://localhost:8080',
                     mobile_web_url: 'http://yourwebsite.com'
                 }
             }

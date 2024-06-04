@@ -33,16 +33,15 @@ header {
 }
 
 #search-bar {
-    width: 100%; /* 검색 바 길이를 채움 */
-    padding: 15px 60px; /* 돋보기를 위한 padding 조정 */
+    width: 820px; /* 검색 바 길이를 늘림 */
+    padding: 15px 60px 15px 60px; /* 로고 공간 확보를 위해 padding-left 조정 */
     border-radius: 30px;
     border: 2px solid #8bc34a;
     background-color: #fff;
     color: #333;
     font-size: 18px;
     outline: none;
-    box-sizing: border-box; /* padding과 border를 포함한 전체 너비를 유지 */
-    padding-left: 60px; /* 로고 공간을 위해 padding-left 조정 */
+    background-color: white; /* 검색창 배경색을 흰색으로 변경 */
 }
 
 #search-bar::placeholder {
@@ -54,7 +53,7 @@ header {
     width: 24px; /* 돋보기 이미지 크기 */
     height: 24px; /* 돋보기 이미지 크기 */
     position: absolute;
-    right: 10px; /* 검색 바 오른쪽 끝에 위치 */
+    right: 15px; /* 검색 바 오른쪽 끝에 위치 */
     top: 50%;
     transform: translateY(-50%); /* 돋보기 이미지를 검색 바의 세로 중앙에 맞춤 */
     cursor: pointer;
