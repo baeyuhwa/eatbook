@@ -7,12 +7,18 @@
 </head>
 <body>
     <header>
-        <a href="4_main.html">
-            <img id="logo" src="logo.png" alt="Logo">
-        </a>
-        <input id="search-bar" type="text" placeholder="레시피 검색..." onkeypress="if(event.key === 'Enter') performSearch(this.value)">
-        <div id="user-name"></div>
-            <div class="dropdown-icon">&#9660;</div>
+        <div id="search-container">
+            <div id="search-bar-container">
+                <a href="4_main.html">
+                    <img id="logo" src="logo.png" alt="Logo">
+                </a>
+                <input id="search-bar" type="text" placeholder="레시피 검색..." onkeypress="if(event.key === 'Enter') performSearch(this.value)">
+                <img id="search-icon" src="search.png" alt="Search Icon">
+            </div>
+        </div>
+        <div id="user-name-container">
+            <div id="user-name"></div>
+            <div class="dropdown-icon">▼</div>
         </div>
     </header>
     <nav>
@@ -48,6 +54,12 @@
                 userNameElement.textContent = kakaoNickname;
             }
         });
+
+        function performSearch() {
+            const searchValue = document.getElementById('search-bar').value;
+            localStorage.setItem('searchQuery', searchValue);
+            window.location.href = '5_recipe_result.html';
+        }
     </script>
     <script src="5_recipe.js"></script>
     <script src="9_commincation.js"></script>
