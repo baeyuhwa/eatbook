@@ -7,7 +7,7 @@ body {
 header {
     background-color: #ff6f61;
     color: white;
-    padding: 10px 0;
+    padding: 2px 0;
     text-align: center; 
     position: relative;
 }
@@ -34,7 +34,7 @@ header {
 }
 
 #search-bar {
-    width: 700px; /* 검색 바 길이를 늘림 */
+    width: 820px; /* 검색 ㄴ바 길이를 늘림 */
     padding: 15px 60px 15px 60px; /* 로고 공간 확보를 위해 padding-left 조정 */
     border-radius: 30px;
     border: 2px solid #8bc34a;
