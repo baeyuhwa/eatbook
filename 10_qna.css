@@ -1,34 +1,77 @@
 body {
     font-family: Arial, sans-serif;
-    margin: 20px;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-.container {
-    width: 97%;
-    margin: 0 auto;
-    padding: 20px;
-}
+
 header {
+    background-color: #ff6f61;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    position: relative;
+}
+
+#search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#search-bar-container {
+    position: relative;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 10px 50px;
-    background-color: #fff;
 }
+
 #logo {
-    width: 100px;
-    height: auto;
+    width: 60px; /* 로고 크기 조정 */
+    position: absolute;
+    left: 5px; /* 로고를 검색 바 안쪽으로 이동 */
+    top: 50%;
+    transform: translateY(-50%); /* 로고를 검색 바의 세로 중앙에 맞춤 */
+    cursor: pointer;
 }
+
 #search-bar {
-    flex-grow: 1;
-    margin: 0 20px;
+    width: 700px; /* 검색 바 길이를 늘림 */
+    padding: 15px 60px 15px 60px; /* 로고 공간 확보를 위해 padding-left 조정 */
+    border-radius: 30px;
+    border: 2px solid #8bc34a;
+    background-color: #fff;
+    color: #333;
+    font-size: 18px;
+    outline: none;
+    background-color: white; /* 검색창 배경색을 흰색으로 변경 */
 }
-#user-name {
-    font-size: 20px;
-    display: flex;
-    align-items: center;
+
+#search-bar::placeholder {
+    color: #ccc;
+    font-size: 16px; /* placeholder 글자 크기 조정 */
 }
+
+#search-icon {
+    width: 24px; /* 돋보기 이미지 크기 */
+    height: 24px; /* 돋보기 이미지 크기 */
+    position: absolute;
+    right: 20px; /* 검색 바 오른쪽 끝에 위치 */
+    top: 50%;
+    transform: translateY(-50%); /* 돋보기 이미지를 검색 바의 세로 중앙에 맞춤 */
+    cursor: pointer;
+}
+
+#user-name-container {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    color: black; /* 이름 폰트 색상 변경 */
+    font-size: 18px; /* 이름 폰트 크기 증가 */
+    vertical-align: middle;
+}
+
 .dropdown-icon {
     margin-left: 10px;
     width: 20px;
@@ -40,23 +83,36 @@ header {
     cursor: pointer;
     border: 1px solid #ccc;
 }
+
 nav {
-    display: flex;
-    justify-content: center;
-    padding: 10px;
-    background-color: #ddd;
+    background-color: #ff6f61;
+    overflow: hidden;
+    padding: 10px 0;
 }
+
 nav a {
-    margin: 0 10px;
+    color: white;
+    padding: 10px 20px;
     text-decoration: none;
-    color: black;
-    font-size: 16px;
+    float: left;
 }
+
+nav a:hover {
+    background-color: #e65c50;
+}
+
+.container {
+    width: 97%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
 .content {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+
 input[type=text] {
     width: 100%;
     padding: 12px;
@@ -66,26 +122,32 @@ input[type=text] {
     border-radius: 4px;
     box-sizing: border-box;
 }
+
 table {
     width: 70%;
     border-collapse: collapse;
     margin: 1%;
 }
+
 th, td {
     padding: 8px;
     text-align: left;
     border-bottom: 1px solid #ddd;
 }
+
 th:last-child, td:last-child {
     text-align: center;
 }
+
 th {
     background-color: #f9f9f9;
     font-size: 14px;
 }
+
 td {
     font-size: 14px;
 }
+
 .create-button {
     position: auto;
     bottom: 20px;
@@ -98,12 +160,11 @@ td {
     border-radius: 10px;
     cursor: pointer;
 }
+
 .create-button:hover {
-    background-color: #4CAF50;
+    background-color: #45a049;
 }
-a {
-    text-decoration: none;
-}
+
 .delete-button {
     background-color: red;
     color: white;
@@ -113,6 +174,11 @@ a {
     font-size: 14px;
     padding: 4px 8px;
 }
+
 .delete-button:hover {
     background-color: darkred;
+}
+
+a {
+    text-decoration: none; /* 밑줄 제거 */
 }

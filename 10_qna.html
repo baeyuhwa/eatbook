@@ -1,17 +1,24 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<title>문의사항</title>
-<link rel="stylesheet" href="10_qna.css">
+    <meta charset="UTF-8">
+    <title>문의사항</title>
+    <link rel="stylesheet" href="10_qna.css">
 </head>
 <body>
 <header>
-    <a href="4_main.html">
-        <img id="logo" src="logo.png" alt="Logo">
-    </a>
-    <input id="search-bar" type="text" placeholder="레시피 검색..." onkeypress="if(event.key === 'Enter') performSearch(this.value)">
-    <div id="user-name"></div>
+    <div id="search-container">
+        <div id="search-bar-container">
+            <a href="4_main.html">
+                <img id="logo" src="logo.png" alt="Logo">
+            </a>
+            <input id="search-bar" type="text" placeholder="레시피 검색..." onkeypress="if(event.key === 'Enter') performSearch(this.value)">
+            <img id="search-icon" src="search.png" alt="Search Icon" onclick="performSearch()"> <!-- 돋보기 아이콘 클릭 이벤트 추가 -->
+        </div>
+    </div>
+    <div id="user-name-container">
+        <div id="user-name"></div>
+        <div class="dropdown-icon">&#9660;</div>
     </div>
 </header>
 <nav>
@@ -36,7 +43,7 @@
             </tbody>
         </table>  
         <button class="create-button" onclick="window.location.href='10-1_newqna.html';">작성하기</button>
-    </div> 
+    </div>
 </div>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
