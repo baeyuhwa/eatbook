@@ -1,32 +1,84 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <title>레시피 상세 정보</title>
-    <link rel="stylesheet" href="6_recipe.css">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <title>레시피 상세 결과</title>
+        <link rel="stylesheet" href="6_recipe.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="Untree.co">
+        <link rel="shortcut icon" href="favicon.png">
+    
+        <meta name="description" content="" />
+        <meta name="keywords" content="bootstrap, bootstrap5" />
+        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+        <link rel="stylesheet" href="fonts/icomoon/style.css">
+        <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+    
+        <link rel="stylesheet" href="css/tiny-slider.css">
+        <link rel="stylesheet" href="css/aos.css">
+        <link rel="stylesheet" href="css/style.css">
+    
+        <title>레시피 검색 홈페이지</title>
+    </head>
 <body>
-    <header>
-        <div id="search-container">
-            <div id="search-bar-container">
-                <a href="4_main.html">
-                    <img id="logo" src="logo.png" alt="Logo">
-                </a>
-                <input id="search-bar" type="text" placeholder="레시피 검색..." onkeypress="if(event.key === 'Enter') searchRecipe(this.value)">
-                <img id="search-icon" src="search.png" alt="Search Icon" onclick="searchRecipe()">
+    
+    <div class="site-mobile-menu site-navbar-target">
+        <div class="site-mobile-menu-header">
+            <div class="site-mobile-menu-close">
+                <span class="icofont-close js-menu-toggle"></span>
             </div>
         </div>
-        <div id="user-name-container">
-            <div id="user-name"></div>
+        <div class="site-mobile-menu-body"></div>
+    </div>
+    <nav class="site-nav">
+        <div class="container">
+            <div class="menu-bg-wrap">
+                <div class="site-navigation">
+                    <a href="4_main.html" class="logo m-0 float-start">EatBooks</a>
+
+                    <ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu float-end">
+                        <li><a href="6_recipe.html">나만의 냉장고</a></li>
+                        <li><a href="8_myrecipes.html">내 레시피</a></li>
+                        <li><a href="7_newrecipe.html">레시피 만들기</a></li>
+                        <li class="has-children">
+                            <a href="#" class="no-link">게시판</a>
+                            <ul class="dropdown">
+                                <li><a href="9_communication.html">소통</a></li>
+                                <li><a href="10_qna.html">문의사항</a></li>
+                            </ul>
+                        </li>
+                        <li id="login-menu"><a href="1_login.html">로그인</a></li>
+                        <li id="user-name-menu" style="display: none;"><a href="#" id="user-name"></a></li>
+                    </ul>
+
+                    <a href="#" class="burger light me-auto float-end mt-1 site-menu-toggle js-menu-toggle d-inline-block d-lg-none" data-toggle="collapse" data-target="#main-navbar">
+                        <span></span>
+                    </a>
+
+                </div>
+            </div>
         </div>
-    </header>
-    <nav>
-        <a href="6_recipe.html">냉장고</a>
-        <a href="8_myrecipes.html">내 레시피</a>
-        <a href="7_newrecipe.html">레시피 만들기</a>
-        <a href="9_communication.html">소통</a>
-        <a href="10_qna.html">문의 사항</a>
     </nav>
+
+    <div class="hero page-inner overlay" style="background-image: url('images/검색화면 배경.jpg');">
+        <div class="container">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-lg-9 text-center mt-5">
+                    <h1 class="heading" data-aos="fade-up">5232 California AVE. 21BC</h1>
+                    <nav aria-label="breadcrumb" data-aos="fade-up" data-aos-delay="200">
+                        <ol class="breadcrumb text-center justify-content-center">
+                            <li class="breadcrumb-item "><a href="4_main.html">Home</a></li>
+                            <li class="breadcrumb-item active text-white-50" aria-current="page">5232 California AVE. 21BC</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="content">
         <div id="recipe-detail">
             <!-- 레시피 상세 정보가 여기 표시됩니다 -->

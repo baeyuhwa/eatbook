@@ -11,25 +11,50 @@ window.onload = function() {
         recipeAuthor.textContent = "작성자: " + selectedRecipe.author;
         recipeDetail.appendChild(recipeAuthor);
 
-        const recipeImage = document.createElement('img');
-        recipeImage.src = selectedRecipe.image;
-        recipeImage.alt = `이미지: ${selectedRecipe.name}`;
-        recipeImage.style.maxWidth = '100%';
-        recipeDetail.appendChild(recipeImage);
+        const ingredientsTitle = document.createElement('h3');
+        ingredientsTitle.textContent = '재료';
+        recipeDetail.appendChild(ingredientsTitle);
 
-        const ingredients = document.createElement('h3');
-        ingredients.textContent = `재료: ${selectedRecipe.ingredients}`;
-        recipeDetail.appendChild(ingredients);
+        const ingredientsTable = document.createElement('table');
+        ingredientsTable.classList.add('ingredients-table');
+
+        selectedRecipe.ingredients.split(',').forEach(ingredient => {
+            const tr = document.createElement('tr');
+
+            const ingredientName = document.createElement('td');
+            ingredientName.textContent = ingredient.split(' ')[0];
+            tr.appendChild(ingredientName);
+
+            const ingredientAmount = document.createElement('td');
+            ingredientAmount.textContent = ingredient.split(' ')[1] || '';
+            tr.appendChild(ingredientAmount);
+
+            ingredientsTable.appendChild(tr);
+        });
+        recipeDetail.appendChild(ingredientsTable);
+
+        const stepsTitle = document.createElement('h3');
+        stepsTitle.textContent = '조리순서';
+        recipeDetail.appendChild(stepsTitle);
 
         selectedRecipe.recipe.forEach((step, index) => {
             const stepContainer = document.createElement('div');
             stepContainer.classList.add('step-container');
 
+            const stepNumber = document.createElement('h4');
+            stepNumber.textContent = `${index + 1}.`;
+            stepContainer.appendChild(stepNumber);
+
+            const textContainer = document.createElement('div');
+            textContainer.classList.add('text-container');
+            textContainer.innerHTML = `<p>${step}</p>`;
+            stepContainer.appendChild(textContainer);
+
             const imgContainer = document.createElement('div');
             imgContainer.classList.add('img-container');
             const imgElement = document.createElement('img');
             const imgUrl = selectedRecipe.recipeImg[index].split(' ').pop();
-            if (imgUrl != "undefined" && imgUrl != null) {
+            if (imgUrl && imgUrl !== "undefined" && imgUrl !== null) {
                 imgElement.src = imgUrl;
                 imgElement.alt = `${index + 1}단계 이미지`;
                 imgElement.style.maxWidth = '100%';
@@ -37,17 +62,14 @@ window.onload = function() {
                 stepContainer.appendChild(imgContainer);
             }
 
-            const textContainer = document.createElement('div');
-            textContainer.classList.add('text-container');
-            textContainer.innerHTML = `<p>${step}</p>`;
-
-            stepContainer.appendChild(textContainer);
             recipeDetail.appendChild(stepContainer);
         });
     } else {
         recipeDetail.innerHTML = '레시피 정보를 불러오는데 실패했습니다.';
     }
 };
+
+
 
 async function foodInfo(name) {
     const url = 'https://cors-anywhere-o5bm.onrender.com/' + `http://www.10000recipe.com/recipe/list.html?q=${name}`;

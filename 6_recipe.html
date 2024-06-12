@@ -1,87 +1,269 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <title>내 냉장고</title>
-    <link rel="stylesheet" href="6_recipe.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Untree.co">
+    <link rel="shortcut icon" href="favicon.png">
+
+    <meta name="description" content="" />
+    <meta name="keywords" content="bootstrap, bootstrap5" />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+
+    <link rel="stylesheet" href="css/tiny-slider.css">
+    <link rel="stylesheet" href="css/aos.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="chatbot.css">
+
+    <style>
+        body {
+            font-family: 'Work Sans', sans-serif;
+        }
+
+        .form-section {
+            margin: 20px;
+        }
+
+        .form-section h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .form-section input, .form-section select, .form-section button {
+            margin-right: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-section button {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+
+        .fridge-list {
+            margin: 20px;
+        }
+
+        .fridge-columns {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .fridge-column {
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: calc(33.333% - 20px);
+            box-sizing: border-box;
+            height: 300px; /* 네모칸의 세로 길이 조정 */
+        }
+
+        .fridge-column h4 {
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+            color: #4CAF50;
+        }
+
+        .ingredient-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .ingredient-list li {
+            padding: 5px 0;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .ingredient-list li:last-child {
+            border-bottom: none;
+        }
+    </style>
+
+    <title>냉장고 관리</title>
 </head>
 <body>
-<header>
-    <div id="search-container">
-        <div id="search-bar-container">
-            <a href="4_main.html">
-                <img id="logo" src="logo.png" alt="Logo">
-            </a>
-            <input id="search-bar" type="text" placeholder="레시피 검색...">
-            <img id="search-icon" src="search.png" alt="Search Icon" onclick="performSearch()"> <!-- 돋보기 아이콘 클릭 이벤트 추가 -->
+    <div class="site-mobile-menu site-navbar-target">
+        <div class="site-mobile-menu-header">
+            <div class="site-mobile-menu-close">
+                <span class="icofont-close js-menu-toggle"></span>
+            </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+    </div>
+
+    <nav class="site-nav">
+        <div class="container">
+            <div class="menu-bg-wrap">
+                <div class="site-navigation">
+                    <a href="4_main.html" class="logo m-0 float-start">EatBooks</a>
+
+                    <ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu float-end">
+                        <li><a href="6_recipe.html">나만의 냉장고</a></li>
+                        <li><a href="8_myrecipes.html">내 레시피</a></li>
+                        <li><a href="7_newrecipe.html">레시피 만들기</a></li>
+                        <li class="has-children">
+                            <a href="#" class="no-link">게시판</a>
+                            <ul class="dropdown">
+                                <li><a href="9_communication.html">소통</a></li>
+                                <li><a href="10_qna.html">문의사항</a></li>
+                            </ul>
+                        </li>
+                        <li id="login-menu"><a href="1_login.html">로그인</a></li>
+                        <li id="user-name-menu" style="display: none;"><a href="#" id="user-name"></a></li>
+                    </ul>
+
+                    <a href="#" class="burger light me-auto float-end mt-1 site-menu-toggle js-menu-toggle d-inline-block d-lg-none" data-toggle="collapse" data-target="#main-navbar">
+                        <span></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="hero page-inner overlay" style="background-image: url('images/검색화면 배경.jpg');">
+        <div class="container">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-lg-9 text-center mt-5">
+                    <h1 class="heading" data-aos="fade-up">5232 California AVE. 21BC</h1>
+                    <nav aria-label="breadcrumb" data-aos="fade-up" data-aos-delay="200">
+                        <ol class="breadcrumb text-center justify-content-center">
+                            <li class="breadcrumb-item "><a href="4_main.html">Home</a></li>
+                            <li class="breadcrumb-item active text-white-50" aria-current="page">5232 California AVE. 21BC</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
         </div>
     </div>
-    <div id="user-name-container">
-        <div id="user-name"></div>
+    <div class="content">
+        <div class="form-section">
+            <h3>냉장고 리스트 추가</h3>
+            <form id="fridge-form">
+                <input type="text" id="ingredient-name" placeholder="재료" required>
+                <input type="text" id="ingredient-quantity" placeholder="양" required>
+                <select id="ingredient-unit">
+                    <option value="g">그램(g)</option>
+                    <option value="kg">킬로그램(kg)</option>
+                    <option value="ml">밀리리터(ml)</option>
+                    <option value="l">리터(l)</option>
+                </select>
+                <input type="date" id="expiration-date" required>
+                <input type="radio" id="냉동" name="category" value="냉동"> 냉동
+                <input type="radio" id="냉장" name="category" value="냉장"> 냉장
+                <input type="radio" id="실온" name="category" value="실온"> 실온
+                <input type="radio" id="위치없음" name="category" value="위치없음"> 위치없음
+                <button type="submit">추가</button>
+            </form>
+        </div>
+        <div class="fridge-list">
+            <h3>내 냉장고 리스트</h3>
+            <div class="fridge-columns">
+                <div class="fridge-column" id="냉동">
+                    <h4>냉동</h4>
+                    <ul id="냉동-list" class="ingredient-list"></ul>
+                </div>
+                <div class="fridge-column" id="냉장">
+                    <h4>냉장</h4>
+                    <ul id="냉장-list" class="ingredient-list"></ul>
+                </div>
+                <div class="fridge-column" id="실온">
+                    <h4>실온</h4>
+                    <ul id="실온-list" class="ingredient-list"></ul>
+                </div>
+                <div class="fridge-column" id="위치없음">
+                    <h4>위치없음</h4>
+                    <ul id="위치없음-list" class="ingredient-list"></ul>
+                </div>
+            </div>
+        </div>
     </div>
-</header>
-<nav>
-    <a href="6_recipe.html">냉장고</a>
-    <a href="8_myrecipes.html">내 레시피</a>
-    <a href="7_newrecipe.html">레시피 만들기</a>
-    <a href="9_communication.html">소통</a>
-    <a href="10_qna.html">문의 사항</a>
-</nav>
-<div class="content">
-    <div class="form-section">
-        <h3>냉장고 리스트 추가</h3>
-        <form id="fridge-form">
-            <input type="text" id="ingredient-name" placeholder="재료" required>
-            <input type="text" id="ingredient-quantity" placeholder="양" required>
-            <select id="ingredient-unit">
-                <option value="g">그램(g)</option>
-                <option value="kg">킬로그램(kg)</option>
-                <option value="ml">밀리리터(ml)</option>
-                <option value="l">리터(l)</option>
-                <!-- More units as required -->
-            </select>
-            <input type="date" id="expiration-date" required>
-            <button type="submit">추가</button>
-        </form>
-    </div>
-    <div class="fridge-list">
-        <h3>내 냉장고 리스트</h3>
-        <table class="fridge-table">
-            <thead>
-                <tr>
-                    <th>재료</th>
-                    <th>양</th>
-                    <th>단위</th>
-                    <th>유통기한</th>
-                    <th>수정</th>
-                    <th>삭제</th>
-                </tr>
-            </thead>
-            <tbody id="fridge-list-items">
-                <!-- List items will be added here with JavaScript -->
-            </tbody>
-        </table>
-    </div>
-</div>
-<div class="container">
-    <div id="recipe-results"></div>
-</div>
-<div id="progress-container">
-    <div id="progress-bar" style="width: 0%; height: 15px; background-color: #4CAF50;"></div>
-    <div id="progress-percentage" style="display: none;">0%</div>
-</div>
-<div class="scroll-container">
-    <img id="to-top" src="scroll.png" onclick="go_top()" style="width: 50px; z-index: 9; display: none;">
-</div>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const kakaoNickname = localStorage.getItem('kakaoNickname');
-        if (kakaoNickname) {
-            const userNameElement = document.getElementById('user-name');
-            userNameElement.textContent = kakaoNickname;
-        }
-    });
 
+<div class="site-footer">
+    <div class="container">
+        
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="widget">
+                    <h3>Contact</h3>
+                    <address>한경국립대학교 공학1관 303호</address>
+                    <ul class="list-unstyled links">
+                        <li><a href="tel://031-670-5114">+82 31-670-5114</a></li>
+                        <li><a href="tel://010-9035-0454">+82 10-9035-0454</a></li>
+                        <li><a href="mailto:info@mydomain.com">doog0740@gmail.com</a></li>
+                    </ul>
+                </div> <!-- /.widget -->
+            </div> <!-- /.col-lg-4 -->
+            <div class="col-lg-4">
+                <div class="widget">
+                    <h3>Sources</h3>
+                    <ul class="list-unstyled float-start links">
+                        <li><a href="#">About us</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Vision</a></li>
+                        <li><a href="#">Mission</a></li>
+                        <li><a href="#">Terms</a></li>
+                        <li><a href="#">Privacy</a></li>
+                    </ul>
+                    <ul class="list-unstyled float-start links">
+                        <li><a href="#">Partners</a></li>
+                        <li><a href="#">Business</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Creative</a></li>
+                    </ul>
+                </div> <!-- /.widget -->
+            </div> <!-- /.col-lg-4 -->
+            <div class="col-lg-4">
+                <div class="widget">
+                    <h3>Links</h3>
+                    <ul class="list-unstyled links">
+                        <li><a href="#">Our Vision</a></li>
+                        <li><a href="#">About us</a></li>
+                        <li><a href="#">Contact us</a></li>
+                    </ul>
+
+                    <ul class="list-unstyled social">
+                        <li><a href="#"><span class="icon-instagram"></span></a></li>
+                        <li><a href="#"><span class="icon-twitter"></span></a></li>
+                        <li><a href="#"><span class="icon-facebook"></span></a></li>
+                        <li><a href="#"><span class="icon-linkedin"></span></a></li>
+                        <li><a href="#"><span class="icon-pinterest"></span></a></li>
+                        <li><a href="#"><span class="icon-dribbble"></span></a></li>
+                    </ul>
+                </div> <!-- /.widget -->
+            </div> <!-- /.col-lg-4 -->
+        </div> <!-- /.row -->
+
+        <div class="row mt-5">
+            <div class="col-12 text-center">
+                <!-- 
+          **==========
+          NOTE: 
+          Please don't remove this copyright link unless you buy the license here https://untree.co/license/  
+          **==========
+        -->
+
+        <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script>. All Rights Reserved. &mdash; Designed with love by <a href="https://untree.co">Untree.co</a> <!-- License information: https://untree.co/license/ -->
+        </p>
+
+      </div>
+    </div>
+  </div> <!-- /.container -->
+</div> <!-- /.site-footer -->
+
+<script>
     document.getElementById('fridge-form').addEventListener('submit', function(event) {
         event.preventDefault();
 
@@ -90,8 +272,9 @@
         var quantity = document.getElementById('ingredient-quantity').value;
         var unit = document.getElementById('ingredient-unit').value;
         var expiration = document.getElementById('expiration-date').value;
+        var category = document.querySelector('input[name="category"]:checked').value;
 
-        var list = document.getElementById('fridge-list-items');
+        var list = document.getElementById(category + '-list');
         if (isEditMode) {
             var editingIndex = document.getElementById('fridge-form').getAttribute('data-editing-index');
             var row = list.children[editingIndex];
@@ -145,23 +328,70 @@
     });
 
     function saveFridgeList() {
-        var list = document.getElementById('fridge-list-items');
-        var items = [];
-
-        list.querySelectorAll('tr').forEach(row => {
-            var item = {
-                ingredient: row.cells[0].textContent,
-                quantity: row.cells[1].textContent,
-                unit: row.cells[2].textContent,
-                expiration: row.cells[3].textContent
-            };
-            items.push(item);
+        var items = {};
+        document.querySelectorAll('.ingredient-list').forEach(list => {
+            var category = list.id.replace('-list', '');
+            items[category] = [];
+            list.querySelectorAll('tr').forEach(row => {
+                var item = {
+                    ingredient: row.cells[0].textContent,
+                    quantity: row.cells[1].textContent,
+                    unit: row.cells[2].textContent,
+                    expiration: row.cells[3].textContent
+                };
+                items[category].push(item);
+            });
         });
 
         localStorage.setItem('fridgeList', JSON.stringify(items));
     }
+
+    function loadFridgeList() {
+        var items = JSON.parse(localStorage.getItem('fridgeList'));
+        if (items) {
+            for (var category in items) {
+                var list = document.getElementById(category + '-list');
+                items[category].forEach(item => {
+                    var row = document.createElement('tr');
+
+                    row.innerHTML = `
+                        <td>${item.ingredient}</td>
+                        <td>${item.quantity}</td>
+                        <td>${item.unit}</td>
+                        <td>${item.expiration}</td>
+                        <td><button class="edit-btn">수정</button></td>
+                        <td><button class="delete-btn">삭제</button></td>
+                    `;
+
+                    list.appendChild(row);
+
+                    row.querySelector('.delete-btn').addEventListener('click', function() {
+                        list.removeChild(row);
+                        saveFridgeList();
+                    });
+
+                    row.querySelector('.edit-btn').addEventListener('click', function() {
+                        document.getElementById('ingredient-name').value = item.ingredient;
+                        document.getElementById('ingredient-quantity').value = item.quantity;
+                        document.getElementById('ingredient-unit').value = item.unit;
+                        document.getElementById('expiration-date').value = item.expiration;
+
+                        var index = Array.from(list.children).indexOf(row);
+                        document.getElementById('fridge-form').setAttribute('data-editing-index', index);
+                    });
+                });
+            }
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', loadFridgeList);
 </script>
-<script src="6_recipe.js"></script>
-<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+  
 </body>
 </html>
+
+
+
+
+
+

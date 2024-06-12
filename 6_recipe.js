@@ -1,56 +1,68 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const kakaoNickname = localStorage.getItem('kakaoNickname');
-    if (kakaoNickname) {
-        const userNameElement = document.getElementById('user-name');
-        userNameElement.textContent = kakaoNickname;
-    }
-    loadFridgeList();
-    document.getElementById('search-icon').addEventListener('click', function() {
-        performSearch();
-    });
+document.getElementById('fridge-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    var ingredient = document.getElementById('ingredient-name').value;
+    var quantity = document.getElementById('ingredient-quantity').value;
+    var unit = document.getElementById('ingredient-unit').value;
+    var expiration = document.getElementById('expiration-date').value;
+
+    var category = document.querySelector('input[name="category"]:checked').value;
+    var list = document.getElementById(category + '-list');
+
+    var listItem = document.createElement('li');
+    listItem.textContent = `${ingredient} - ${quantity}${unit} (유통기한: ${expiration})`;
+
+    list.appendChild(listItem);
+
+    document.getElementById('ingredient-name').value = '';
+    document.getElementById('ingredient-quantity').value = '';
+    document.getElementById('ingredient-unit').selectedIndex = 0;
+    document.getElementById('expiration-date').value = '';
+
+    saveFridgeList();
 });
 
-function performSearch() {
-    const searchValue = document.getElementById('search-bar').value;
-    localStorage.setItem('searchQuery', searchValue);
-    window.location.href = '5_recipe_result.html';
+function saveFridgeList() {
+    var items = {};
+    document.querySelectorAll('.ingredient-list').forEach(list => {
+        var category = list.id.replace('-list', '');
+        items[category] = [];
+        list.querySelectorAll('li').forEach(listItem => {
+            var itemText = listItem.textContent;
+            var [ingredientPart, expirationPart] = itemText.split(' (유통기한: ');
+            var ingredientDetails = ingredientPart.split(' - ');
+            var ingredient = ingredientDetails[0];
+            var quantityUnit = ingredientDetails[1].match(/(\d+)([a-zA-Z]+)/);
+            var quantity = quantityUnit[1];
+            var unit = quantityUnit[2];
+            var expiration = expirationPart.replace(')', '');
+            
+            var item = {
+                ingredient: ingredient,
+                quantity: quantity,
+                unit: unit,
+                expiration: expiration
+            };
+            items[category].push(item);
+        });
+    });
+
+    localStorage.setItem('fridgeList', JSON.stringify(items));
 }
 
 function loadFridgeList() {
-    var list = document.getElementById('fridge-list-items');
-    var items = JSON.parse(localStorage.getItem('fridgeList')) || [];
+    var items = JSON.parse(localStorage.getItem('fridgeList'));
+    if (items) {
+        for (var category in items) {
+            var list = document.getElementById(category + '-list');
+            items[category].forEach(item => {
+                var listItem = document.createElement('li');
+                listItem.textContent = `${item.ingredient} - ${item.quantity}${item.unit} (유통기한: ${item.expiration})`;
 
-    items.forEach(item => {
-        var row = document.createElement('tr');
-        
-        row.innerHTML = `
-            <td>${item.ingredient}</td>
-            <td>${item.quantity}</td>
-            <td>${item.unit}</td>
-            <td>${item.expiration}</td>
-            <td><button class="edit-btn">수정</button></td>
-            <td><button class="delete-btn">삭제</button></td>
-        `;
-        
-        list.appendChild(row);
-
-        // 삭제 버튼 이벤트 리스너
-        row.querySelector('.delete-btn').addEventListener('click', function() {
-            list.removeChild(row);
-            saveFridgeList(); // 수정한 부분: 로컬 스토리지에 저장
-        });
-
-        // 수정 버튼 이벤트 리스너
-        row.querySelector('.edit-btn').addEventListener('click', function() {
-            // 입력 필드로 데이터 이동
-            document.getElementById('ingredient-name').value = item.ingredient;
-            document.getElementById('ingredient-quantity').value = item.quantity;
-            document.getElementById('ingredient-unit').value = item.unit;
-            document.getElementById('expiration-date').value = item.expiration;
-    
-            // 수정 모드 활성화
-            var index = Array.from(list.children).indexOf(row);
-            document.getElementById('fridge-form').setAttribute('data-editing-index', index);
-        });
-    });
+                list.appendChild(listItem);
+            });
+        }
+    }
 }
+
+document.addEventListener('DOMContentLoaded', loadFridgeList);
