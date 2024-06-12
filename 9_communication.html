@@ -31,6 +31,29 @@
             transform: translateY(-50%);
             cursor: pointer;
         }
+        .content {
+            margin-top: 20px; /* 이미지와 콘텐츠 사이에 간격을 둠 */
+        }
+        .dropdown {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .dropdown a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown a:hover {
+            background-color: #ddd;
+        }
+        .has-children:hover .dropdown {
+            display: block;
+        }
     </style>
     <title>소통</title>
 </head>
@@ -67,6 +90,7 @@
         </div>
     </div>
 </nav>
+
 <nav>
     <a href="4_main.html">Home</a>
     <a href="6_recipe.html">냉장고</a>
@@ -75,6 +99,7 @@
     <a href="9_communication.html">소통</a>
     <a href="10_qna.html">문의 사항</a>
 </nav>
+<img src="http://www.simplot.co.kr/img/m04_banner.jpg" alt="" class="hidden-xs hidden-sm">
 <div class="content">
     <table>
         <thead>

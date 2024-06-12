@@ -7,47 +7,42 @@ body {
 header {
     background-color: #ff6f61;
     color: white;
-    padding: 2px 0;
+    padding: 2px 30px;
     text-align: center;
     position: relative;
 }
 
-#search-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#search-bar-container {
-    position: relative;
-    display: flex;
-    align-items: center;
-}
-
-#logo {
-    width: 60px; /* 로고 크기 조정 */
-    position: absolute;
-    left: 5px; /* 로고를 검색 바 안쪽으로 이동 */
-    top: 50%;
-    transform: translateY(-50%); /* 로고를 검색 바의 세로 중앙에 맞춤 */
-    cursor: pointer;
-}
-
 #search-bar {
-    width: 820px; /* 검색 바 길이를 늘림 */
-    padding: 15px 60px 15px 60px; /* 로고 공간 확보를 위해 padding-left 조정 */
-    border-radius: 30px;
+    width: 300px;
+    padding: 10px 15px;
+    border-radius: 25px;
     border: 2px solid #8bc34a;
     background-color: #fff;
     color: #333;
-    font-size: 18px;
+    font-size: 16px;
     outline: none;
-    background-color: white; /* 검색창 배경색을 흰색으로 변경 */
 }
 
 #search-bar::placeholder {
     color: #ccc;
-    font-size: 16px; /* placeholder 글자 크기 조정 */
+    font-size: 16px;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+}
+
+nav .logo {
+    font-size: 24px;
+    color: rgba(255, 255, 255, 0.8) !important;
+    font-weight: 500;
+    text-decoration: none; /* 링크 밑줄 제거 */
+    margin-right: 20px; /* 로고와 검색창 사이 간격 */
+}
+
+nav .logo:hover {
+    color: #fff !important;
 }
 
 #search-icon {
@@ -67,7 +62,7 @@ header {
     color: black; /* 이름 폰트 색상 변경 */
     font-size: 18px; /* 이름 폰트 크기 증가 */
     vertical-align: middle;
-}
+}   
 
 .dropdown-icon {
     margin-left: 10px;
@@ -81,10 +76,21 @@ header {
     border: 1px solid #ccc;
 }
 
+.has-children:hover .dropdown {
+    display: block;
+}
+
+.has-children:hover .dropdown {
+    display: block;
+}
+
 nav {
-    background-color: #ff6f61;
+    background-color: #005555; /* 배경색 변경 */
     overflow: hidden;
     padding: 10px 0;
+    display: flex; /* 메뉴를 flexbox로 설정 */
+    justify-content: space-between; /* 좌우로 정렬 */
+    align-items: center; /* 세로 가운데 정렬 */
 }
 
 nav a {
@@ -93,56 +99,102 @@ nav a {
     text-decoration: none;
     float: left;
 }
-
 nav a:hover {
     background-color: #e65c50;
 }
 
-.container {
-    width: 80%;
-    margin: 0 auto;
-    padding: 20px;
-}
-
 .content {
     display: flex;
+    padding: 200px;
     flex-direction: column;
     align-items: center;
 }
 
-input[type=text], textarea {
+input[type=text] {
     width: 100%;
     padding: 12px;
     margin: 8px 0;
     display: inline-block;
-    border: 1px solid #ccc;
+    border: 1px solid #000000;
     border-radius: 4px;
     box-sizing: border-box;
 }
 
 textarea {
-    height: 200px;
-}
-
-.button-container {
-    display: flex;
-    justify-content: center;
-    padding: 20px;
-}
-
-button {
-    width: 100px;
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
+    width: 100%;
+    padding: 12px;
     margin: 8px 0;
-    border: none;
+    display: inline-block;
+    border: 1px solid #000000;
     border-radius: 4px;
-    cursor: pointer;
+    box-sizing: border-box;
 }
 
-button:hover {
-    background-color: #45a049;
+.search-bar-container {
+    position: relative;
+    width: 100%;
+}
+
+.comment-input-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+}
+
+#commentInput {
+    width: calc(100% - 120px);
+    padding: 10px 15px;
+    border-radius: 25px;
+    border: 2px solid #005555;
+    background-color: #fff;
+    color: #333;
+    font-size: 16px;
+    outline: none;
+}
+
+#commentButton {
+    background-color: #005555;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+#commentButton:hover {
+    background-color: #004444;
+}
+
+#commentSection {
+    width: 100%;
+    margin-top: 20px;
+}
+
+#commentList {
+    width: 100%;
+    margin-top: 20px;
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+}
+
+.comment {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+    color: #000000;
+}
+
+.comment h4 {
+    margin: 0;
+    font-size: 16px;
+    color: #000000;
+}
+
+.comment p {
+    margin: 5px 0 0;
+    font-size: 14px;
+    color: #000000;
 }
 
 a {

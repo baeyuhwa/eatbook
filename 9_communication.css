@@ -7,7 +7,7 @@ body {
 header {
     background-color: #ff6f61;
     color: white;
-    padding: 20px 0;
+    padding: 2px 0;
     text-align: center;
     position: relative;
 }
@@ -39,6 +39,7 @@ nav .logo:hover {
 }
 
 .search-bar-container {
+    padding-left: 10px;
     display: flex;
     align-items: center;
 }
@@ -76,9 +77,11 @@ nav .site-menu a:hover {
 
 .content {
     display: flex;
-    padding: 200px;
+    padding: 20px;
     flex-direction: column;
     align-items: center;
+    padding: 150px;
+    font-size: 16px;
 }
 
 input[type=text] {
@@ -95,10 +98,11 @@ table {
     width: 70%;
     border-collapse: collapse;
     margin: 1%;
+    color: #333;
 }
 
 th, td {
-    padding: 8px;
+    padding: 15px;
     text-align: left;
     border-bottom: 1px solid #ddd;
 }
@@ -109,11 +113,11 @@ th:last-child, td:last-child {
 
 th {
     background-color: #f9f9f9;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 td {
-    font-size: 14px;
+    font-size: 16px;
 }
 
 .create-button {
@@ -122,15 +126,15 @@ td {
     right: 20px;
     padding: 10px 20px;
     font-size: 16px;
-    background-color: #4CAF50;
+    background-color: #005555;
     color: white;
     border: none;
-    border-radius: 10px;
     cursor: pointer;
+    border-radius: 20px;
 }
 
 .create-button:hover {
-    background-color: #45a049;
+    background-color: #005555;
 }
 
 a {
@@ -154,6 +158,10 @@ a {
 h3 {
     color: #ff6f61;
     margin-bottom: 10px;
+}
+
+.has-children:hover .dropdown {
+    display: block;
 }
 
 .has-children:hover .dropdown {

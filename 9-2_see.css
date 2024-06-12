@@ -7,7 +7,7 @@ body {
 header {
     background-color: #ff6f61;
     color: white;
-    padding: 10px 0;
+    padding: 2px 30px;
     text-align: center;
     position: relative;
 }
@@ -74,6 +74,14 @@ nav .logo:hover {
     align-items: center;
     cursor: pointer;
     border: 1px solid #ccc;
+}
+
+.has-children:hover .dropdown {
+    display: block;
+}
+
+.has-children:hover .dropdown {
+    display: block;
 }
 
 nav {

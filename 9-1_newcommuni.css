@@ -7,7 +7,7 @@ body {
 header {
     background-color: #ff6f61;
     color: white;
-    padding: 2px 0;
+    padding: 2px 30px;
     text-align: center;
     position: relative;
 }
@@ -99,6 +99,13 @@ nav .logo {
     border: 1px solid #ccc;
 }
 
+.has-children:hover .dropdown {
+    display: block;
+}
+
+.has-children:hover .dropdown {
+    display: block;
+}
 
 nav a {
     color: white;
@@ -168,17 +175,17 @@ textarea {
 
 button {
     width: 100px;
-    background-color: #4CAF50;
+    background-color: #005555;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
-    border-radius: 4px;
+    border-radius: 20px;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #005555;
 }
 
 a {
