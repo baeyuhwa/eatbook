@@ -45,11 +45,11 @@ async function popularRecipe() {
                 [recipes[i], recipes[j]] = [recipes[j], recipes[i]];
             }
 
-            const randomRecipes = recipes.slice(0, 3);
+            const randomRecipes = recipes.slice(0, 5);
 
             randomRecipes.forEach(result => {
                 const recipeColumn = document.createElement('div');
-                recipeColumn.classList.add('col-lg-4', 'mb-4');
+                recipeColumn.classList.add('recipe-column');
 
                 const recipeCard = document.createElement('div');
                 recipeCard.classList.add('card', 'h-100');
@@ -83,6 +83,30 @@ async function popularRecipe() {
                 });
 
                 resultsContainer.appendChild(recipeColumn);
+            });
+
+            // Tiny Slider 초기화
+            const slider = tns({
+                container: '.recipe-slider',
+                items: 1,
+                slideBy: 'page',
+                nav: false,
+                controlsContainer: '#recipe-nav',
+                autoplay: true,
+                autoplayButtonOutput: false,
+                speed: 600,  // 전환 속도를 600ms로 설정
+                autoplayTimeout: 3000,  // 각 슬라이드가 3초 동안 표시됨
+                responsive: {
+                    640: {
+                        items: 2
+                    },
+                    700: {
+                        items: 3
+                    },
+                    900: {
+                        items: 3
+                    }
+                }
             });
         } else {
             resultsContainer.innerHTML = '인기 레시피를 가져오는 데 실패했습니다.';

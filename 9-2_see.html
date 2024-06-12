@@ -1,33 +1,81 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Untree.co">
+    <link rel="shortcut icon" href="favicon.png">
+    <meta name="description" content="" />
+    <meta name="keywords" content="bootstrap, bootstrap5" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="css/tiny-slider.css">
+    <link rel="stylesheet" href="css/aos.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="9-2_see.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .has-children:hover .dropdown {
+            display: block;
+        }
+        .search-bar-container {
+            position: relative;
+        }
+        #search-icon {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+    </style>
     <title>소통 상세</title>
     <link rel="stylesheet" href="9-2_see.css">
 </head>
 <body>
-<header>
-    <div id="search-container">
-        <div id="search-bar-container">
-            <a href="4_main.html">
-                <img id="logo" src="logo.png" alt="Logo">
-            </a>
-            <input id="search-bar" type="text" placeholder="레시피 검색...">
-            <img id="search-icon" src="search.png" alt="Search Icon" onclick="performSearch()"> <!-- 돋보기 아이콘 클릭 이벤트 추가 -->
+    <nav class="site-nav">
+        <div class="container">
+            <div class="menu-bg-wrap">
+                <div class="site-navigation" style="display: flex; justify-content: space-between; align-items: center;">
+                    <div class="nav-left">
+                        <a href="4_main.html" class="logo m-0 float-start">EatBooks</a>
+                        <div class="search-bar-container">
+                            <input id="search-bar" type="text" placeholder="레시피 검색..." onkeypress="if(event.key === 'Enter') performSearch(this.value)">
+                            <img id="search-icon" src="search.png" alt="Search Icon" onclick="performSearch()"> <!-- 돋보기 아이콘 클릭 이벤트 추가 -->
+                        </div>
+                    </div>
+                    <ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu float-end">
+                        <li class="active"><a href="4_main.html">Home</a></li>
+                        <li><a href="6_recipe.html">나만의 냉장고</a></li>
+                        <li><a href="8_myrecipes.html">내 레시피</a></li>
+                        <li><a href="7_newrecipe.html">레시피 만들기</a></li>
+                        <li class="has-children">
+                            <a href="#" class="no-link">게시판</a>
+                            <ul class="dropdown">
+                                <li><a href="9_communication.html">소통</a></li>
+                                <li><a href="10_qna.html">문의사항</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="1_login.html">로그인</a></li>
+                    </ul>
+                    <a href="#" class="burger light me-auto float-end mt-1 site-menu-toggle js-menu-toggle d-inline-block d-lg-none" data-toggle="collapse" data-target="#main-navbar">
+                        <span></span>
+                    </a>
+                </div>
+            </div>
         </div>
-    </div>
-    <div id="user-name-container">
-        <div id="user-name"></div>
-    </div>
-</header>
-<nav>
-    <a href="6_recipe.html">냉장고</a>
-    <a href="8_myrecipes.html">내 레시피</a>
-    <a href="7_newrecipe.html">레시피 만들기</a>
-    <a href="9_communication.html">소통</a>
-    <a href="10_qna.html">문의 사항</a>
-</nav>
-<div class="container">
+    </nav>
+    <nav>
+        <a href="4_main.html">Home</a>
+        <a href="6_recipe.html">냉장고</a>
+        <a href="8_myrecipes.html">내 레시피</a>
+        <a href="7_newrecipe.html">레시피 만들기</a>
+        <a href="9_communication.html">소통</a>
+        <a href="10_qna.html">문의 사항</a>
+    </nav>
     <div class="content">
         <h1 id="postTitle">제목</h1>
         <p id="postDate">작성일</p>
@@ -35,13 +83,12 @@
         <div id="commentSection">
             <h3>댓글</h3>
             <textarea id="commentInput" placeholder="댓글을 입력하세요..."></textarea>
-            <button id="commentButton">댓글 남기기</button>
+            <button id="commentButton">보내기</button>
             <div id="commentList">
                 <!-- 여기에 댓글이 추가됩니다 -->
             </div>
         </div>
     </div>
-</div>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const kakaoNickname = localStorage.getItem('kakaoNickname');

@@ -37,7 +37,7 @@ async function searchRecipe(foodName) {
                     // 로컬 스토리지에 레시피 정보 저장
                     localStorage.setItem('selectedRecipe', JSON.stringify(result));
                     // 새로운 페이지로 이동
-                    window.open('6_recipe_detail.html', '_blank');
+                    window.location.href = '6_recipe_detail.html';
                 });
                 resultsContainer.appendChild(recipeColumn);
 

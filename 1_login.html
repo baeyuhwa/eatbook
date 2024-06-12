@@ -2,62 +2,38 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>EBS 요리 레시피 북</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-color: #fff;
-            position: relative;
-        }
-        .header {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            padding: 20px;
-            background-color: #eee;
-        }
-        .header-logo img {
-            max-height: 50px;
-            margin-right: 10px;
-        }
-        .header-title {
-            font-size: 24px;
-        }
-        .main-content {
-            display: flex;
-            width: 60%;
-            justify-content: space-around;
-            padding: 20px;
-            align-items: start;
-            height: 60vh;
-        }
-        .popular-recipes {
-            flex: 1;
-            padding: 20px;
-            margin-right: 10px;
-        }
-        .right-logo {
-            position: absolute;
-            right: 200px;
-            top: 50%;
-            transform: translateY(-50%);
-            cursor: pointer;
-        }
-        .login-button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #ffeb00;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-        }
-    </style>
+    <title>로그인</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="1_login.css">
+</head>
+<body>
+    <img class="wave" src="https://raw.githubusercontent.com/sefyudem/Responsive-Login-Form/master/img/wave.png">
+    <div class="container">
+        <div class="img">
+            <img src="https://raw.githubusercontent.com/sefyudem/Responsive-Login-Form/master/img/bg.svg">
+        </div>
+        <div class="login-content">
+            <form>
+                <img src="https://raw.githubusercontent.com/sefyudem/Responsive-Login-Form/master/img/avatar.svg">
+                <h2 class="title">Welcome</h2>
+                <div class="input-div one">
+                    <div class="i">
+                        <i class="fas fa-user"></i>
+                    </div>
+                </div>
+                <div class="input-div pass">
+                    <div class="i">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                </div>
+                <input type="button" class="btn" value="Login with Kakao" onclick="loginWithKakao()">
+            </form>
+        </div>
+    </div>
     <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+    <script src="1_login.js"></script>
     <script>
         // SDK 초기화
         Kakao.init('8382196ca251c7706e3b7e1df97883e7'); // 올바른 JavaScript 키로 변경
@@ -88,19 +64,5 @@
             });
         }
     </script>
-</head>
-<body>
-    <img src="LOGO.png" alt="로고 이미지" class="center" style="width: 100px">
-    <img src="KAKAO LOGO.png" class="right-logo" style="width: 200px" onclick="loginWithKakao()">
-    <div class="header">
-        <div class="header-logo">
-            <span class="header-title">EBS 요리 레시피 북</span>
-        </div>
-    </div>
-    <div class="main-content">
-        <div class="popular-recipes">
-            <h2>인기 레시피 음식</h2>
-        </div>
-    </div>
 </body>
 </html>
