@@ -35,7 +35,6 @@ async function popularRecipe() {
                 recipes.push(recipe);
             }
         });
-        console.log('Recipes:', recipes);
 
         const resultsContainer = document.getElementById('recipe-results');
         resultsContainer.innerHTML = '';
@@ -50,18 +49,39 @@ async function popularRecipe() {
 
             randomRecipes.forEach(result => {
                 const recipeColumn = document.createElement('div');
-                recipeColumn.classList.add('recipe-column');
+                recipeColumn.classList.add('col-lg-4', 'mb-4');
 
-                const recipeTitle = document.createElement('h2');
+                const recipeCard = document.createElement('div');
+                recipeCard.classList.add('card', 'h-100');
+
+                const recipeImage = document.createElement('img');
+                recipeImage.src = result.imgUrl;
+                recipeImage.alt = result.title;
+                recipeImage.classList.add('card-img-top');
+
+                const recipeCardBody = document.createElement('div');
+                recipeCardBody.classList.add('card-body');
+
+                const recipeTitle = document.createElement('h5');
                 recipeTitle.textContent = result.title;
-                recipeTitle.classList.add('recipe-title');
+                recipeTitle.classList.add('card-title');
 
-                recipeColumn.appendChild(recipeTitle);
+                const recipeAuthor = document.createElement('p');
+                recipeAuthor.textContent = `Author: ${result.author}`;
+                recipeAuthor.classList.add('card-text');
+
+                recipeCardBody.appendChild(recipeTitle);
+                recipeCardBody.appendChild(recipeAuthor);
+
+                recipeCard.appendChild(recipeImage);
+                recipeCard.appendChild(recipeCardBody);
+
+                recipeColumn.appendChild(recipeCard);
 
                 recipeColumn.addEventListener('click', () => {
                     searchRecipe(`http://www.10000recipe.com${result.url}`);
                 });
-                
+
                 resultsContainer.appendChild(recipeColumn);
             });
         } else {
@@ -114,9 +134,7 @@ async function searchRecipe(url) {
     const results = await foodInfo(url);
     if (results.length > 0) {
         const result = results[0];
-        // 로컬 스토리지에 레시피 정보 저장
         localStorage.setItem('selectedRecipe', JSON.stringify(result));
-        // 새로운 페이지로 이동
         window.open('6_recipe_detail.html', '_blank');
     } else {
         alert('레시피 정보를 가져오는 데 실패했습니다.');
