@@ -29,7 +29,7 @@ function sendMessage() {
     addMessage(userInput, 'user');
     document.getElementById('user-input').value = '';
 
-    // Call KoGPT API
+    // Call KoGPT API   
     callKoGPT(userInput);
 }
 
@@ -42,7 +42,7 @@ function addMessage(text, sender) {
 }
 
 async function callKoGPT(prompt) {
-    const REST_API_KEY = '1623e8b7d8927ae0b2de2c12a304c516';
+    const REST_API_KEY = '8382196ca251c7706e3b7e1df97883e7';
 
     prompt = `한 단어로 메뉴를 추천합니다.
     중식 메뉴를 추천해줘=짜장면
@@ -103,7 +103,7 @@ function KakaoTalkChat(message) {
                 object_type: 'text',
                 text: message,
                 link: {
-                    web_url: 'http://localhost:8080',
+                    web_url: 'http://www.localhost:8080',
                     mobile_web_url: 'http://yourwebsite.com'
                 }
             }
@@ -117,3 +117,13 @@ function KakaoTalkChat(message) {
         }
     });
 }
+// Make sure this script is loaded after the DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize Kakao Login if needed
+    if (typeof Kakao !== 'undefined') {
+        Kakao.init('8382196ca251c7706e3b7e1df97883e7');
+    }
+    
+    // Other chatbot initialization code here
+});
+
