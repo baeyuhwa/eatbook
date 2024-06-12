@@ -1,146 +1,89 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #FFF;
     color: #333;
 }
 
 header {
     background-color: #ff6f61;
-    color: white;   
+    color: white;
     padding: 2px 0;
     text-align: center;
     position: relative;
 }
 
-#search-container {
+nav {
+    background-color: #005555; /* 배경색 변경 */
+    overflow: hidden;
+    padding: 10px 0;
+    display: flex; /* 메뉴를 flexbox로 설정 */
+    justify-content: space-between; /* 좌우로 정렬 */
+    align-items: center; /* 세로 가운데 정렬 */
+}
+
+.nav-left {
     display: flex;
-    justify-content: center;
     align-items: center;
 }
 
-#search-bar-container {
-    position: relative;
-    display: flex;
-    align-items: center;
+nav .logo {
+    font-size: 24px;
+    color: rgba(255, 255, 255, 0.8) !important;
+    font-weight: 500;
+    text-decoration: none; /* 링크 밑줄 제거 */
+    margin-right: 20px; /* 로고와 검색창 사이 간격 */
 }
 
-#logo {
-    width: 60px; /* 로고 크기 조정 */
-    position: absolute;
-    left: 5px; /* 로고를 검색 바 안쪽으로 이동 */
-    top: 50%;
-    transform: translateY(-50%); /* 로고를 검색 바의 세로 중앙에 맞춤 */
-    cursor: pointer;
+nav .logo:hover {
+    color: #fff !important;
+}
+
+.search-bar-container {
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
 }
 
 #search-bar {
-    width: 825px; /* 검색 바 길이를 늘림 */
-    padding: 15px 60px 15px 60px; /* 로고 공간 확보를 위해 padding-left 조정 */
-    border-radius: 30px;
-    border: 2px solid #8bc34a;
+    width: 300px;
+    padding: 10px 15px;
+    border-radius: 25px;
     background-color: #fff;
     color: #333;
-    font-size: 18px;
+    font-size: 16px;
     outline: none;
-    background-color: white; /* 검색창 배경색을 흰색으로 변경 */
 }
+
 #search-bar::placeholder {
     color: #ccc;
-    font-size: 16px; /* placeholder 글자 크기 조정 */
+    font-size: 16px;
 }
 
-#search-icon {
-    width: 24px; /* 돋보기 이미지 크기 */
-    height: 24px; /* 돋보기 이미지 크기 */
-    position: absolute;
-    right: 15px; /* 검색 바 오른쪽 끝에 위치 */
-    top: 50%;
-    transform: translateY(-50%); /* 돋보기 이미지를 검색 바의 세로 중앙에 맞춤 */
-    cursor: pointer;
+nav .site-menu {
+    display: flex; /* 메뉴 항목을 가로로 배치 */
+    gap: 15px; /* 메뉴 항목 사이 간격 */
 }
 
-#user-name-container {
-    position: absolute;
-    right: 20px;
-    top: 10px;
-    color: black; /* 이름 폰트 색상 변경 */
-    font-size: 18px; /* 이름 폰트 크기 증가 */
-    vertical-align: middle;
-}   
-
-.dropdown-icon {
-    margin-left: 10px;
-    width: 20px;
-    height: 20px;
-    background-color: #f3f3f3;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    border: 1px solid #ccc;
-}
-nav {
-    background-color: #ff6f61;
-    overflow: hidden;
-    padding: 10px 0;
-}
-
-nav a {
+nav .site-menu a {
     color: white;
     padding: 10px 20px;
     text-decoration: none;
-    float: left;
 }
-nav a:hover {
+
+nav .site-menu a:hover {
     background-color: #e65c50;
 }
 
 .content {
     display: flex;
+    padding: 20px;
     flex-direction: column;
     align-items: center;
+    padding: 150px;
+    font-size: 16px;
 }
 
-.left-panel {
-    flex: 2;
-}
-
-.right-panel {
-    flex: 1;
-    margin-left: 20px;
-}
-
-.container {
-    display: flex;
-    justify-content: center;
-    padding: 20px;
-}
-
-.left, .right {
-    margin: 10px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.left {
-    flex: 1;
-}
-
-.right {
-    flex: 2;
-}
-h3 {
-    color: #ff6f61;
-    margin-bottom: 10px;
-}   
-
-.preview {
-    max-width: 200px;
-    max-height: 200px;
-}
-
-input[type=text], select, textarea {
+input[type=text] {
     width: 100%;
     padding: 12px;
     margin: 8px 0;
@@ -150,32 +93,117 @@ input[type=text], select, textarea {
     box-sizing: border-box;
 }
 
-input[type=file] {
-    margin: 8px 0;
+table {
+    width: 70%;
+    border-collapse: collapse;
+    margin: 1%;
+    color: #333;
 }
 
-button {
-    width: 100px;
+th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th:last-child, td:last-child {
+    text-align: center;
+}
+
+th {
+    background-color: #f9f9f9;
+    font-size: 16px;
+}
+
+td {
+    font-size: 16px;
+}
+
+.create-button {
+    position: auto;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
     background-color: #4CAF50;
     color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
     border: none;
-    border-radius: 4px;
+    border-radius: 10px;
     cursor: pointer;
 }
 
-button:hover {
+.create-button:hover {
     background-color: #45a049;
 }
 
-.button-container {
-    display: flex;
-    justify-content: center;
-    padding: 20px;
+a {
+    text-decoration: none;
+}
+
+.delete-button {
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 4px 8px;
+}
+
+.delete-button:hover {
+    background-color: darkred;
+}
+
+h3 {
+    color: #ff6f61;
+    margin-bottom: 10px;
+}
+
+.has-children:hover .dropdown {
+    display: block;
+}
+
+.has-children:hover .dropdown {
+    display: block;
+}
+.search-bar-container {
+    position: relative;
+}
+#search-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
 }
 
 #photo-preview img {
-    max-width: 100px; /* 최대 너비 */
-    max-height: 100px; /* 최대 높이 */
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+label[for="photo"], label[for="category"], label[for="process"] {
+    padding-bottom: 10px;
+}
+
+.recipe-description {
+    color: #333;
+    font-size: 18px;
+}
+
+.recipe-description p {
+    padding-top: 20px;
+}
+
+#photo-container img {
+    max-width: 100%;
+}
+
+.recipe-info {
+    padding-right: 50px;
+}
+
+.recipe-description {
+    padding-left: 50px;
 }

@@ -33,7 +33,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 // 나머지 레시피 정보 표시
                 document.getElementById('recipe-ingredient').textContent = recipe.ingredient;
                 document.getElementById('recipe-category').textContent = recipe.category;
-                document.getElementById('recipe-process').textContent = recipe.process;
+                const process = recipe.process.replace(/\n/g, '<br>');
+                document.getElementById('recipe-process').innerHTML = process;
                 document.getElementById('recipe-sumup').textContent = recipe.sumup;
             } else {
                 alert('레시피 정보를 불러올 수 없습니다.');

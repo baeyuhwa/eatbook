@@ -1,64 +1,150 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>레시피 등록</title>
-    <link rel="stylesheet" href="7_newrecipe.css">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="author" content="Untree.co">
+	<link rel="shortcut icon" href="favicon.png">
+
+	<meta name="description" content="" />
+	<meta name="keywords" content="bootstrap, bootstrap5" />
+	
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="fonts/icomoon/style.css">
+	<link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+	<link rel="stylesheet" href="css/tiny-slider.css">
+	<link rel="stylesheet" href="css/aos.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="7_newrecipe.css">
+
+	<title>ebs</title>
 </head>
+
 <body>
-    <header>
-        <div id="search-container">
-            <div id="search-bar-container">
-                <a href="4_main.html">
-                    <img id="logo" src="logo.png" alt="Logo">
-                </a>
-                <input id="search-bar" type="text" placeholder="레시피 검색...">
-                <img id="search-icon" src="search.png" alt="Search Icon" onclick="performSearch()"> <!-- 돋보기 아이콘 클릭 이벤트 추가 -->
-            </div>
-        </div>
-        <div id="user-name-container">
-            <div id="user-name"></div>
-        </div>
-    </header>
-    <nav>
-        <a href="6_recipe.html">냉장고</a>
-        <a href="8_myrecipes.html">내 레시피</a>
-        <a href="7_newrecipe.html">레시피 만들기</a>
-        <a href="9_communication.html">소통</a>
-        <a href="10_qna.html">문의 사항</a>
-    </nav>
-    <div class="container">
-        <div class="left">
-            <label for="photo">레시피 사진: </label>
-            <input type="file" id="photo" name="photo" accept="image/*" onchange="previewPhoto()">
-            <div id="photo-preview"></div>
-        </div>
-        <form id="newrecipe" onsubmit="saveRecipe(event)">
-            <div class="right">
-                <label for="recipe">이름: </label>
-                <input type="text" id="recipe" name="recipe" required>
-                <label for="ingredient">재료: </label>
-                <input type="text" id="ingredient" name="ingredient" required>
-                <label for="category">카테고리: </label>
-                <select id="category" name="category" required>
-                    <option value="korean">한식</option>
-                    <option value="chinese">중식</option>
-                    <option value="japanese">일식</option>
-                    <option value="western">양식</option>
-                    <option value="etc">기타</option>
-                </select>
-                <label for="process">조리 과정: </label>
-                <textarea id="process" name="process" required></textarea>
-                <label for="sumup">레시피 요약: </label>
-                <input type="text" id="sumup" name="sumup" required>
-            </div>
-            <div class="button-container">
-                <button type="submit">등록</button>
-            </div>
-        </form>
+	<div class="site-mobile-menu site-navbar-target">
+		<div class="site-mobile-menu-header">
+			<div class="site-mobile-menu-close">
+				<span class="icofont-close js-menu-toggle"></span>
+			</div>
+		</div>
+		<div class="site-mobile-menu-body"></div>
+	</div>
+
+	<div class="site-nav">
+		<div class="container">
+			<div class="menu-bg-wrap">
+				<div class="site-navigation" style="display: flex; justify-content: space-between; align-items: center;">
+					<div class="nav-left">
+						<a href="4_main.html" class="logo m-0 float-start">EatBooks</a>
+						<div class="search-bar-container">
+							<input id="search-bar" type="text" placeholder="레시피 검색..." onkeypress="if(event.key === 'Enter') performSearch(this.value)">
+							<img id="search-icon" src="search.png" alt="Search Icon" onclick="performSearch()"> 
+						</div>
+					</div>
+					<ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu float-end">
+						<li class="active"><a href="index.html">Home</a></li>
+						<li><a href="6_recipe.html">나만의 냉장고</a></li>
+						<li><a href="8_myrecipes.html">내 레시피</a></li>
+						<li><a href="7_newrecipe.html">레시피 만들기</a></li>
+						<li class="has-children">
+							<a href="#" class="no-link">게시판</a>
+							<ul class="dropdown">
+								<li><a href="9_communication.html">소통</a></li>
+								<li><a href="10_qna.html">문의사항</a></li>
+							</ul>
+						</li>
+						<li><a href="1_login.html">로그인</a></li>
+					</ul>
+					<a href="#" class="burger light me-auto float-end mt-1 site-menu-toggle js-menu-toggle d-inline-block d-lg-none" data-toggle="collapse" data-target="#main-navbar">
+						<span></span>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="content">
+		<div class="container-xxl py-6">
+			<div class="container">
+				<form id="newrecipe" onsubmit="saveRecipe(event)">	
+					<div class="row g-5">
+						<div class="col-lg-3 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 450px;">
+							<label for="photo">레시피 사진: </label>
+							<input type="file" id="photo" name="photo" accept="image/*" onchange="previewPhoto()">
+							<div id="photo-preview"></div>
+						</div>
+						<div class="col-lg-9 wow fadeInUp" data-wow-delay="0.5s">
+							<form>
+								<div class="row g-5">
+									<div class="col-12">
+										<div class="recipe-form">
+											<label for="recipe">레시피 이름: </label>
+											<input type="text" class="form-control border-0 bg-light" id="recipe" placeholder="">
+										</div>
+									</div>
+									<div class="col-12">
+										<div class="recipe-form">
+											<label for="ingredient">재료: </label>
+											<input type="text" class="form-control border-0 bg-light" id="ingredient" placeholder="">
+										</div>
+									</div>
+									<div class="col-md-12">
+										<div class="recipe-form">
+											<label for="category">카테고리: </label>
+											<select id="category" name="category" class="form-control border-0 bg-light" required>
+												<option value="한식">한식</option>
+												<option value="중식">중식</option>
+												<option value="일식">일식</option>
+												<option value="양식">양식</option>
+												<option value="기타">기타</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-md-12">
+										<div class="recipe-form">
+											<label for="sumup">레시피 요약: </label>
+											<input type="text" id="sumup" class="form-control border-0 bg-light" name="sumup">
+										</div>
+									</div>
+									<div class="col-md-12">
+										<div class="recipe-form">
+											<label for="process">조리 과정: </label>
+											<textarea class="form-control border-0 bg-light" placeholder="" id="process" style="height: 150px"></textarea>
+										</div>
+									</div>
+									<div class="col-12">
+										<div class="button-container">
+											<button class="btn btn-primary py-3 px-5" type="submit">레시피 등록하기</button>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	
+	</div>
+
+    <!-- Preloader -->
+    <div id="overlayer"></div>
+    <div class="loader">
+    	<div class="spinner-border" role="status">
+    		<span class="visually-hidden">Loading...</span>
+    	</div>
     </div>
-    <script src="5_recipe.js"></script>
-    <script src="7_newrecipe.js"></script>
-    <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
-</body>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/tiny-slider.js"></script>
+    <script src="js/aos.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/counter.js"></script>
+    <script src="js/custom.js"></script>
+	<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+	<script src="5_recipe.js"></script>
+	<script src="7_newrecipe.js"></script>
+    </body>
 </html>

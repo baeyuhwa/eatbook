@@ -47,6 +47,7 @@ function saveRecipe(event) {
             document.getElementById('newrecipe').reset();
             document.getElementById('photo-preview').innerHTML='';
             alert("레시피가 등록되었습니다.");
+            window.location.href = "8_myrecipes.html";
         };
 
         request.onerror = function() {
@@ -75,6 +76,7 @@ function saveRecipe(event) {
             document.getElementById('newrecipe').reset();
             document.getElementById('photo-preview').innerHTML='';
             alert("레시피가 등록되었습니다.");
+            window.location.href = "8_myrecipes.html";
         };
 
         request.onerror = function() {
