@@ -12,6 +12,34 @@ header {
     position: relative;
 }
 
+nav {
+    background-color: #005555; /* 배경색 변경 */
+    overflow: hidden;
+    padding: 10px 0;
+    display: flex; /* 메뉴를 flexbox로 설정 */
+    justify-content: space-between; /* 좌우로 정렬 */
+    align-items: center; /* 세로 가운데 정렬 */
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+}
+
+nav .logo {
+    font-size: 24px;
+    color: rgba(255, 255, 255, 0.8) !important;
+    font-weight: 500;
+    text-decoration: none; /* 링크 밑줄 제거 */
+    margin-right: 20px; /* 로고와 검색창 사이 간격 */
+}
+
+.search-bar-container {
+    display: flex;
+    align-items: center;
+}
+
+
 #search-container {
     display: flex;
     justify-content: center;
@@ -24,25 +52,15 @@ header {
     align-items: center;
 }
 
-#logo {
-    width: 60px; /* 로고 크기 조정 */
-    position: absolute;
-    left: 5px; /* 로고를 검색 바 안쪽으로 이동 */
-    top: 50%;
-    transform: translateY(-50%); /* 로고를 검색 바의 세로 중앙에 맞춤 */
-    cursor: pointer;
-}
-
 #search-bar {
-    width: 820px; /* 검색 바 길이를 늘림 */
-    padding: 15px 60px 15px 60px; /* 로고 공간 확보를 위해 padding-left 조정 */
-    border-radius: 30px;
+    width: 300px;
+    padding: 10px 15px;
+    border-radius: 25px;
     border: 2px solid #8bc34a;
     background-color: #fff;
     color: #333;
-    font-size: 18px;
+    font-size: 16px;
     outline: none;
-    background-color: white; /* 검색창 배경색을 흰색으로 변경 */
 }
 
 #search-bar::placeholder {
@@ -81,11 +99,6 @@ header {
     border: 1px solid #ccc;
 }
 
-nav {
-    background-color: #ff6f61;
-    overflow: hidden;
-    padding: 10px 0;
-}
 
 nav a {
     color: white;
@@ -93,14 +106,23 @@ nav a {
     text-decoration: none;
     float: left;
 }
+
 nav a:hover {
     background-color: #e65c50;
 }
 
 .content {
     display: flex;
-    padding: 20px;
+    flex-direction: column; /* 내용을 수직으로 정렬하기 위해 column으로 설정 */
+    align-items: center; /* 가운데 정렬 */
+    padding: 200px; /* 위 아래 여백 추가 */
 }
+
+form {
+    width: 100%; /* 폼 너비를 최대로 설정 */
+    max-width: 600px; /* 폼 최대 너비 지정 */
+}
+
 .left-panel {
     flex: 2;
 }
@@ -110,11 +132,7 @@ nav a:hover {
     margin-left: 20px;
 }
 
-.container {
-    width: 100%;
-    margin: 0 auto;
-    padding: 20px;
-}
+
 
 input[type="text"] {
     width: 100%;
