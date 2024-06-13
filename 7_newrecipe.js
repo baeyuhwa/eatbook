@@ -152,6 +152,9 @@ function addIngredientLine() {
         <button type="button" class="add-btn btn-danger ms-3" onclick="removeIngredientLine(this)">-</button>
     `;
     container.appendChild(newInputDiv);
+
+    const newInput = newInputDiv.querySelector('input[name="ingredient"]');
+    newInput.focus();
 }
 
 function removeIngredientLine(button) {
@@ -171,6 +174,9 @@ function addProcessLine() {
         <button type="button" class="add-btn btn-danger ms-3" onclick="removeProcessLine(this)">-</button>
     `;
     container.appendChild(newInputDiv);
+
+    const newInput = newInputDiv.querySelector('input[name="process"]');
+    newInput.focus();
 }
 
 function removeProcessLine(button) {
