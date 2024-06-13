@@ -11,11 +11,24 @@
         <div id="chat-window">
             <div id="messages"></div>
         </div>
-        <input type="text" id="user-input" placeholder="Type your message here..." />
-        <button id="send-btn">Send</button>
-        <button id="login-btn">Login with Kakao</button>
+        <div class="input-container">
+            <input type="text" id="user-input" placeholder="Type your message here..." />
+            <button id="send-btn" style="display: none;">Send</button>
+            <button id="login-btn">Login with Kakao</button>
+        </div>
     </div>
+    
+    
     <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
     <script src="chatbot.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const kakaoNickname = localStorage.getItem('kakaoNickname');
+            if (kakaoNickname) {
+                document.getElementById('send-btn').style.display = 'block';
+                document.getElementById('login-btn').style.display = 'none';
+            }
+        });
+    </script>
 </body>
 </html>

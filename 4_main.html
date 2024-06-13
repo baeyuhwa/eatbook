@@ -1,28 +1,28 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="author" content="Untree.co">
-	<link rel="shortcut icon" href="favicon.png">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Untree.co">
+    <link rel="shortcut icon" href="favicon.png">
 
-	<meta name="description" content="" />
-	<meta name="keywords" content="bootstrap, bootstrap5" />
-	
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="description" content="" />
+    <meta name="keywords" content="bootstrap, bootstrap5" />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 
-	<link rel="stylesheet" href="fonts/icomoon/style.css">
-	<link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
 
-	<link rel="stylesheet" href="css/tiny-slider.css">
-	<link rel="stylesheet" href="css/aos.css">
-	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="chatbot.css">
+    <link rel="stylesheet" href="css/tiny-slider.css">
+    <link rel="stylesheet" href="css/aos.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="chatbot.css">
 
-	<title>ebs</title>
+    <title>ebs</title>
 </head>
 <body>
     <nav class="site-nav">
@@ -43,8 +43,8 @@
                         </li>
                         <li id="login-menu"><a href="1_login.html">로그인</a></li>
                         <div id="user-name-menu" style="display: none; float: right; padding-left: 10px;">
-							<a href="#" id="user-name" class="menu-link"></a>
-						</div>	
+                            <a href="#" id="user-name" class="menu-link"></a>
+                        </div>    
                     </ul>
                     <a href="#" class="burger light me-auto float-end mt-1 site-menu-toggle js-menu-toggle d-inline-block d-lg-none" data-toggle="collapse" data-target="#main-navbar">
                         <span></span>
@@ -107,10 +107,14 @@
             <div class="row justify-content-between mb-5">
                 <div class="col-lg-7 mb-5 mb-lg-0 order-lg-2">
                     <div class="chatbot-container" style="height: 500px; width: 100%;">
-                        <div id="chat-window" style="height: 80%;"></div>
-                        <input type="text" id="user-input" placeholder="Type your message here..." style="width: 80%;" />
-                        <button id="send-btn" style="display: none;">Send</button>
-                        <button id="login-btn">Login with Kakao</button>
+                        <div id="chat-window">
+                            <div id="messages"></div>
+                        </div>
+                        <div class="input-container">
+                            <input type="text" id="user-input" placeholder="Type your message here..." style="width: 80%;" />
+                            <button id="send-btn" style="display: none;">Send</button>
+                            <button id="login-btn">Login with Kakao</button>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-4">
@@ -128,8 +132,8 @@
                             <span class="icon-person"></span>
                         </span>
                         <div class="feature-text">
-                            <h3 class="heading">당신의 레시피를 물어보세요</h3>
-                            <p class="text-black-50">당신의 창의적인 레시피를 쳇봇에게!!</p>   
+                            <h3 class="heading">챗봇이 답할 때 살짝 멍청합니다...</h3>
+                            <p class="text-black-50">아직 개발 중이라 살짝 미흡한 점 죄송합니다.</p>   
                         </div>
                     </div>
                     <div class="d-flex feature-h">
@@ -145,6 +149,7 @@
             </div>
         </div>
     </div>
+    
 
     <div class="section sec-testimonials">
         <div class="container">
@@ -243,7 +248,7 @@
                 <div class="col-lg-4">
                     <div class="widget">
                         <h3>Contact</h3>
-                        <address>한경국립대학교 제1공학관 303호</address>
+                        <address>한경국립대학교 공학1관 303호</address>
                         <ul class="list-unstyled links">
                             <li><a href="tel://031-670-5114">+82 31-670-5114</a></li>
                             <li><a href="tel://010-9035-0454">+82 10-9035-0454</a></li>
@@ -281,12 +286,9 @@
                             <li><a href="#">Contact us</a></li>
                         </ul>
                         <ul class="list-unstyled social">
-                            <li><a href="#"><span class="icon-instagram"></span></a></li>
-                            <li><a href="#"><span class="icon-twitter"></span></a></li>
-                            <li><a href="#"><span class="icon-facebook"></span></a></li>
-                            <li><a href="#"><span class="icon-linkedin"></span></a></li>
-                            <li><a href="#"><span class="icon-pinterest"></span></a></li>
-                            <li><a href="#"><span class="icon-dribbble"></span></a></li>
+                            <li><a href="https://www.instagram.com/with_hknu/"><span class="icon-instagram"></span></a></li>
+                            <li><a href="https://x.com/withhknu"><span class="icon-twitter"></span></a></li>
+                            <li><a href="https://www.facebook.com/HankyungNationalUniv/"><span class="icon-facebook"></span></a></li>
                         </ul>
                     </div>
                 </div>
@@ -294,7 +296,7 @@
 
             <div class="row mt-5">
                 <div class="col-12 text-center">
-                    <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script>. All Rights Reserved. &mdash; Designed with love by <a href="https://untree.co">Untree.co</a></p>
+                    <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script>. All Rights Reserved. &mdash; Designed with love by <a href="#">Untree.co</a></p>
                 </div>
             </div>
         </div>
@@ -317,14 +319,8 @@
     <script src="js/custom.js"></script>
     <script src="chatbot.js"></script>
     <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
-    <script>
-        function performSearch(event) {
-            event.preventDefault(); // 폼 제출 방지
-            const searchValue = document.getElementById('search-bar').value;
-            localStorage.setItem('searchQuery', searchValue);
-            window.location.href = '5_recipe_result.html';
-        }
-    </script>
+    <script src="#script.js"></script>
+    <!-- 추가된 부분 시작 -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const kakaoNickname = localStorage.getItem('kakaoNickname');
@@ -334,7 +330,7 @@
                 userNameMenu.style.display = 'block';
                 const userNameElement = document.getElementById('user-name');
                 userNameElement.textContent = kakaoNickname;
-    
+
                 // 로그인 메뉴와 동일한 스타일 적용
                 userNameElement.style.color = '#fff';
                 userNameElement.style.fontFamily = 'Work Sans, sans-serif';
@@ -343,7 +339,6 @@
             }
         });
     </script>
-    
-    
+    <!-- 추가된 부분 끝 -->
 </body>
 </html>

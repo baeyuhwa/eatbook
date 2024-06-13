@@ -1,28 +1,35 @@
 document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('send-btn').addEventListener('click', sendMessage);
-    document.getElementById('login-btn').addEventListener('click', loginWithKakao);
+    console.log("DOMContentLoaded event fired"); // 추가된 디버깅 코드
+    const sendBtn = document.getElementById('send-btn');
+    const loginBtn = document.getElementById('login-btn');
+
+    if (sendBtn) {
+        sendBtn.addEventListener('click', sendMessage);
+    } else {
+        console.log("Send button not found"); // 추가된 디버깅 코드
+    }
+
+    if (loginBtn) {
+        loginBtn.addEventListener('click', redirectToLogin);
+    } else {
+        console.log("Login button not found"); // 추가된 디버깅 코드
+    }
 
     Kakao.init('8382196ca251c7706e3b7e1df97883e7'); // 여기에 카카오 앱 키를 입력하세요
+
+    const kakaoNickname = localStorage.getItem('kakaoNickname');
+    if (kakaoNickname) {
+        sendBtn.style.display = 'block';
+        loginBtn.style.display = 'none';
+    }
 });
 
-function loginWithKakao() {
-    Kakao.Auth.login({
-        success: function(authObj) {
-            console.log(authObj);
-            addMessage('로그인이 완료되었습니다.', 'bot');
-            addMessage('메뉴가 고민된다면 추천 받아보세요.', 'bot');
-            addMessage('예시: 점심 메뉴를 추천해줘', 'bot');
-            document.getElementById('send-btn').style.display = 'block';
-            document.getElementById('login-btn').style.display = 'none';
-        },
-        fail: function(err) {
-            console.log(err);
-            addMessage('로그인 실패', 'bot');
-        }
-    });
+function redirectToLogin() {
+    window.location.href = '1_login.html';
 }
 
 function sendMessage() {
+    console.log("Send button clicked"); // 추가된 디버깅 코드
     const userInput = document.getElementById('user-input').value;
     if (userInput.trim() === '') return;
 
@@ -38,11 +45,12 @@ function addMessage(text, sender) {
     messageDiv.className = `message ${sender}`;
     messageDiv.innerText = text;
     document.getElementById('messages').appendChild(messageDiv);
-    messageDiv.scrollIntoView({ behavior: 'smooth' });
+    const chatWindow = document.getElementById('chat-window');
+    chatWindow.scrollTop = chatWindow.scrollHeight;  // Scroll to the bottom
 }
 
 async function callKoGPT(prompt) {
-    const REST_API_KEY = '8382196ca251c7706e3b7e1df97883e7';
+    const REST_API_KEY = '1623e8b7d8927ae0b2de2c12a304c516';
 
     prompt = `한 단어로 메뉴를 추천합니다.
     중식 메뉴를 추천해줘=짜장면
@@ -53,7 +61,7 @@ async function callKoGPT(prompt) {
     일식 메뉴 추천해줘=라멘
     한식 메뉴 추천해줘=된장찌개
     양식 메뉴 추천해줘=로제 파스타
-    ${prompt}=`;
+    ${prompt}=`; // 이전 줄과 합치고 = 뒤에 ; 제거
 
     try {
         const response = await fetch('https://cors-anywhere-o5bm.onrender.com/' + 'http://api.kakaobrain.com/v1/inference/kogpt/generation', {
@@ -117,13 +125,3 @@ function KakaoTalkChat(message) {
         }
     });
 }
-// Make sure this script is loaded after the DOM is ready
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize Kakao Login if needed
-    if (typeof Kakao !== 'undefined') {
-        Kakao.init('8382196ca251c7706e3b7e1df97883e7');
-    }
-    
-    // Other chatbot initialization code here
-});
-
