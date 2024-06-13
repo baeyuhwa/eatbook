@@ -63,12 +63,12 @@ function deleteRecipe(id) {
     const request = objectStore.delete(id);
 
     request.onsuccess = function(event) {
-        console.log("Recipe has been deleted from your database.");
+        console.log("데이터베이스에서 레시피가 삭제되었습니다.");
         loadRecipes();
     };
 
     request.onerror = function(event) {
-        console.error("Unable to delete data", event.target.error);
+        console.error("데이터를 삭제할 수 없습니다.", event.target.error);
     };
 }
 

@@ -56,7 +56,7 @@ nav .logo:hover {
 
 #search-bar::placeholder {
     color: #ccc;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 nav .site-menu {
@@ -193,8 +193,13 @@ label[for="category"], label[for="photo"] {
     padding-bottom: 10px;
 }
 
+.recipe-description {
+    border: 1px solid #ccc;
+}
+
 .recipe-description h1 {
     padding-top: 20px;
+    color: #243155;
 }
 
 .recipe-description p {
@@ -208,10 +213,6 @@ label[for="category"], label[for="photo"] {
 #photo-container img {
     padding-top: 20px;
     max-width: 100%;
-}
-
-#recipe-name {
-    color: #243155;
 }
 
 .container nav {
