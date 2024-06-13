@@ -105,7 +105,7 @@ nav a:hover {
 
 .content {
     display: flex;
-    padding: 200px;
+    padding: 20px;
     flex-direction: column;
     align-items: center;
 }
@@ -199,4 +199,33 @@ textarea {
 
 a {
     text-decoration: none; /* 밑줄 제거 */
+}
+.hero {
+    position: relative; /* Ensure relative positioning for absolute children */
+    background-image: url('http://www.simplot.co.kr/img/mm04_banner.jpg');
+    background-size: cover; /* 화면을 꽉 채우도록 */
+    background-position: center; /* 중앙 정렬 */
+    height: 600px; /* 원하는 높이 설정 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+}
+
+.hero-text {
+    position: relative; /* Ensure text is placed relative to .hero */
+    z-index: 1; /* Ensure text appears above background */
+}
+
+.breadcrumb {
+    background: transparent; /* Breadcrumb 배경 투명하게 */
+}
+
+.breadcrumb-item {
+    font-size: 18px; /* Breadcrumb 글꼴 크기 */
+}
+
+.breadcrumb-item a {
+    color: #fff; /* Breadcrumb 링크 색상 */
 }
