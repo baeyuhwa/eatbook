@@ -414,11 +414,14 @@
                 });
                 document.getElementById('logout').addEventListener('click', function() {
                     localStorage.removeItem('kakaoNickname');
-                    location.reload();
+                    Kakao.Auth.logout(function() {
+                        location.reload();
+                    });
                 });
             }
         });
     </script>
+    
     
     
     <!-- 추가된 부분 끝 -->
