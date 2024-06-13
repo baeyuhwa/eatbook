@@ -21,7 +21,102 @@
     <link rel="stylesheet" href="css/tiny-slider.css">
     <link rel="stylesheet" href="css/aos.css">
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        .has-children:hover .dropdown {
+            display: block;
+        }
+        .search-bar-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        #search-icon-container {
+            position: relative;
+        }
+        #search-icon {
+            width: 24px; /* 돋보기 이미지 크기 */
+            height: 24px; /* 돋보기 이미지 크기 */
+            position: absolute;
+            right: 15px; /* 검색 바 오른쪽 끝에 위치 */
+            top: 50%;
+            transform: translateY(-50%); /* 돋보기 이미지를 검색 바의 세로 중앙에 맞춤 */
+            cursor: pointer;
+            transition: transform 0.3s ease; /* 애니메이션 효과 추가 */
+        }
+        #search-bar {
+            width: 300px;
+            padding: 10px 40px 10px 15px; /* 우측 패딩 추가하여 아이콘 공간 확보 */
+            border-radius: 25px;
+            border: 2px solid #8bc34a;
+            background-color: #fff;
+            color: #333;
+            font-size: 16px;
+            outline: none;
+            margin-right: 10px;
+            transition: padding-right 0.3s ease; /* 입력 필드에 맞춰 패딩을 조정하는 애니메이션 효과 추가 */
+        }
 
+        #search-bar::placeholder {
+            color: #ccc;
+            font-size: 16px; /* placeholder 글자 크기 조정 */
+        }
+
+        .search-bar-container.active #search-icon {
+            transform: translateX(-100%); /* 돋보기 이미지를 검색 바 안으로 이동 */
+        }
+
+        .search-bar-container.active #search-bar {
+            padding-right: 15px; /* 검색 필드가 줄어들어 패딩을 초기화 */
+        }
+        .hero {
+    position: relative; /* Ensure relative positioning for absolute children */
+    
+    background-size: cover; /* 화면을 꽉 채우도록 */
+    background-position: center; /* 중앙 정렬 */
+    height: 600px; /* 원하는 높이 설정 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+}
+
+.hero-text {
+    position: relative; /* Ensure text is placed relative to .hero */
+    z-index: 1; /* Ensure text appears above background */
+}
+
+.breadcrumb {
+    background: transparent; /* Breadcrumb 배경 투명하게 */
+}
+
+.breadcrumb-item {
+    font-size: 18px; /* Breadcrumb 글꼴 크기 */
+}
+
+.breadcrumb-item a {
+    color: #fff; /* Breadcrumb 링크 색상 */
+    text-align: center;
+}
+.site-menu {
+    display: flex; /* Use flexbox for horizontal alignment */
+    align-items: center; /* Align items vertically in center */
+    gap: 20px; /* Adjust spacing between items */
+}
+
+.site-menu li {
+    list-style: none; /* Remove default list styling */
+}
+
+#login-menu {
+    margin-left: auto; /* Push login menu to the far right */
+}
+
+#user-name-menu {
+    display: none; /* Hide user name menu initially */
+}
+
+    </style>
     <title>레시피 검색 홈페이지</title>
 </head>
 <body>
@@ -34,13 +129,19 @@
         <div class="site-mobile-menu-body"></div>
     </div>
 
-    <nav class="site-nav">
+    <div class="site-nav">
         <div class="container">
             <div class="menu-bg-wrap">
-                <div class="site-navigation">
-                    <a href="4_main.html" class="logo m-0 float-start">EatBooks</a>
-
+                <div class="site-navigation" style="display: flex; justify-content: space-between; align-items: center;">
+                    <div class="nav-left">
+                        <a href="4_main.html" class="logo m-0 float-start">EatBooks</a>
+                        <div class="search-bar-container">
+                            <input id="search-bar" type="text" placeholder="레시피 검색..." onkeypress="if(event.key === 'Enter') performSearch(this.value)">
+                            <img id="search-icon" src="search.png" alt="Search Icon" onclick="performSearch()"> 
+                        </div>
+                    </div>
                     <ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu float-end">
+                        
                         <li><a href="6_recipe.html">나만의 냉장고</a></li>
                         <li><a href="8_myrecipes.html">내 레시피</a></li>
                         <li><a href="7_newrecipe.html">레시피 만들기</a></li>
@@ -51,30 +152,28 @@
                                 <li><a href="10_qna.html">문의사항</a></li>
                             </ul>
                         </li>
-                        <li id="login-menu"><a href="1_login.html">로그인</a></li>
+                        <li><a href="1_login.html">로그인</a></li>
                         <div id="user-name-menu" style="display: none; float: right; padding-left: 10px;">
 							<a href="#" id="user-name" class="menu-link"></a>
 						</div>	
                     </ul>
-
                     <a href="#" class="burger light me-auto float-end mt-1 site-menu-toggle js-menu-toggle d-inline-block d-lg-none" data-toggle="collapse" data-target="#main-navbar">
                         <span></span>
                     </a>
-
                 </div>
             </div>
         </div>
-    </nav>
+    </div>
 
     <div class="hero page-inner overlay" style="background-image: url('images/검색화면 배경.jpg');">
         <div class="container">
             <div class="row justify-content-center align-items-center">
                 <div class="col-lg-9 text-center mt-5">
-                    <h1 class="heading" data-aos="fade-up">5232 California AVE. 21BC</h1>
+                    <h1 class="heading" data-aos="fade-up">검색 결과</h1>
                     <nav aria-label="breadcrumb" data-aos="fade-up" data-aos-delay="200">
                         <ol class="breadcrumb text-center justify-content-center">
                             <li class="breadcrumb-item "><a href="4_main.html">Home</a></li>
-                            <li class="breadcrumb-item active text-white-50" aria-current="page">5232 California AVE. 21BC</li>
+                            <li class="breadcrumb-item active text-white-50" aria-current="page">검색 결과</li>
                         </ol>
                     </nav>
                 </div>
@@ -257,5 +356,20 @@
             }
         });
     </script>
+    <!-- Preloader -->
+    <div id="overlayer"></div>
+    <div class="loader">
+    	<div class="spinner-border" role="status">
+    		<span class="visually-hidden">Loading...</span>
+    	</div>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/tiny-slider.js"></script>
+    <script src="js/aos.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/counter.js"></script>
+    <script src="js/custom.js"></script>
+	<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+	<script src="5_recipe.js"></script>
 </body>
 </html>
