@@ -1,3 +1,17 @@
+document.addEventListener('DOMContentLoaded', function() {
+    const kakaoNickname = localStorage.getItem('kakaoNickname');
+    if (kakaoNickname) {
+        const userNameElement = document.getElementById('user-name');
+        userNameElement.textContent = kakaoNickname;
+    }
+});
+
+function performSearch() {
+    const searchValue = document.getElementById('search-bar').value;
+    localStorage.setItem('searchQuery', searchValue);
+    window.location.href = '5_recipe_result.html';
+}
+
 function savePost(event) {
     event.preventDefault(); // 폼 기본 동작 방지
 
@@ -20,41 +34,21 @@ function savePost(event) {
     // 변경된 게시글 목록을 로컬 스토리지에 다시 저장
     localStorage.setItem('posts', JSON.stringify(posts));
 
-    // 게시글 목록을 업데이트하여 표시
-    updatePostList();
-
-    // 폼 초기화
+    // 폼 초기화 후 게시글 목록 페이지로 이동
     document.getElementById('communicationForm').reset();
+    window.location.href = '9_communication.html';
 }
+function savePost(event) {
+    event.preventDefault();
+    var title = document.getElementById('title').value;
+    var content = document.getElementById('content').value;
+    var date = new Date().toLocaleDateString();
 
-function updatePostList() {
-    const postList = document.getElementById('postList');
-    postList.innerHTML = ''; // 목록 초기화
-
-    // 저장된 게시글 목록 가져오기
-    let posts = localStorage.getItem('posts');
-    posts = posts ? JSON.parse(posts) : [];
-
-    // 게시글 목록을 테이블에 추가
-    posts.forEach((post, index) => {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-            <td>${index + 1}</td>
-            <td>${post.title}</td>
-            <td>${post.date}</td>
-            <td><button class="delete-button" onclick="deletePost(${index})">삭제</button></td>
-        `;
-        postList.appendChild(row);
-    });
-}
-
-function deletePost(index) {
-    let posts = localStorage.getItem('posts');
-    posts = posts ? JSON.parse(posts) : [];
-    posts.splice(index, 1); // 해당 인덱스의 게시글 삭제
+    var newPost = { title: title, content: content, date: date };
+    var storedPosts = localStorage.getItem('posts');
+    var posts = storedPosts ? JSON.parse(storedPosts) : [];
+    posts.push(newPost);
     localStorage.setItem('posts', JSON.stringify(posts));
-    updatePostList(); // 게시글 목록 업데이트
-}
 
-// 페이지 로드 시 게시글 목록 초기화
-document.addEventListener('DOMContentLoaded', updatePostList);
+    window.location.href = '9_communication.html';
+}

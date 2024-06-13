@@ -16,22 +16,7 @@
     <link rel="stylesheet" href="css/aos.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="9-1_newcommuni.css">
-    <style>
-        .has-children:hover .dropdown {
-            display: block;
-        }
-        .search-bar-container {
-            position: relative;
-        }
-        #search-icon {
-            position: absolute;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            cursor: pointer;
-        }
-    </style>
-    <title>소통 게시글 작성</title>
+    <title>게시글 작성</title>
 </head>
 <body>
     <div class="site-mobile-menu site-navbar-target">
@@ -82,11 +67,12 @@
             <div class="row justify-content-center align-items-center">
                 <div class="col-lg-9 text-center mt-5">
                     <div class="hero-text" data-aos="fade-up">
-                        <h1 class="heading">소통</h1>
+                        <h1 class="heading">게시글 작성</h1>
                         <nav aria-label="breadcrumb" data-aos="fade-up" data-aos-delay="200" class="breadcrumb">
                             <ol class="breadcrumb text-center justify-content-center">
                                 <li class="breadcrumb-item"><a href="4_main.html">Home</a></li>
-                                <li class="breadcrumb-item active text-white-50" aria-current="page">소통</li>
+                                <li class="breadcrumb-item"><a href="9_communication.html">소통</a></li>
+                                <li class="breadcrumb-item active text-white-50" aria-current="page">게시글 작성</li>
                             </ol>
                         </nav>
                     </div>
@@ -94,34 +80,18 @@
             </div>
         </div>
     </div>
+
     <div class="content">
-        <form id="communicationForm" onsubmit="savePost(event)">
-            <label for="title">제목: </label>
-            <input type="text" id="title" name="title" required>
-
-            <label for="content">내용:</label>
-            <textarea id="content" name="content" required></textarea>
-
-            <div class="button-container">
-                <button type="submit">등록</button>
-            </div>
-        </form>                     
+        <h2>새로운 게시글 작성</h2>
+        <form id="postForm">
+            <label for="title">제목:</label>
+            <input type="text" id="title" name="title" required><br>
+            <label for="content">내용:</label><br>
+            <textarea id="content" name="content" rows="10" required></textarea><br>
+            <button type="submit">작성 완료</button>
+        </form>
     </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const kakaoNickname = localStorage.getItem('kakaoNickname');
-            if (kakaoNickname) {
-                const userNameElement = document.getElementById('user-name');
-                userNameElement.textContent = kakaoNickname;
-            }
-        });
 
-        function performSearch() {
-            const searchValue = document.getElementById('search-bar').value;
-            localStorage.setItem('searchQuery', searchValue);
-            window.location.href = '5_recipe_result.html';
-        }
-    </script>
     <!-- Preloader -->
     <div id="overlayer"></div>
     <div class="loader">
@@ -137,7 +107,7 @@
     <script src="js/custom.js"></script>
 	<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 	<script src="5_recipe.js"></script>
-    <script src="9-1_newcommuni.html"></script>
+    <script src="9_communication.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const kakaoNickname = localStorage.getItem('kakaoNickname');
@@ -155,6 +125,34 @@
                 userNameElement.style.textDecoration = 'none';
             }
         });
-    </script>    
+
+        document.getElementById('postForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var title = document.getElementById('title').value;
+            var content = document.getElementById('content').value;
+            var date = new Date().toISOString().slice(0, 10);
+
+            var post = {
+                title: title,
+                content: content,
+                date: date
+            };
+
+            var storedPosts = localStorage.getItem('posts');
+            var posts = storedPosts ? JSON.parse(storedPosts) : [];
+            posts.push(post);
+            localStorage.setItem('posts', JSON.stringify(posts));
+
+            alert('게시글이 저장되었습니다.');
+            window.location.href = '9_communication.html';
+        });
+
+        function performSearch() {
+            const searchValue = document.getElementById('search-bar').value;
+            localStorage.setItem('searchQuery', searchValue);
+            window.location.href = '5_recipe_result.html';
+        }
+    </script>
+    
 </body>
 </html>

@@ -1,6 +1,22 @@
+document.addEventListener('DOMContentLoaded', function() {
+    const kakaoNickname = localStorage.getItem('kakaoNickname');
+    if (kakaoNickname) {
+        document.getElementById('login-menu').style.display = 'none';
+        const userNameMenu = document.getElementById('user-name-menu');
+        userNameMenu.style.display = 'block';
+        const userNameElement = document.getElementById('user-name');
+        userNameElement.textContent = kakaoNickname;
+
+        // 로그인 메뉴와 동일한 스타일 적용
+        userNameElement.style.color = '#fff';
+        userNameElement.style.fontFamily = 'Work Sans, sans-serif';
+        userNameElement.style.fontSize = '1rem';
+        userNameElement.style.textDecoration = 'none';
+    }
+});
+
 window.onload = function() {
-    // 작성된 게시물이 있는지 확인 후 표시
-    var storedPosts = localStorage.getItem('newPosts');
+    var storedPosts = localStorage.getItem('posts');
     if (storedPosts) {
         var posts = JSON.parse(storedPosts);
         displayPosts(posts);
@@ -8,19 +24,18 @@ window.onload = function() {
 };
 
 function displayPosts(posts) {
-    var tableBody = document.getElementById('postList'); // 게시물을 표시할 위치 지정
+    var tableBody = document.getElementById('postList');
     if (!tableBody) {
         console.error("postList element not found");
         return;
     }
-    tableBody.innerHTML = ''; // 기존 내용을 초기화
+    tableBody.innerHTML = '';
     posts.forEach((post, index) => {
         var row = document.createElement('tr');
-        row.innerHTML = "<td>" + (index + 1) + "</td><td><a href='9-2_see.html' data-id='" + index + "'>" + post.title + "</a></td><td>" + post.date + "</td><td><button class='delete-button' data-id='" + index + "'>&#10006;</button></td>";
+        row.innerHTML = `<td>${index + 1}</td><td><a href='9-2_see.html' data-id='${index}'>${post.title}</a></td><td>${post.date}</td><td><button class='delete-button' data-id='${index}'>&#10006;</button></td>`;
         tableBody.appendChild(row);
     });
 
-    // 제목에 클릭 이벤트 추가
     var links = tableBody.querySelectorAll('a');
     links.forEach(link => {
         link.addEventListener('click', function(event) {
@@ -29,7 +44,6 @@ function displayPosts(posts) {
         });
     });
 
-    // 삭제 버튼에 클릭 이벤트 추가
     var deleteButtons = tableBody.querySelectorAll('.delete-button');
     deleteButtons.forEach(button => {
         button.addEventListener('click', function(event) {
@@ -40,11 +54,17 @@ function displayPosts(posts) {
 }
 
 function deletePost(id) {
-    var storedPosts = localStorage.getItem('newPosts');
+    var storedPosts = localStorage.getItem('posts');
     if (storedPosts) {
         var posts = JSON.parse(storedPosts);
-        posts.splice(id, 1); // 해당 게시물을 배열에서 삭제
-        localStorage.setItem('newPosts', JSON.stringify(posts)); // 변경된 게시물 목록을 저장
-        displayPosts(posts); // 게시물 목록 갱신
+        posts.splice(id, 1);
+        localStorage.setItem('posts', JSON.stringify(posts));
+        displayPosts(posts);
     }
+}
+
+function performSearch() {
+    const searchValue = document.getElementById('search-bar').value;
+    localStorage.setItem('searchQuery', searchValue);
+    window.location.href = '5_recipe_result.html';
 }
