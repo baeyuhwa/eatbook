@@ -52,7 +52,10 @@
                             </ul>
                         </li>
                         <li id="login-menu"><a href="1_login.html">로그인</a></li>
-                        <li id="user-name-menu" style="display: none;"><a href="#" id="user-name"></a></li>
+                        <div id="user-name-menu" style="display: none; float: right; padding-left: 10px;">
+							<img id="user-profile-image" src="images/Doorbell.jpg" alt="Profile Image" style="width: 30px; height: 30px; border-radius: 50%;">
+							<a href="#" id="user-name" class="menu-link"></a>
+						</div>	
                     </ul>
 
                     <a href="#" class="burger light me-auto float-end mt-1 site-menu-toggle js-menu-toggle d-inline-block d-lg-none" data-toggle="collapse" data-target="#main-navbar">
@@ -105,5 +108,23 @@
     </script>
     <script src="6_recipe_detail.js"></script>
     <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const kakaoNickname = localStorage.getItem('kakaoNickname');
+            if (kakaoNickname) {
+                document.getElementById('login-menu').style.display = 'none';
+                const userNameMenu = document.getElementById('user-name-menu');
+                userNameMenu.style.display = 'block';
+                const userNameElement = document.getElementById('user-name');
+                userNameElement.textContent = kakaoNickname;
+    
+                // 로그인 메뉴와 동일한 스타일 적용
+                userNameElement.style.color = '#fff';
+                userNameElement.style.fontFamily = 'Work Sans, sans-serif';
+                userNameElement.style.fontSize = '1rem';
+                userNameElement.style.textDecoration = 'none';
+            }
+        });
+    </script>
 </body>
 </html>

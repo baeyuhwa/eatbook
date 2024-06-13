@@ -25,67 +25,56 @@
 	<title>ebs</title>
 </head>
 <body>
-	<div class="site-mobile-menu site-navbar-target">
-		<div class="site-mobile-menu-header">
-			<div class="site-mobile-menu-close">
-				<span class="icofont-close js-menu-toggle"></span>
-			</div>
-		</div>
-		<div class="site-mobile-menu-body"></div>
-	</div>
+    <nav class="site-nav">
+        <div class="container">
+            <div class="menu-bg-wrap">
+                <div class="site-navigation">
+                    <a href="4_main.html" class="logo m-0 float-start">EatBooks</a>
+                    <ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu float-end">
+                        <li><a href="6_recipe.html">나만의 냉장고</a></li>
+                        <li><a href="8_myrecipes.html">내 레시피</a></li>
+                        <li><a href="7_newrecipe.html">레시피 만들기</a></li>
+                        <li class="has-children">
+                            <a href="#" class="no-link">게시판</a>
+                            <ul class="dropdown">
+                                <li><a href="9_communication.html">소통</a></li>
+                                <li><a href="10_qna.html">문의사항</a></li>
+                            </ul>
+                        </li>
+                        <li id="login-menu"><a href="1_login.html">로그인</a></li>
+                        <div id="user-name-menu" style="display: none; float: right; padding-left: 10px;">
+							<img id="user-profile-image" src="images/Doorbell.jpg" alt="Profile Image" style="width: 30px; height: 30px; border-radius: 50%;">
+							<a href="#" id="user-name" class="menu-link"></a>
+						</div>	
+                    </ul>
+                    <a href="#" class="burger light me-auto float-end mt-1 site-menu-toggle js-menu-toggle d-inline-block d-lg-none" data-toggle="collapse" data-target="#main-navbar">
+                        <span></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
 
-	<nav class="site-nav">
-		<div class="container">
-			<div class="menu-bg-wrap">
-				<div class="site-navigation">
-					<a href="4_main.html" class="logo m-0 float-start">EatBooks</a>
+    <div class="hero">
+        <div class="hero-slide">
+            <div class="img overlay" style="background-image: url('images/food_1.jpg')"></div>
+            <div class="img overlay" style="background-image: url('images/food_2.jpg')"></div>
+            <div class="img overlay" style="background-image: url('images/food_3.jpg')"></div>
+        </div>
+        <div class="container">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-lg-9 text-center">
+                    <h1 class="heading" data-aos="fade-up">요리를 못하는 당신 여기선 요리사?!</h1>
+                    <form action="5_recipe_result.html" class="narrow-w form-search d-flex align-items-stretch mb-3" data-aos="fade-up" data-aos-delay="200" onsubmit="performSearch(event)">
+                        <input type="text" id="search-bar" class="form-control px-4" placeholder="레시피를 검색하세요!!">
+                        <button type="submit" class="btn btn-primary">Search</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
-					<ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu float-end">
-						<li><a href="6_recipe.html">나만의 냉장고</a></li>
-						<li><a href="8_myrecipes.html">내 레시피</a></li>
-						<li><a href="7_newrecipe.html">레시피 만들기</a></li>
-						<li class="has-children">
-							<a href="#" class="no-link">게시판</a>
-							<ul class="dropdown">
-								<li><a href="9_communication.html">소통</a></li>
-								<li><a href="10_qna.html">문의사항</a></li>
-							</ul>
-						</li>
-						<li id="login-menu"><a href="1_login.html">로그인</a></li>
-                        <li id="user-name-menu" style="display: none;"><a href="#" id="user-name"></a></li>
-					</ul>
-					<a href="#" class="burger light me-auto float-end mt-1 site-menu-toggle js-menu-toggle d-inline-block d-lg-none" data-toggle="collapse" data-target="#main-navbar">
-						<span></span>
-					</a>
-
-				</div>
-			</div>
-		</div>
-	</nav>
-
-	<div class="hero">
-
-
-		<div class="hero-slide">
-			<div class="img overlay" style="background-image: url('images/food_1.jpg')"></div>
-			<div class="img overlay" style="background-image: url('images/food_2.jpg')"></div>
-			<div class="img overlay" style="background-image: url('images/food_3.jpg')"></div>
-		</div>
-
-		<div class="container">
-			<div class="row justify-content-center align-items-center">
-				<div class="col-lg-9 text-center">
-					<h1 class="heading" data-aos="fade-up">요리를 못하는 당신 여기선 요리사?!</h1>
-					<form action="5_recipe_result.html" class="narrow-w form-search d-flex align-items-stretch mb-3" data-aos="fade-up" data-aos-delay="200" onsubmit="performSearch(event)">
-						<input type="text" id="search-bar" class="form-control px-4" placeholder="레시피를 검색하세요!!">
-						<button type="submit" class="btn btn-primary">Search</button>
-					</form>
-					
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="section">
+    <div class="section">
         <div class="container">
             <div class="row mb-5 align-items-center">
                 <div class="col-lg-6">
@@ -108,272 +97,254 @@
         </div>
     </div>
 
-<!-- Replace the image with chatbot-container -->
-<div class="section section-4 bg-light">
-    <div class="container">
-        <div class="row justify-content-center text-center mb-5">
-            <div class="col-lg-5">
-                <h2 class="font-weight-bold heading text-primary mb-4">메뉴 추천</h2>
-                <p class="text-black-50">궁금한건 언제든 여기에!</p>
-            </div>
-        </div>
-        <div class="row justify-content-between mb-5">
-            <div class="col-lg-7 mb-5 mb-lg-0 order-lg-2">
-                <div class="chatbot-container" style="height: 500px; width: 100%;">
-                    <div id="chat-window" style="height: 80%;"></div>
-                    <input type="text" id="user-input" placeholder="Type your message here..." style="width: 80%;" />
-                    <button id="send-btn" style="display: none;">Send</button>
-                    <button id="login-btn">Login with Kakao</button>
+    <div class="section section-4 bg-light">
+        <div class="container">
+            <div class="row justify-content-center text-center mb-5">
+                <div class="col-lg-5">
+                    <h2 class="font-weight-bold heading text-primary mb-4">메뉴 추천</h2>
+                    <p class="text-black-50">궁금한건 언제든 여기에!</p>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <div class="d-flex feature-h">
-                    <span class="wrap-icon me-3">
-                        <span class="icon-home2"></span>
-                    </span>
-                    <div class="feature-text">
-                        <h3 class="heading">쳇봇에게 레시피를 물어보세요!</h3>
-                        <p class="text-black-50">이 쳇봇은 당신의 레시피 관련 궁금한 점을 해결해줄 것입니다.</p>   
+            <div class="row justify-content-between mb-5">
+                <div class="col-lg-7 mb-5 mb-lg-0 order-lg-2">
+                    <div class="chatbot-container" style="height: 500px; width: 100%;">
+                        <div id="chat-window" style="height: 80%;"></div>
+                        <input type="text" id="user-input" placeholder="Type your message here..." style="width: 80%;" />
+                        <button id="send-btn" style="display: none;">Send</button>
+                        <button id="login-btn">Login with Kakao</button>
                     </div>
                 </div>
-                <div class="d-flex feature-h">
-                    <span class="wrap-icon me-3">
-                        <span class="icon-person"></span>
-                    </span>
-                    <div class="feature-text">
-                        <h3 class="heading">당신의 레시피를 물어보세요</h3>
-                        <p class="text-black-50">당신의 창의적인 레시피를 쳇봇에게!!</p>   
+                <div class="col-lg-4">
+                    <div class="d-flex feature-h">
+                        <span class="wrap-icon me-3">
+                            <span class="icon-home2"></span>
+                        </span>
+                        <div class="feature-text">
+                            <h3 class="heading">쳇봇에게 레시피를 물어보세요!</h3>
+                            <p class="text-black-50">이 쳇봇은 당신의 레시피 관련 궁금한 점을 해결해줄 것입니다.</p>   
+                        </div>
                     </div>
-                </div>
-                <div class="d-flex feature-h">
-                    <span class="wrap-icon me-3">
-                        <span class="icon-security"></span>
-                    </span>
-                    <div class="feature-text">
-                        <h3 class="heading">이 쳇봇은 개인정보 유출을 방지합니다.</h3>
-                        <p class="text-black-50">가급적 개인정보는 물어보지 마세요.</p>   
+                    <div class="d-flex feature-h">
+                        <span class="wrap-icon me-3">
+                            <span class="icon-person"></span>
+                        </span>
+                        <div class="feature-text">
+                            <h3 class="heading">당신의 레시피를 물어보세요</h3>
+                            <p class="text-black-50">당신의 창의적인 레시피를 쳇봇에게!!</p>   
+                        </div>
+                    </div>
+                    <div class="d-flex feature-h">
+                        <span class="wrap-icon me-3">
+                            <span class="icon-security"></span>
+                        </span>
+                        <div class="feature-text">
+                            <h3 class="heading">이 쳇봇은 개인정보 유출을 방지합니다.</h3>
+                            <p class="text-black-50">가급적 개인정보는 물어보지 마세요.</p>   
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-
-
-	<div class="section sec-testimonials">
-		<div class="container">
-			<div class="row mb-5 align-items-center">
-				<div class="col-md-6">
-					<h2 class="font-weight-bold heading text-primary mb-4 mb-md-0">홈페이지 개발자</h2>
-				</div>
-				<div class="col-md-6 text-md-end">
-					<div id="testimonial-nav">
-						<span class="prev" data-controls="prev">Prev</span>
-						
-						<span class="next" data-controls="next">Next</span>
-					</div>
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="col-lg-4">
-					
-				</div>
-			</div>
-			<div class="testimonial-slider-wrap">
-				<div class="testimonial-slider">
-					<div class="item">
-						<div class="testimonial">
-							<img src="images/과일.jpg" alt="Image" class="img-fluid rounded-circle w-25 mb-4">
-							<div class="rate">
-								<span class="icon-star text-warning"></span>
-								<span class="icon-star text-warning"></span>
-								<span class="icon-star text-warning"></span>
-								<span class="icon-star text-warning"></span>
-								<span class="icon-star text-warning"></span>
-							</div>
-							<h3 class="h5 text-primary mb-4">배유화</h3>
-							<blockquote>
-								<p>&ldquo;안녕하세요 이 홈페이지의 개발자중 한명인 배유화입니다."</p>
-							</blockquote>
-							<p class="text-black-50">한경대학교 3학년</p>
-						</div>
-					</div>
-
-					<div class="item">
-						<div class="testimonial">
-							<img src="images/DoorBell.jpg" alt="Image" class="img-fluid rounded-circle w-25 mb-4">
-							<div class="rate">
-								<span class="icon-star text-warning"></span>
-								<span class="icon-star text-warning"></span>
-								<span class="icon-star text-warning"></span>
-								<span class="icon-star text-warning"></span>
-								<span class="icon-star text-warning"></span>
-							</div>
-							<h3 class="h5 text-primary mb-4">DoorBell</h3>
-							<blockquote>
-								<p>&ldquo;안녕하세요 이 홈페이지의 개발자중 한명인 이니셜 DoorBell입니다. 저희 사이트를 많이 이용해 주세요"</p>
-							</blockquote>
-							<p class="text-black-50">한경대학교 3학년</p>
-						</div>
-					</div>
-
-					<div class="item">
-						<div class="testimonial">
-							<img src="images/캐릭터.jpg" alt="Image" class="img-fluid rounded-circle w-25 mb-4">
-							<div class="rate">
-								<span class="icon-star text-warning"></span>
-								<span class="icon-star text-warning"></span>
-								<span class="icon-star text-warning"></span>
-								<span class="icon-star text-warning"></span>
-								<span class="icon-star text-warning"></span>
-							</div>
-							<h3 class="h5 text-primary mb-4">최은아</h3>
-							<blockquote>
-								<p>&ldquo;안녕하세요 이 홈페이지의 개발자중 한명인 최은아입니다."</p>
-							</blockquote>
-							<p class="text-black-50">한경대학교 3학년</p>
-						</div>
-					</div>
-					<div class="item">
-						<div class="testimonial">
-							<img src="images/로봇.jpg" alt="Image" class="img-fluid rounded-circle w-25 mb-4">
-							<div class="rate">
-								<span class="icon-star text-warning"></span>
-								<span class="icon-star text-warning"></span>
-								<span class="icon-star text-warning"></span>
-								<span class="icon-star text-warning"></span>
-								<span class="icon-star text-warning"></span>
-							</div>
-							<h3 class="h5 text-primary mb-4">Chat-gpt</h3>
-							<blockquote>
-								<p>&ldquo;안녕하세요 이 홈페이지의 개발 보조를 맡은 chat-gpt입니다."</p>
-							</blockquote>
-							<p class="text-black-50">오픈 AI</p>
-						</div>
-					</div>
-
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
-	<div class="site-footer">
-		<div class="container">
-			
-			<div class="row">
-				<div class="col-lg-4">
-					<div class="widget">
-						<h3>Contact</h3>
-						<address>한경국립대학교 공학1관 303호</address>
-						<ul class="list-unstyled links">
-							<li><a href="tel://031-670-5114">+82 31-670-5114</a></li>
-							<li><a href="tel://010-9035-0454">+82 10-9035-0454</a></li>
-							<li><a href="mailto:info@mydomain.com">doog0740@gmail.com</a></li>
-						</ul>
-					</div> <!-- /.widget -->
-				</div> <!-- /.col-lg-4 -->
-				<div class="col-lg-4">
-					<div class="widget">
-						<h3>Sources</h3>
-						<ul class="list-unstyled float-start links">
-							<li><a href="#">About us</a></li>
-							<li><a href="#">Services</a></li>
-							<li><a href="#">Vision</a></li>
-							<li><a href="#">Mission</a></li>
-							<li><a href="#">Terms</a></li>
-							<li><a href="#">Privacy</a></li>
-						</ul>
-						<ul class="list-unstyled float-start links">
-							<li><a href="#">Partners</a></li>
-							<li><a href="#">Business</a></li>
-							<li><a href="#">Careers</a></li>
-							<li><a href="#">Blog</a></li>
-							<li><a href="#">FAQ</a></li>
-							<li><a href="#">Creative</a></li>
-						</ul>
-					</div> <!-- /.widget -->
-				</div> <!-- /.col-lg-4 -->
-				<div class="col-lg-4">
-					<div class="widget">
-						<h3>Links</h3>
-						<ul class="list-unstyled links">
-							<li><a href="#">Our Vision</a></li>
-							<li><a href="#">About us</a></li>
-							<li><a href="#">Contact us</a></li>
-						</ul>
-
-						<ul class="list-unstyled social">
-							<li><a href="#"><span class="icon-instagram"></span></a></li>
-							<li><a href="#"><span class="icon-twitter"></span></a></li>
-							<li><a href="#"><span class="icon-facebook"></span></a></li>
-							<li><a href="#"><span class="icon-linkedin"></span></a></li>
-							<li><a href="#"><span class="icon-pinterest"></span></a></li>
-							<li><a href="#"><span class="icon-dribbble"></span></a></li>
-						</ul>
-					</div> <!-- /.widget -->
-				</div> <!-- /.col-lg-4 -->
-			</div> <!-- /.row -->
-
-			<div class="row mt-5">
-				<div class="col-12 text-center">
-					<!-- 
-              **==========
-              NOTE: 
-              Please don't remove this copyright link unless you buy the license here https://untree.co/license/  
-              **==========
-            -->
-
-            <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script>. All Rights Reserved. &mdash; Designed with love by <a href="https://untree.co">Untree.co</a> <!-- License information: https://untree.co/license/ -->
-            </p>
-
-          </div>
+    <div class="section sec-testimonials">
+        <div class="container">
+            <div class="row mb-5 align-items-center">
+                <div class="col-md-6">
+                    <h2 class="font-weight-bold heading text-primary mb-4 mb-md-0">홈페이지 개발자</h2>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div id="testimonial-nav">
+                        <span class="prev" data-controls="prev">Prev</span>
+                        <span class="next" data-controls="next">Next</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4"></div>
+            </div>
+            <div class="testimonial-slider-wrap">
+                <div class="testimonial-slider">
+                    <div class="item">
+                        <div class="testimonial">
+                            <img src="images/과일.jpg" alt="Image" class="img-fluid rounded-circle w-25 mb-4">
+                            <div class="rate">
+                                <span class="icon-star text-warning"></span>
+                                <span class="icon-star text-warning"></span>
+                                <span class="icon-star text-warning"></span>
+                                <span class="icon-star text-warning"></span>
+                                <span class="icon-star text-warning"></span>
+                            </div>
+                            <h3 class="h5 text-primary mb-4">배유화</h3>
+                            <blockquote>
+                                <p>&ldquo;안녕하세요 이 홈페이지의 개발자중 한명인 배유화입니다."</p>
+                            </blockquote>
+                            <p class="text-black-50">한경대학교 3학년</p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="testimonial">
+                            <img src="images/DoorBell.jpg" alt="Image" class="img-fluid rounded-circle w-25 mb-4">
+                            <div class="rate">
+                                <span class="icon-star text-warning"></span>
+                                <span class="icon-star text-warning"></span>
+                                <span class="icon-star text-warning"></span>
+                                <span class="icon-star text-warning"></span>
+                                <span class="icon-star text-warning"></span>
+                            </div>
+                            <h3 class="h5 text-primary mb-4">DoorBell</h3>
+                            <blockquote>
+                                <p>&ldquo;안녕하세요 이 홈페이지의 개발자중 한명인 이니셜 DoorBell입니다. 저희 사이트를 많이 이용해 주세요"</p>
+                            </blockquote>
+                            <p class="text-black-50">한경대학교 3학년</p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="testimonial">
+                            <img src="images/캐릭터.jpg" alt="Image" class="img-fluid rounded-circle w-25 mb-4">
+                            <div class="rate">
+                                <span class="icon-star text-warning"></span>
+                                <span class="icon-star text-warning"></span>
+                                <span class="icon-star text-warning"></span>
+                                <span class="icon-star text-warning"></span>
+                                <span class="icon-star text-warning"></span>
+                            </div>
+                            <h3 class="h5 text-primary mb-4">최은아</h3>
+                            <blockquote>
+                                <p>&ldquo;안녕하세요 이 홈페이지의 개발자중 한명인 최은아입니다."</p>
+                            </blockquote>
+                            <p class="text-black-50">한경대학교 3학년</p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="testimonial">
+                            <img src="images/로봇.jpg" alt="Image" class="img-fluid rounded-circle w-25 mb-4">
+                            <div class="rate">
+                                <span class="icon-star text-warning"></span>
+                                <span class="icon-star text-warning"></span>
+                                <span class="icon-star text-warning"></span>
+                                <span class="icon-star text-warning"></span>
+                                <span class="icon-star text-warning"></span>
+                            </div>
+                            <h3 class="h5 text-primary mb-4">Chat-gpt</h3>
+                            <blockquote>
+                                <p>&ldquo;안녕하세요 이 홈페이지의 개발 보조를 맡은 chat-gpt입니다."</p>
+                            </blockquote>
+                            <p class="text-black-50">오픈 AI</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div> <!-- /.container -->
-    </div> <!-- /.site-footer -->
+    </div>
 
+    <div class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="widget">
+                        <h3>Contact</h3>
+                        <address>한경국립대학교 공학1관 303호</address>
+                        <ul class="list-unstyled links">
+                            <li><a href="tel://031-670-5114">+82 31-670-5114</a></li>
+                            <li><a href="tel://010-9035-0454">+82 10-9035-0454</a></li>
+                            <li><a href="mailto:info@mydomain.com">doog0740@gmail.com</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="widget">
+                        <h3>Sources</h3>
+                        <ul class="list-unstyled float-start links">
+                            <li><a href="#">About us</a></li>
+                            <li><a href="#">Services</a></li>
+                            <li><a href="#">Vision</a></li>
+                            <li><a href="#">Mission</a></li>
+                            <li><a href="#">Terms</a></li>
+                            <li><a href="#">Privacy</a></li>
+                        </ul>
+                        <ul class="list-unstyled float-start links">
+                            <li><a href="#">Partners</a></li>
+                            <li><a href="#">Business</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="#">Creative</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="widget">
+                        <h3>Links</h3>
+                        <ul class="list-unstyled links">
+                            <li><a href="#">Our Vision</a></li>
+                            <li><a href="#">About us</a></li>
+                            <li><a href="#">Contact us</a></li>
+                        </ul>
+                        <ul class="list-unstyled social">
+                            <li><a href="#"><span class="icon-instagram"></span></a></li>
+                            <li><a href="#"><span class="icon-twitter"></span></a></li>
+                            <li><a href="#"><span class="icon-facebook"></span></a></li>
+                            <li><a href="#"><span class="icon-linkedin"></span></a></li>
+                            <li><a href="#"><span class="icon-pinterest"></span></a></li>
+                            <li><a href="#"><span class="icon-dribbble"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-12 text-center">
+                    <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script>. All Rights Reserved. &mdash; Designed with love by <a href="https://untree.co">Untree.co</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Preloader -->
     <div id="overlayer"></div>
     <div class="loader">
-    	<div class="spinner-border" role="status">
-    		<span class="visually-hidden">Loading...</span>
-    	</div>
+        <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
     </div>
 
-	<script src="4_popularRecipe.js"></script>
+    <script src="4_popularRecipe.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/tiny-slider.js"></script>
     <script src="js/aos.js"></script>
     <script src="js/navbar.js"></script>
     <script src="js/counter.js"></script>
     <script src="js/custom.js"></script>
-	<script src="chatbot.js"></script>
-	<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
-	<script>
-		function performSearch(event) {
-			event.preventDefault(); // 폼 제출 방지
-			const searchValue = document.getElementById('search-bar').value;
-			localStorage.setItem('searchQuery', searchValue);
-			window.location.href = '5_recipe_result.html';
-		}
-	</script>
-	<script>
-		// 로그인 후 닉네임 표시
-		document.addEventListener('DOMContentLoaded', function() {
-			const kakaoNickname = localStorage.getItem('kakaoNickname');
-			if (kakaoNickname) {
-				document.getElementById('login-menu').style.display = 'none';
-				const userNameMenu = document.getElementById('user-name-menu');
-				userNameMenu.style.display = 'block';
-				document.getElementById('user-name').textContent = kakaoNickname;
-			}
-		});
-	</script>
-	
-	
-	</body>
-  </html>
-  
+    <script src="chatbot.js"></script>
+    <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+    <script>
+        function performSearch(event) {
+            event.preventDefault(); // 폼 제출 방지
+            const searchValue = document.getElementById('search-bar').value;
+            localStorage.setItem('searchQuery', searchValue);
+            window.location.href = '5_recipe_result.html';
+        }
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const kakaoNickname = localStorage.getItem('kakaoNickname');
+            if (kakaoNickname) {
+                document.getElementById('login-menu').style.display = 'none';
+                const userNameMenu = document.getElementById('user-name-menu');
+                userNameMenu.style.display = 'block';
+                const userNameElement = document.getElementById('user-name');
+                userNameElement.textContent = kakaoNickname;
+    
+                // 로그인 메뉴와 동일한 스타일 적용
+                userNameElement.style.color = '#fff';
+                userNameElement.style.fontFamily = 'Work Sans, sans-serif';
+                userNameElement.style.fontSize = '1rem';
+                userNameElement.style.textDecoration = 'none';
+            }
+        });
+    </script>
+    
+    
+</body>
+</html>

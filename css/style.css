@@ -10375,3 +10375,12 @@ nav[aria-label="breadcrumb"] li:before {
       .site-footer .social li a:hover {
         background: #00204a;
         color: #fff; }
+
+        #user-name {
+          color: #fff; /* 기존 메뉴 항목과 동일한 색상 */
+          font-family: 'Work Sans', sans-serif; /* 기존 메뉴 항목과 동일한 글꼴 */
+          font-size: 1rem; /* 기존 메뉴 항목과 동일한 글꼴 크기 */
+          text-decoration: none; /* 텍스트 장식 없음 */
+          padding-left: 10px; /* 이미지와 텍스트 사이에 간격 추가 */
+      }
+      
