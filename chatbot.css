@@ -6,7 +6,7 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
-    max-width: 650px; /* 원하는 너비로 변경 */
+    max-width: 400px; /* 원하는 너비로 변경 */
     margin: auto;
     height: 600px; /* 전체 채팅 인터페이스의 높이를 고정 */
 }
@@ -49,6 +49,7 @@
     box-sizing: border-box;
     border-radius: 10px 0 0 10px; /* 왼쪽 모서리만 둥글게 */
     margin: 0; /* margin 제거 */
+    height: 100%; /* 높이 맞추기 */
 }
 
 #send-btn, #login-btn {
@@ -58,11 +59,12 @@
     cursor: pointer;
     border-radius: 0 10px 10px 0; /* 오른쪽 모서리만 둥글게 */
     margin: 0; /* margin 제거 */
+    height: 100%; /* 높이 맞추기 */
 }
 
 .input-container {
     display: flex;
-    align-items: center;
+    align-items: stretch; /* stretch로 높이 맞추기 */
     padding: 10px;
     background-color: #fff;
     border-top: none; /* 입력창 위의 선 제거 */
