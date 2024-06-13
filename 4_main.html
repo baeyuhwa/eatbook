@@ -29,6 +29,39 @@
             margin-top: 9px; /* 이 값을 조정하여 수직 정렬을 미세 조정하세요 */
         }
         </style>
+        <style>
+            #user-name-menu {
+                position: relative;
+                display: none; 
+                float: right; 
+                padding-right:30px;
+                margin-top: 9px;
+            }
+            #logout-dropdown {
+                display: none; /* 기본적으로 숨김 */
+                position: absolute;
+                top: 100%; /* 부모 요소의 아래에 위치 */
+                right: 5; /* 부모 요소의 오른쪽에 맞춤 */
+                background-color: white; /* 배경색 */
+                list-style: none; /* 리스트 스타일 제거 */
+                padding: 0; /* 패딩 제거 */
+                margin: 0; /* 마진 제거 */
+                border: 1px solid #ddd; /* 테두리 */
+                z-index: 1000; /* 다른 요소보다 위에 표시 */
+            }
+            #logout-dropdown li {
+                padding: 5px;
+            }
+            #logout-dropdown li a {
+                text-decoration: none; /* 밑줄 제거 */
+                color: black; /* 텍스트 색상 */
+            }
+            #logout-dropdown li a:hover {
+                background-color: #f0f0f0; /* 배경색 변경 */
+            }
+        </style>
+        
+        
 
     <title>ebs</title>
 </head>
@@ -52,7 +85,10 @@
                         <li id="login-menu"><a href="1_login.html">로그인</a></li>
                         <div id="user-name-menu" style="display: none; float: right; padding-left: 10px;">
                             <a href="#" id="user-name" class="menu-link"></a>
-                        </div>    
+                            <ul class="dropdown" id="logout-dropdown" style="display: none; position: absolute; background-color: white; list-style: none; padding: 0; margin: 0;">
+                                <li><a href="#" id="logout">로그아웃</a></li>
+                            </ul>
+                        </div>
                     </ul>
                     <a href="#" class="burger light me-auto float-end mt-1 site-menu-toggle js-menu-toggle d-inline-block d-lg-none" data-toggle="collapse" data-target="#main-navbar">
                         <span></span>
@@ -347,6 +383,44 @@
             }
         });
     </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const kakaoNickname = localStorage.getItem('kakaoNickname');
+            if (kakaoNickname) {
+                document.getElementById('login-menu').style.display = 'none';
+                const userNameMenu = document.getElementById('user-name-menu');
+                userNameMenu.style.display = 'block';
+                const userNameElement = document.getElementById('user-name');
+                userNameElement.textContent = kakaoNickname;
+    
+                // 로그인 메뉴와 동일한 스타일 적용
+                userNameElement.style.color = '#fff';
+                userNameElement.style.fontFamily = 'Work Sans, sans-serif';
+                userNameElement.style.fontSize = '1rem';
+                userNameElement.style.textDecoration = 'none';
+    
+                // 로그아웃 기능 추가
+                userNameElement.addEventListener('mouseover', function() {
+                    document.getElementById('logout-dropdown').style.display = 'block';
+                });
+                userNameElement.addEventListener('mouseout', function() {
+                    document.getElementById('logout-dropdown').style.display = 'none';
+                });
+                document.getElementById('logout-dropdown').addEventListener('mouseover', function() {
+                    document.getElementById('logout-dropdown').style.display = 'block';
+                });
+                document.getElementById('logout-dropdown').addEventListener('mouseout', function() {
+                    document.getElementById('logout-dropdown').style.display = 'none';
+                });
+                document.getElementById('logout').addEventListener('click', function() {
+                    localStorage.removeItem('kakaoNickname');
+                    location.reload();
+                });
+            }
+        });
+    </script>
+    
+    
     <!-- 추가된 부분 끝 -->
 </body>
 </html>
