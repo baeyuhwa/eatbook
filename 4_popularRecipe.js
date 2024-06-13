@@ -94,7 +94,7 @@ async function popularRecipe() {
                 controlsContainer: '#recipe-nav',
                 autoplay: true,
                 autoplayButtonOutput: false,
-                speed: 300,  // 전환 속도를 500ms로 설정
+                speed: 1000,  // 전환 속도를 500ms로 설정
                 autoplayTimeout: 4500,  // 각 슬라이드가 3초 동안 표시됨
                 responsive: {
                     640: {
