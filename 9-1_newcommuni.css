@@ -107,17 +107,6 @@ nav .logo {
     display: block;
 }
 
-nav a {
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    float: left;
-}
-
-nav a:hover {
-    background-color: #e65c50;
-}
-
 .content {
     display: flex;
     flex-direction: column; /* 내용을 수직으로 정렬하기 위해 column으로 설정 */
@@ -227,4 +216,11 @@ ul li {
 
 .breadcrumb-item a {
     color: #fff; /* Breadcrumb 링크 색상 */
+    text-align: center;
+}
+
+.container nav {
+    background-color: transparent !important;
+    align-items: center;
+    justify-content: center;
 }

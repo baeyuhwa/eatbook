@@ -238,3 +238,9 @@ h3 {
 .breadcrumb-item a {
     color: #fff; /* Breadcrumb 링크 색상 */
 }
+
+.container nav {
+    background-color: transparent !important;
+    align-items: center;
+    justify-content: center;
+}

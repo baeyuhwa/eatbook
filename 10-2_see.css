@@ -93,16 +93,6 @@ nav {
     align-items: center; /* 세로 가운데 정렬 */
 }
 
-nav a {
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    float: left;
-}
-nav a:hover {
-    background-color: #e65c50;
-}
-
 .content {
     display: flex;
     padding: 20px;
@@ -228,4 +218,11 @@ a {
 
 .breadcrumb-item a {
     color: #fff; /* Breadcrumb 링크 색상 */
+    text-align: center;
+}
+
+.container nav {
+    background-color: transparent !important;
+    align-items: center;
+    justify-content: center;
 }

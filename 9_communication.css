@@ -234,3 +234,9 @@ h3 {
     transform: translateY(-50%);
     cursor: pointer;
 }
+
+.container nav {
+    background-color: transparent !important;
+    align-items: center;
+    justify-content: center;
+}
