@@ -171,10 +171,12 @@ button {
     border: none;
     border-radius: 20px;
     cursor: pointer;
+    justify-content: center;
 }
 
 button:hover {
     background-color: #005555;
+    justify-content: center;
 }
 
 a {
