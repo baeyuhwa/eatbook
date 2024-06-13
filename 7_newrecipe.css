@@ -192,12 +192,6 @@ label[for="category"], label[for="photo"] {
     padding-bottom: 10px;
 }
 
-.recipe-description {
-    color: #333;
-    font-size: 18px;
-    border: 1px solid #ccc;
-}
-
 .recipe-description h1 {
     padding-top: 20px;
 }
@@ -273,3 +267,9 @@ label[for="category"], label[for="photo"] {
         -webkit-transition: none;
         -o-transition: none;
         transition: none; } }
+
+.recipe-photo, .recipe-explain {
+    color: #243155;
+    padding: 20px;
+    border: 1px solid #ccc;
+}
