@@ -81,6 +81,7 @@ nav .site-menu a:hover {
     align-items: center;
     font-size: 16px;
     color: #333;
+    min-height: 700px;
 }
 
 input[type=text] {
@@ -194,14 +195,28 @@ label[for="category"], label[for="photo"] {
 .recipe-description {
     color: #333;
     font-size: 18px;
+    border: 1px solid #ccc;
+}
+
+.recipe-description h1 {
+    padding-top: 20px;
 }
 
 .recipe-description p {
     padding-top: 20px;
 }
 
+.recipe-description h1, p, #recipe-ingredient, #recipe-category, #recipe-sumup, #recipe-process {
+    padding-left: 20px;
+}
+
 #photo-container img {
+    padding-top: 20px;
     max-width: 100%;
+}
+
+#recipe-name {
+    color: #243155;
 }
 
 .container nav {
