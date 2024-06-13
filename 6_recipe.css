@@ -263,10 +263,46 @@ body {
     margin: 0;
 }
 
+.search-bar-container {
+    display: flex;
+    align-items: center;
+}
 
 
+#search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+#search-bar-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
 
+#search-bar {
+    width: 300px;
+    padding: 10px 15px;
+    border-radius: 25px;
+    border: 2px solid #8bc34a;
+    background-color: #fff;
+    color: #333;
+    font-size: 16px;
+    outline: none;
+}
 
+#search-bar::placeholder {
+    color: #ccc;
+    font-size: 16px; /* placeholder 글자 크기 조정 */
+}
 
-
+#search-icon {
+    width: 24px; /* 돋보기 이미지 크기 */
+    height: 24px; /* 돋보기 이미지 크기 */
+    position: absolute;
+    right: 15px; /* 검색 바 오른쪽 끝에 위치 */
+    top: 50%;
+    transform: translateY(-50%); /* 돋보기 이미지를 검색 바의 세로 중앙에 맞춤 */
+    cursor: pointer;
+}

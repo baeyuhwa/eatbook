@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="css/aos.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="chatbot.css">
+    <link rel="stylesheet" href="6_recipe.css">
 
     <style>
         body {
@@ -88,6 +89,52 @@
         .ingredient-list li:last-child {
             border-bottom: none;
         }
+        .has-children:hover .dropdown {
+            display: block;
+        }
+        .search-bar-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        #search-icon-container {
+            position: relative;
+        }
+        #search-icon {
+            width: 24px; /* 돋보기 이미지 크기 */
+            height: 24px; /* 돋보기 이미지 크기 */
+            position: absolute;
+            right: 15px; /* 검색 바 오른쪽 끝에 위치 */
+            top: 50%;
+            transform: translateY(-50%); /* 돋보기 이미지를 검색 바의 세로 중앙에 맞춤 */
+            cursor: pointer;
+            transition: transform 0.3s ease; /* 애니메이션 효과 추가 */
+        }
+        #search-bar {
+            width: 300px;
+            padding: 10px 40px 10px 15px; /* 우측 패딩 추가하여 아이콘 공간 확보 */
+            border-radius: 25px;
+            border: 2px solid #8bc34a;
+            background-color: #fff;
+            color: #333;
+            font-size: 16px;
+            outline: none;
+            margin-right: 10px;
+            transition: padding-right 0.3s ease; /* 입력 필드에 맞춰 패딩을 조정하는 애니메이션 효과 추가 */
+        }
+
+        #search-bar::placeholder {
+            color: #ccc;
+            font-size: 16px; /* placeholder 글자 크기 조정 */
+        }
+
+        .search-bar-container.active #search-icon {
+            transform: translateX(-100%); /* 돋보기 이미지를 검색 바 안으로 이동 */
+        }
+
+        .search-bar-container.active #search-bar {
+            padding-right: 15px; /* 검색 필드가 줄어들어 패딩을 초기화 */
+        }
     </style>
 
     <title>냉장고 관리</title>
@@ -102,13 +149,19 @@
         <div class="site-mobile-menu-body"></div>
     </div>
 
-    <nav class="site-nav">
+    <div class="site-nav">
         <div class="container">
             <div class="menu-bg-wrap">
-                <div class="site-navigation">
-                    <a href="4_main.html" class="logo m-0 float-start">EatBooks</a>
-
+                <div class="site-navigation" style="display: flex; justify-content: space-between; align-items: center;">
+                    <div class="nav-left">
+                        <a href="4_main.html" class="logo m-0 float-start">EatBooks</a>
+                        <div class="search-bar-container">
+                            <input id="search-bar" type="text" placeholder="레시피 검색..." onkeypress="if(event.key === 'Enter') performSearch(this.value)">
+                            <img id="search-icon" src="search.png" alt="Search Icon" onclick="performSearch()"> 
+                        </div>
+                    </div>
                     <ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu float-end">
+                        
                         <li><a href="6_recipe.html">나만의 냉장고</a></li>
                         <li><a href="8_myrecipes.html">내 레시피</a></li>
                         <li><a href="7_newrecipe.html">레시피 만들기</a></li>
@@ -119,29 +172,28 @@
                                 <li><a href="10_qna.html">문의사항</a></li>
                             </ul>
                         </li>
-                        <li id="login-menu"><a href="1_login.html">로그인</a></li>
+                        <li><a href="1_login.html">로그인</a></li>
                         <div id="user-name-menu" style="display: none; float: right; padding-left: 10px;">
 							<a href="#" id="user-name" class="menu-link"></a>
 						</div>	
                     </ul>
-
                     <a href="#" class="burger light me-auto float-end mt-1 site-menu-toggle js-menu-toggle d-inline-block d-lg-none" data-toggle="collapse" data-target="#main-navbar">
                         <span></span>
                     </a>
                 </div>
             </div>
         </div>
-    </nav>
+    </div>
 
     <div class="hero page-inner overlay" style="background-image: url('images/검색화면 배경.jpg');">
         <div class="container">
             <div class="row justify-content-center align-items-center">
                 <div class="col-lg-9 text-center mt-5">
-                    <h1 class="heading" data-aos="fade-up">5232 California AVE. 21BC</h1>
+                    <h1 class="heading" data-aos="fade-up">냉장고 관리</h1>
                     <nav aria-label="breadcrumb" data-aos="fade-up" data-aos-delay="200">
                         <ol class="breadcrumb text-center justify-content-center">
                             <li class="breadcrumb-item "><a href="4_main.html">Home</a></li>
-                            <li class="breadcrumb-item active text-white-50" aria-current="page">5232 California AVE. 21BC</li>
+                            <li class="breadcrumb-item active text-white-50" aria-current="page">냉장고 관리</li>
                         </ol>
                     </nav>
                 </div>
@@ -191,79 +243,68 @@
         </div>
     </div>
 
-<div class="site-footer">
-    <div class="container">
-        
-        <div class="row">
-            <div class="col-lg-4">
-                <div class="widget">
-                    <h3>Contact</h3>
-                    <address>한경국립대학교 공학1관 303호</address>
-                    <ul class="list-unstyled links">
-                        <li><a href="tel://031-670-5114">+82 31-670-5114</a></li>
-                        <li><a href="tel://010-9035-0454">+82 10-9035-0454</a></li>
-                        <li><a href="mailto:info@mydomain.com">doog0740@gmail.com</a></li>
-                    </ul>
-                </div> <!-- /.widget -->
-            </div> <!-- /.col-lg-4 -->
-            <div class="col-lg-4">
-                <div class="widget">
-                    <h3>Sources</h3>
-                    <ul class="list-unstyled float-start links">
-                        <li><a href="#">About us</a></li>
-                        <li><a href="#">Services</a></li>
-                        <li><a href="#">Vision</a></li>
-                        <li><a href="#">Mission</a></li>
-                        <li><a href="#">Terms</a></li>
-                        <li><a href="#">Privacy</a></li>
-                    </ul>
-                    <ul class="list-unstyled float-start links">
-                        <li><a href="#">Partners</a></li>
-                        <li><a href="#">Business</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Creative</a></li>
-                    </ul>
-                </div> <!-- /.widget -->
-            </div> <!-- /.col-lg-4 -->
-            <div class="col-lg-4">
-                <div class="widget">
-                    <h3>Links</h3>
-                    <ul class="list-unstyled links">
-                        <li><a href="#">Our Vision</a></li>
-                        <li><a href="#">About us</a></li>
-                        <li><a href="#">Contact us</a></li>
-                    </ul>
-
-                    <ul class="list-unstyled social">
-                        <li><a href="#"><span class="icon-instagram"></span></a></li>
-                        <li><a href="#"><span class="icon-twitter"></span></a></li>
-                        <li><a href="#"><span class="icon-facebook"></span></a></li>
-                        <li><a href="#"><span class="icon-linkedin"></span></a></li>
-                        <li><a href="#"><span class="icon-pinterest"></span></a></li>
-                        <li><a href="#"><span class="icon-dribbble"></span></a></li>
-                    </ul>
-                </div> <!-- /.widget -->
-            </div> <!-- /.col-lg-4 -->
-        </div> <!-- /.row -->
-
-        <div class="row mt-5">
-            <div class="col-12 text-center">
-                <!-- 
-          **==========
-          NOTE: 
-          Please don't remove this copyright link unless you buy the license here https://untree.co/license/  
-          **==========
-        -->
-
-        <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script>. All Rights Reserved. &mdash; Designed with love by <a href="https://untree.co">Untree.co</a> <!-- License information: https://untree.co/license/ -->
-        </p>
-
-      </div>
-    </div>
-  </div> <!-- /.container -->
-</div> <!-- /.site-footer -->
+    <div class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="widget">
+                        <h3>Contact</h3>
+                        <address>한경국립대학교 제1공학관 303호</address>
+                        <ul class="list-unstyled links">
+                            <li><a href="tel://031-670-5114">+82 31-670-5114</a></li>
+                            <li><a href="tel://010-9035-0454">+82 10-9035-0454</a></li>
+                            <li><a href="mailto:info@mydomain.com">doog0740@gmail.com</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="widget">
+                        <h3>Sources</h3>
+                        <ul class="list-unstyled float-start links">
+                            <li><a href="#">About us</a></li>
+                            <li><a href="#">Services</a></li>
+                            <li><a href="#">Vision</a></li>
+                            <li><a href="#">Mission</a></li>
+                            <li><a href="#">Terms</a></li>
+                            <li><a href="#">Privacy</a></li>
+                        </ul>
+                        <ul class="list-unstyled float-start links">
+                            <li><a href="#">Partners</a></li>
+                            <li><a href="#">Business</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="#">Creative</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="widget">
+                        <h3>Links</h3>
+                        <ul class="list-unstyled links">
+                            <li><a href="#">Our Vision</a></li>
+                            <li><a href="#">About us</a></li>
+                            <li><a href="#">Contact us</a></li>
+                        </ul>
+                        <ul class="list-unstyled social">
+                            <li><a href="#"><span class="icon-instagram"></span></a></li>
+                            <li><a href="#"><span class="icon-twitter"></span></a></li>
+                            <li><a href="#"><span class="icon-facebook"></span></a></li>
+                            <li><a href="#"><span class="icon-linkedin"></span></a></li>
+                            <li><a href="#"><span class="icon-pinterest"></span></a></li>
+                            <li><a href="#"><span class="icon-dribbble"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="row mt-5">
+                <div class="col-12 text-center">
+                    <p>Copyright ©<script>document.write(new Date().getFullYear());</script>2024. All Rights Reserved. — Designed with love by <a href="https://untree.co">Untree.co</a></p>
+                </div>
+            </div>
+        </div>
+    </div> <!-- /.site-footer -->
 
 <script>
     document.getElementById('fridge-form').addEventListener('submit', function(event) {
@@ -406,6 +447,21 @@
         }
     });
 </script>
+<!-- Preloader -->
+<div id="overlayer"></div>
+<div class="loader">
+    <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/tiny-slider.js"></script>
+<script src="js/aos.js"></script>
+<script src="js/navbar.js"></script>
+<script src="js/counter.js"></script>
+<script src="js/custom.js"></script>
+<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script src="5_recipe.js"></script>
 </body>
 </html>
 
