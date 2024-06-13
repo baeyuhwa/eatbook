@@ -22,6 +22,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
         request.onsuccess = function(event) {
             const recipe = event.target.result;
+            console.log(recipe);
+
             if (recipe) {
                 document.getElementById('recipe-name').textContent = recipe.name;
                 // 이미지가 표시될 영역에 이미지 추가
@@ -30,11 +32,27 @@ document.addEventListener('DOMContentLoaded', function() {
                 } else {
                     document.getElementById('recipe-photo').alt = '사진이 없습니다.';
                 }
-                // 나머지 레시피 정보 표시
-                document.getElementById('recipe-ingredient').textContent = recipe.ingredient;
+
+                // 재료 표시
+                if (recipe.ingredients && recipe.ingredients.length > 0) {
+                    const ingredientList = recipe.ingredients.join(', ');
+                    document.getElementById('recipe-ingredient').textContent = ingredientList;
+                } else {
+                    document.getElementById('recipe-ingredient').textContent = '재료 정보가 없습니다.';
+                }
+
+                // 카테고리 표시
                 document.getElementById('recipe-category').textContent = recipe.category;
-                const process = recipe.process.replace(/\n/g, '<br>');
-                document.getElementById('recipe-process').innerHTML = process;
+
+                // 조리 과정 표시
+                if (recipe.processes && recipe.processes.length > 0) {
+                    const processList = recipe.processes.map((process, index) => `<div>${index + 1}. ${process}<div>`).join('');
+                    document.getElementById('recipe-process').innerHTML = `<div>${processList}</div>`;
+                } else {
+                    document.getElementById('recipe-process').innerHTML = '조리 과정 정보가 없습니다.';
+                }
+
+                // 레시피 요약 표시
                 document.getElementById('recipe-sumup').textContent = recipe.sumup;
             } else {
                 alert('레시피 정보를 불러올 수 없습니다.');

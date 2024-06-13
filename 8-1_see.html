@@ -44,9 +44,9 @@
 						</div>
 					</div>
 					<ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu float-end">
-						<li class="active"><a href="index.html">Home</a></li>
+						<li><a href="index.html">Home</a></li>
 						<li><a href="6_recipe.html">나만의 냉장고</a></li>
-						<li><a href="8_myrecipes.html">내 레시피</a></li>
+						<li class="active"><a href="8_myrecipes.html">내 레시피</a></li>
 						<li><a href="7_newrecipe.html">레시피 만들기</a></li>
 						<li class="has-children">
 							<a href="#" class="no-link">게시판</a>
@@ -83,26 +83,31 @@
     </div>
 
 	<div class="content">
-        <div class="row justify-content-between">
-			<div class="recipe-info col-lg-6">
-				<div id="photo-container">
-					<!-- 사진을 표시할 공간 -->
-					<img id="recipe-photo" src="" alt="Recipe Photo">
+		<div class="container-xxl py-6">
+			<div class="container">
+				<div class="row justify-content-between">
+					<div class="recipe-info col-lg-6">
+						<div id="photo-container" style="padding-bottom: 20px;">
+							<!-- 사진을 표시할 공간 -->
+							<img id="recipe-photo" src="" alt="Recipe Photo">
+						</div>
+					</div>
+					<div class="recipe-description col-lg-6" style="background-color: #fff">
+						<h1 id="recipe-name"></h1>
+						<p><strong>재료</strong></p>
+						<div id="recipe-ingredient"></div>
+						<p><strong>카테고리</strong></p>
+						<div id="recipe-category"></div>
+						<p><strong>레시피 요약</strong></p>
+						<div id="recipe-sumup"></div>
+						<p><strong>조리 과정</strong></p> 
+						<div id="recipe-process"></div>
+					</div>
 				</div>
-			</div>
-			<div class="recipe-description col-lg-6" style="background-color: #fff;">
-				<h1 id="recipe-name"></h1>
-				<p><strong>재료</strong></p>
-				<div id="recipe-ingredient"></div>
-				<p><strong>카테고리</strong></p>
-				<div id="recipe-category"></div>
-				<p><strong>레시피 요약</strong></p>
-				<div id="recipe-sumup"></div>
-				<p><strong>조리 과정</strong></p> 
-				<div id="recipe-process"></div>
+		
 			</div>
 		</div>
-    </div>
+	</div>
 
 
     <!-- Preloader -->

@@ -19,9 +19,7 @@ function saveRecipe(event) {
     event.preventDefault();
 
     const name = document.getElementById('recipe').value;
-    const ingredient = document.getElementById('ingredient').value;
     const category = document.getElementById('category').value;
-    const process = document.getElementById('process').value;
     const sumup = document.getElementById('sumup').value;
     const photoInput = document.getElementById('photo');
     const photoFile = photoInput.files[0];
@@ -32,11 +30,29 @@ function saveRecipe(event) {
         const transaction = db.transaction(["recipes"], "readwrite");
         const objectStore = transaction.objectStore("recipes");
 
+        // Get ingredients from input fields
+        const ingredients = [];
+        document.querySelectorAll('#ingredient-container input[name="ingredient"]').forEach(input => {
+            const ingredient = input.value.trim();
+            if (ingredient !== '') {
+                ingredients.push(ingredient);
+            }
+        });
+
+        // Get processes from input fields
+        const processes = [];
+        document.querySelectorAll('#process-container input[name="process"]').forEach(input => {
+            const process = input.value.trim();
+            if (process !== '') {
+                processes.push(process);
+            }
+        });
+
         const recipe = {
             name: name,
-            ingredient: ingredient,
+            ingredients: ingredients,
             category: category,
-            process: process,
+            processes: processes,
             sumup: sumup,
             photo: event.target.result // Blob 데이터
         };
@@ -45,7 +61,7 @@ function saveRecipe(event) {
         request.onsuccess = function() {
             console.log("Recipe has been added to your database.");
             document.getElementById('newrecipe').reset();
-            document.getElementById('photo-preview').innerHTML='';
+            document.getElementById('photo-preview').innerHTML = '';
             alert("레시피가 등록되었습니다.");
             window.location.href = "8_myrecipes.html";
         };
@@ -61,11 +77,29 @@ function saveRecipe(event) {
         const transaction = db.transaction(["recipes"], "readwrite");
         const objectStore = transaction.objectStore("recipes");
 
+        // Get ingredients from input fields
+        const ingredients = [];
+        document.querySelectorAll('#ingredient-container input[name="ingredient"]').forEach(input => {
+            const ingredient = input.value.trim();
+            if (ingredient !== '') {
+                ingredients.push(ingredient);
+            }
+        });
+
+        // Get processes from input fields
+        const processes = [];
+        document.querySelectorAll('#process-container input[name="process"]').forEach(input => {
+            const process = input.value.trim();
+            if (process !== '') {
+                processes.push(process);
+            }
+        });
+
         const recipe = {
             name: name,
-            ingredient: ingredient,
+            ingredients: ingredients,
             category: category,
-            process: process,
+            processes: processes,
             sumup: sumup,
             photo: null
         };
@@ -74,7 +108,7 @@ function saveRecipe(event) {
         request.onsuccess = function() {
             console.log("Recipe has been added to your database.");
             document.getElementById('newrecipe').reset();
-            document.getElementById('photo-preview').innerHTML='';
+            document.getElementById('photo-preview').innerHTML = '';
             alert("레시피가 등록되었습니다.");
             window.location.href = "8_myrecipes.html";
         };
@@ -104,4 +138,42 @@ function previewPhoto() {
     } else {
         photoPreview.innerHTML = '이미지를 선택해주세요.';
     }
+}
+
+function addIngredientLine() {
+    event.preventDefault();
+
+    const container = document.getElementById('ingredient-container');
+    const newInputDiv = document.createElement('div');
+    newInputDiv.className = 'd-flex align-items-center';
+    newInputDiv.innerHTML = `
+        <input type="text" class="form-control border-0 bg-light" name="ingredient" onkeypress="if(event.key === 'Enter') addIngredientLine()">
+        <button type="button" class="add-btn btn-success ms-3" onclick="addIngredientLine(this)">+</button>
+        <button type="button" class="add-btn btn-danger ms-3" onclick="removeIngredientLine(this)">-</button>
+    `;
+    container.appendChild(newInputDiv);
+}
+
+function removeIngredientLine(button) {
+    const container = document.getElementById('ingredient-container');
+    container.removeChild(button.parentElement);
+}
+
+function addProcessLine() {
+    event.preventDefault();
+    
+    const container = document.getElementById('process-container');
+    const newInputDiv = document.createElement('div');
+    newInputDiv.className = 'd-flex align-items-center';
+    newInputDiv.innerHTML = `
+        <input type="text" class="form-control border-0 bg-light" name="process" onkeypress="if(event.key === 'Enter') addProcessLine()">
+        <button type="button" class="add-btn btn-success ms-3" onclick="addIngredientLine(this)">+</button>
+        <button type="button" class="add-btn btn-danger ms-3" onclick="removeProcessLine(this)">-</button>
+    `;
+    container.appendChild(newInputDiv);
+}
+
+function removeProcessLine(button) {
+    const container = document.getElementById('process-container');
+    container.removeChild(button.parentElement);
 }

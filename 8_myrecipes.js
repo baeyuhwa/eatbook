@@ -1,6 +1,12 @@
 let db;
 const request = indexedDB.open("recipesDatabase", 1);
 
+request.onupgradeneeded = function(event) {
+    db = event.target.result;
+    const objectStore = db.createObjectStore("recipes", { keyPath: "id", autoIncrement: true });
+    objectStore.createIndex("name", "name", { unique: false });
+};
+
 request.onsuccess = function(event) {
     db = event.target.result;
     loadRecipes();
@@ -45,12 +51,12 @@ function displayPosts(posts) {
     deleteButtons.forEach(button => {
         button.addEventListener('click', function(event) {
             const id = Number(this.getAttribute('data-id'));
-            deletePost(id);
+            deleteRecipe(id);
         });
     });
 }
 
-function deletePost(id) {
+function deleteRecipe(id) {
     const transaction = db.transaction(["recipes"], "readwrite");
     const objectStore = transaction.objectStore("recipes");
 

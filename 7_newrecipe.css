@@ -80,6 +80,7 @@ nav .site-menu a:hover {
     flex-direction: column;
     align-items: center;
     font-size: 16px;
+    color: #333;
 }
 
 input[type=text] {
@@ -182,7 +183,11 @@ h3 {
     display: block;
 }
 
-label[for="photo"], label[for="category"], label[for="process"] {
+label {
+    padding-top: 15px;
+}
+
+label[for="category"], label[for="photo"] {
     padding-bottom: 10px;
 }
 
@@ -199,16 +204,57 @@ label[for="photo"], label[for="category"], label[for="process"] {
     max-width: 100%;
 }
 
-.recipe-info {
-    padding-right: 50px;
-}
-
-.recipe-description {
-    padding-left: 50px;
-}
-
 .container nav {
     background-color: transparent !important;
     align-items: center;
     justify-content: center;
 }
+
+.button-container {
+    padding-top: 20px;
+}
+
+.burger {
+    margin-left: auto;
+}
+
+@media (max-width: 991.98px) {
+    .site-navigation {
+        width: 100%;
+    }
+    .site-navigation .nav-left {
+        flex-grow: 1;
+    }
+    .burger {
+        order: 2;
+    }
+}
+
+.add-btn {
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: 0.2rem 1rem;
+    height: 47px;
+    font-size: 1rem;
+    border-radius: 0.25rem;
+    -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    -o-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out; }
+    @media (prefers-reduced-motion: reduce) {
+      .add-btn {
+        -webkit-transition: none;
+        -o-transition: none;
+        transition: none; } }
