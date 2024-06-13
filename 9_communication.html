@@ -16,100 +16,99 @@
     <link rel="stylesheet" href="css/aos.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="9_communication.css">
-    <style>
-        .search-bar-container {
-            position: relative;
-            display: inline-block;
-        }
-
-        #search-bar {
-            padding-right: 40px; /* 오른쪽 여백으로 돋보기 아이콘 공간 확보 */
-        }
-
-        #search-icon {
-            position: absolute;
-            right: 10px; /* 검색창 오른쪽에 고정 */
-            top: 50%;
-            transform: translateY(-50%);
-            cursor: pointer;
-        }
-        </style>
     <title>소통</title>
 </head>
 <body>
     <div class="site-mobile-menu site-navbar-target">
-		<div class="site-mobile-menu-header">
-			<div class="site-mobile-menu-close">
-				<span class="icofont-close js-menu-toggle"></span>
-			</div>
-		</div>
-		<div class="site-mobile-menu-body"></div>
-	</div>
+        <div class="site-mobile-menu-header">
+            <div class="site-mobile-menu-close">
+                <span class="icofont-close js-menu-toggle"></span>
+            </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+    </div>
     <div class="site-nav">
-		<div class="container">
-			<div class="menu-bg-wrap">
-				<div class="site-navigation" style="display: flex; justify-content: space-between; align-items: center;">
-					<div class="nav-left">
-						<a href="4_main.html" class="logo m-0 float-start">EatBooks</a>
-						<div class="search-bar-container">
-							<input id="search-bar" type="text" placeholder="레시피 검색..." onkeypress="if(event.key === 'Enter') performSearch(this.value)">
-							<img id="search-icon" src="search.png" alt="Search Icon" onclick="performSearch()"> 
-						</div>
-					</div>
-					<ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu float-end">
-						<li class="active"><a href="index.html">Home</a></li>
-						<li><a href="6_recipe.html">나만의 냉장고</a></li>
-						<li><a href="8_myrecipes.html">내 레시피</a></li>
-						<li><a href="7_newrecipe.html">레시피 만들기</a></li>
-						<li class="has-children">
-							<a href="#" class="no-link">게시판</a>
-							<ul class="dropdown">
-								<li><a href="9_communication.html">소통</a></li>
-								<li><a href="10_qna.html">문의사항</a></li>
-							</ul>
-						</li>
-						<li><a href="1_login.html">로그인</a></li>
-					</ul>
-					<a href="#" class="burger light me-auto float-end mt-1 site-menu-toggle js-menu-toggle d-inline-block d-lg-none" data-toggle="collapse" data-target="#main-navbar">
-						<span></span>
-					</a>
-				</div>
-			</div>
-		</div>
-	</div>
-    <div class="hero page-inner overlay" style="background-image: url('communi.jpg');">
-    <div class="container">
-        <div class="row justify-content-center align-items-center">
-            <div class="col-lg-9 text-center mt-5">
-                <h1 class="heading" data-aos="fade-up">소통</h1>
-                <nav aria-label="breadcrumb" data-aos="fade-up" data-aos-delay="200">
-                    <ol class="breadcrumb text-center justify-content-center">
-                        <li class="breadcrumb-item"><a href="4_main.html">Home</a></li>
-                        <li class="breadcrumb-item"><a href="8_myrecipes.html">소통</a></li>
-                        <li class="breadcrumb-item active text-white-50" aria-current="page">레시피 작성</li>
-                    </ol>
-                </nav>
+        <div class="container">
+            <div class="menu-bg-wrap">
+                <div class="site-navigation" style="display: flex; justify-content: space-between; align-items: center;">
+                    <div class="nav-left">
+                        <a href="4_main.html" class="logo m-0 float-start">EatBooks</a>
+                        <div class="search-bar-container">
+                            <input id="search-bar" type="text" placeholder="레시피 검색..." onkeypress="if(event.key === 'Enter') performSearch(this.value)">
+                            <img id="search-icon" src="search.png" alt="Search Icon" onclick="performSearch()"> 
+                        </div>
+                    </div>
+                    <ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu float-end">
+                        <li class="active"><a href="index.html">Home</a></li>
+                        <li><a href="6_recipe.html">나만의 냉장고</a></li>
+                        <li><a href="8_myrecipes.html">내 레시피</a></li>
+                        <li><a href="7_newrecipe.html">레시피 만들기</a></li>
+                        <li class="has-children">
+                            <a href="#" class="no-link">게시판</a>
+                            <ul class="dropdown">
+                                <li><a href="9_communication.html">소통</a></li>
+                                <li><a href="10_qna.html">문의사항</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="1_login.html">로그인</a></li>
+                    </ul>
+                    <a href="#" class="burger light me-auto float-end mt-1 site-menu-toggle js-menu-toggle d-inline-block d-lg-none" data-toggle="collapse" data-target="#main-navbar">
+                        <span></span>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
+    <div class="hero page-inner overlay">
+        <div class="container">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-lg-9 text-center mt-5">
+                    <div class="hero-text" data-aos="fade-up">
+                        <h1 class="heading">소통</h1>
+                        <nav aria-label="breadcrumb" data-aos="fade-up" data-aos-delay="200" class="breadcrumb">
+                            <ol class="breadcrumb text-center justify-content-center">
+                                <li class="breadcrumb-item"><a href="4_main.html">Home</a></li>
+                                <li class="breadcrumb-item active text-white-50" aria-current="page">소통</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-<div class="content">
-    <table>
-        <thead>
-            <tr>
-                <th>순번</th>
-                <th>제목</th>
-                <th>작성일</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody id="postList">
-        </tbody>
-    </table>  
-    <button class="create-button" onclick="window.location.href='9-1_newcommuni.html';">작성하기</button>
-</div>
 
-<script src="5_recipe.js"></script>
-<script src="9_communication.js"></script>
+    <div class="content">
+        <table>
+            <thead>
+                <tr>
+                    <th>순번</th>
+                    <th>제목</th>
+                    <th>작성일</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="postList">
+                <!-- 여기에 동적으로 생성되는 게시물 목록이 들어갈 수 있습니다. -->
+            </tbody>
+        </table>  
+        <button class="create-button" onclick="window.location.href='9-1_newcommuni.html';">작성하기</button>
+    </div>
+
+    <!-- Preloader -->
+    <div id="overlayer"></div>
+    <div class="loader">
+    	<div class="spinner-border" role="status">
+    		<span class="visually-hidden">Loading...</span>
+    	</div>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/tiny-slider.js"></script>
+    <script src="js/aos.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/counter.js"></script>
+    <script src="js/custom.js"></script>
+	<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+	<script src="5_recipe.js"></script>
+    <script src="9_communication.js"></script>
 </body>
 </html>

@@ -39,6 +39,7 @@ nav .logo:hover {
 }
 
 .search-bar-container {
+    position: relative;
     padding-left: 10px;
     display: flex;
     align-items: center;
@@ -54,7 +55,13 @@ nav .logo:hover {
     font-size: 16px;
     outline: none;
 }
-
+#search-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
 #search-bar::placeholder {
     color: #ccc;
     font-size: 16px;
@@ -102,7 +109,7 @@ table {
 
 th, td {
     padding: 15px;
-    text-align: left;
+    text-align: center;
     border-bottom: 1px solid #ddd;
 }
 
@@ -161,4 +168,69 @@ h3 {
 
 .has-children:hover .dropdown {
     display: block;
+}
+.hero {
+    position: relative; /* Ensure relative positioning for absolute children */
+    background-image: url('http://www.simplot.co.kr/img/mm04_banner.jpg');
+    background-size: cover; /* 화면을 꽉 채우도록 */
+    background-position: center; /* 중앙 정렬 */
+    height: 600px; /* 원하는 높이 설정 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+}
+
+.hero-text {
+    position: relative; /* Ensure text is placed relative to .hero */
+    z-index: 1; /* Ensure text appears above background */
+    text-align: center;
+}
+
+.breadcrumb {
+    background: transparent;
+     /* Breadcrumb 배경 투명하게 */
+}
+
+.breadcrumb-item {
+    font-size: 18px; /* Breadcrumb 글꼴 크기 */
+    text-align: center;
+}
+
+.breadcrumb-item a {
+    color: #fff; /* Breadcrumb 링크 색상 */
+    text-align: center;
+}
+
+
+.breadcrumb {
+    background: transparent; /* Breadcrumb 배경 투명하게 */
+}
+
+.breadcrumb-item {
+    font-size: 18px; /* Breadcrumb 글꼴 크기 */
+    text-align: center;
+}
+
+.breadcrumb-item a {
+    color: #fff; /* Breadcrumb 링크 색상 */
+    text-align: center;
+}
+
+.search-bar-container {
+    position: relative;
+    display: inline-block;
+}
+
+#search-bar {
+    padding-right: 40px; /* 오른쪽 여백으로 돋보기 아이콘 공간 확보 */
+}
+
+#search-icon {
+    position: absolute;
+    right: 10px; /* 검색창 오른쪽에 고정 */
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
 }
