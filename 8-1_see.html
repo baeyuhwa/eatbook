@@ -39,12 +39,11 @@
 					<div class="nav-left">
 						<a href="4_main.html" class="logo m-0 float-start">EatBooks</a>
 						<div class="search-bar-container">
-							<input id="search-bar" type="text" placeholder="레시피 검색..." onkeypress="if(event.key === 'Enter') performSearch(this.value)">
+							<input id="search-bar" type="text" placeholder="레시피를 검색하세요!" onkeypress="if(event.key === 'Enter') performSearch(this.value)">
 							<img id="search-icon" src="search.png" alt="Search Icon" onclick="performSearch()"> 
 						</div>
 					</div>
 					<ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu float-end">
-						<li><a href="index.html">Home</a></li>
 						<li><a href="6_recipe.html">나만의 냉장고</a></li>
 						<li class="active"><a href="8_myrecipes.html">내 레시피</a></li>
 						<li><a href="7_newrecipe.html">레시피 만들기</a></li>
@@ -91,7 +90,6 @@
 				<div class="row justify-content-between">
 					<div class="recipe-info col-lg-6">
 						<div id="photo-container" style="padding-bottom: 20px;">
-							<!-- 사진을 표시할 공간 -->
 							<img id="recipe-photo" src="" alt="Recipe Photo">
 						</div>
 					</div>

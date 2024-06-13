@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             if (recipe) {
                 document.getElementById('recipe-name').textContent = recipe.name;
-                // 이미지가 표시될 영역에 이미지 추가
+                //이미지 표시
                 if (recipe.photo) {
                     document.getElementById('recipe-photo').src = recipe.photo;
                 } else {
