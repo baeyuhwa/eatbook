@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Untree.co">
-    <link rel="shortcut icon" href="favicon.png">
+    <link rel="shortcut icon" href="LOGO.png">
 
     <meta name="description" content="" />
     <meta name="keywords" content="bootstrap, bootstrap5" />
@@ -89,6 +89,19 @@
                                 <li><a href="#" id="logout">로그아웃</a></li>
                             </ul>
                         </div>
+                        
+                        <script>
+                        document.getElementById('logout').addEventListener('click', function(event) {
+                            event.preventDefault(); // 기본 링크 동작을 막습니다.
+                            
+                            // 여기서 로그아웃 처리를 추가할 수 있습니다.
+                            // 예를 들어, 서버에 로그아웃 요청을 보내는 코드 등
+                        
+                            // 로그아웃 후 로그인 페이지로 리디렉션합니다.
+                            window.location.href = '1_login.html'; // 로그인 페이지의 URL로 수정합니다.
+                        });
+                        </script>
+                        
                     </ul>
                     <a href="#" class="burger light me-auto float-end mt-1 site-menu-toggle js-menu-toggle d-inline-block d-lg-none" data-toggle="collapse" data-target="#main-navbar">
                         <span></span>
