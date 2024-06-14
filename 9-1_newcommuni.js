@@ -7,13 +7,13 @@ function saveQnaPost(event) {
     var date = new Date().toLocaleDateString();
     var post = { title: title, content: content, date: date };
     
-    var storedPosts = localStorage.getItem('qnaPosts');
+    var storedPosts = localStorage.getItem('posts');
     console.log("이전 게시물:", storedPosts); // 확인용
     var posts = storedPosts ? JSON.parse(storedPosts) : [];
     
     posts.push(post);
     
-    localStorage.setItem('qnaPosts', JSON.stringify(posts));
+    localStorage.setItem('posts', JSON.stringify(posts));
     
-    window.location.href = '10_qna.html';
+    window.location.href = '9_communication.html';
 }

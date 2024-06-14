@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     var postId = localStorage.getItem('selectedPostId');
     if (postId) {
-        var storedPosts = localStorage.getItem('qnaPosts'); // 'newPosts' 대신 'qnaPosts'로 수정
+        var storedPosts = localStorage.getItem('posts'); // 'newPosts' 대신 'qnaPosts'로 수정
         if (storedPosts) {
             var posts = JSON.parse(storedPosts);
             var post = posts[postId];
