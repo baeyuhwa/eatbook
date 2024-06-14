@@ -200,24 +200,6 @@
 	<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 	<script src="5_recipe.js"></script>
 <script src="10-1_newqna.js"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const kakaoNickname = localStorage.getItem('kakaoNickname');
-        if (kakaoNickname) {
-            document.getElementById('login-menu').style.display = 'none';
-            const userNameMenu = document.getElementById('user-name-menu');
-            userNameMenu.style.display = 'block';
-            const userNameElement = document.getElementById('user-name');
-            userNameElement.textContent = kakaoNickname;
-
-            // 로그인 메뉴와 동일한 스타일 적용
-            userNameElement.style.color = '#fff';
-            userNameElement.style.fontFamily = 'Work Sans, sans-serif';
-            userNameElement.style.fontSize = '1rem';
-            userNameElement.style.textDecoration = 'none';
-        }
-    });
-</script>
 
 </body>
 </html>
