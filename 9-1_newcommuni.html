@@ -16,7 +16,26 @@
     <link rel="stylesheet" href="css/aos.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="9-1_newcommuni.css">
-    <title>게시글 작성</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .has-children:hover .dropdown {
+            display: block;
+        }
+        .search-bar-container {
+            position: relative;
+        }
+        #search-icon {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+        .content {
+            margin-top: 20px; /* 이미지와 콘텐츠 사이에 간격을 둠 */
+        }
+    </style>
+    <title>소통 작성</title>
 </head>
 <body>
     <div class="site-mobile-menu site-navbar-target">
@@ -63,11 +82,11 @@
             <div class="row justify-content-center align-items-center">
                 <div class="col-lg-9 text-center mt-5">
                     <div class="hero-text" data-aos="fade-up">
-                        <h1 class="heading">게시글 작성</h1>
+                        <h1 class="heading">소통</h1>
                         <nav aria-label="breadcrumb" data-aos="fade-up" data-aos-delay="200" class="breadcrumb">
                             <ol class="breadcrumb text-center justify-content-center">
                                 <li class="breadcrumb-item"><a href="4_main.html">Home</a></li>
-                                <li class="breadcrumb-item"><a href="9_communication.html">소통</a></li>
+                                <li class="breadcrumb-item active text-white-50" aria-current="page">소통</li>
                                 <li class="breadcrumb-item active text-white-50" aria-current="page">게시글 작성</li>
                             </ol>
                         </nav>
@@ -76,75 +95,93 @@
             </div>
         </div>
     </div>
+<div class="content">
+    <form id="qnaForm" onsubmit="saveQnaPost(event)">
+        <label for="title">제목: </label>
+        <input type="text" id="title" name="title">
 
-    <div class="content">
-        <form id="postForm">
-            <label for="title">제목:</label>
-            <input type="text" id="title" name="title" required><br>
-            <label for="content">내용:</label><br>
-            <textarea id="content" name="content" rows="10" required></textarea><br>
-            <button type="submit">작성 완료</button>
-        </form>
-    </div>
+        <label for="content">내용:</label>
+        <textarea id="content" name="content"></textarea>
 
-    <div class="site-footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="widget">
-                        <h3>Contact</h3>
-                        <address>한경국립대학교 공학1관 303호</address>
-                        <ul class="list-unstyled links">
-                            <li><a href="tel://031-670-5114">+82 31-670-5114</a></li>
-                            <li><a href="tel://010-9035-0454">+82 10-9035-0454</a></li>
-                            <li><a href="mailto:info@mydomain.com">doog0740@gmail.com</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="widget">
-                        <h3>Sources</h3>
-                        <ul class="list-unstyled float-start links">
-                            <li><a href="#">About us</a></li>
-                            <li><a href="#">Services</a></li>
-                            <li><a href="#">Vision</a></li>
-                            <li><a href="#">Mission</a></li>
-                            <li><a href="#">Terms</a></li>
-                            <li><a href="#">Privacy</a></li>
-                        </ul>
-                        <ul class="list-unstyled float-start links">
-                            <li><a href="#">Partners</a></li>
-                            <li><a href="#">Business</a></li>
-                            <li><a href="#">Careers</a></li>
-                            <li><a href="#">Blog</a></li>
-                            <li><a href="#">FAQ</a></li>
-                            <li><a href="#">Creative</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="widget">
-                        <h3>Links</h3>
-                        <ul class="list-unstyled links">
-                            <li><a href="#">Our Vision</a></li>
-                            <li><a href="#">About us</a></li>
-                            <li><a href="#">Contact us</a></li>
-                        </ul>
-                        <ul class="list-unstyled social">
-                            <li><a href="https://www.instagram.com/with_hknu/"><span class="icon-instagram"></span></a></li>
-                            <li><a href="https://x.com/withhknu"><span class="icon-twitter"></span></a></li>
-                            <li><a href="https://www.facebook.com/HankyungNationalUniv/"><span class="icon-facebook"></span></a></li>
-                        </ul>
-                    </div>
+        <div class="button-container">
+            <button type="submit">등록</button>
+        </div>
+    </form>            
+</div>
+<div class="site-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="widget">
+                    <h3>Contact</h3>
+                    <address>한경국립대학교 제1공학관 303호</address>
+                    <ul class="list-unstyled links">
+                        <li><a href="tel://031-670-5114">+82 31-670-5114</a></li>
+                        <li><a href="tel://010-9035-0454">+82 10-9035-0454</a></li>
+                        <li><a href="mailto:info@mydomain.com">doog0740@gmail.com</a></li>
+                    </ul>
                 </div>
             </div>
-
-            <div class="row mt-5">
-                <div class="col-12 text-center">
-                    <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script>. All Rights Reserved. &mdash; Designed with love by <a href="#">Untree.co</a></p>
+            <div class="col-lg-4">
+                <div class="widget">
+                    <h3>Sources</h3>
+                    <ul class="list-unstyled float-start links">
+                        <li><a href="#">About us</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Vision</a></li>
+                        <li><a href="#">Mission</a></li>
+                        <li><a href="#">Terms</a></li>
+                        <li><a href="#">Privacy</a></li>
+                    </ul>
+                    <ul class="list-unstyled float-start links">
+                        <li><a href="#">Partners</a></li>
+                        <li><a href="#">Business</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Creative</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="widget">
+                    <h3>Links</h3>
+                    <ul class="list-unstyled links">
+                        <li><a href="#">Our Vision</a></li>
+                        <li><a href="#">About us</a></li>
+                        <li><a href="#">Contact us</a></li>
+                    </ul>
+                    <ul class="list-unstyled social">
+                        <li><a href="https://www.instagram.com/with_hknu/"><span class="icon-instagram"></span></a></li>
+                        <li><a href="https://x.com/withhknu"><span class="icon-twitter"></span></a></li>
+                        <li><a href="https://www.facebook.com/HankyungNationalUniv/"><span class="icon-facebook"></span></a></li>
+                    </ul>
                 </div>
             </div>
         </div>
+
+        <div class="row mt-5">
+            <div class="col-12 text-center">
+                <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script>. All Rights Reserved. &mdash; Designed with love by <a href="#">Untree.co</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const kakaoNickname = localStorage.getItem('kakaoNickname');
+        if (kakaoNickname) {
+            const userNameElement = document.getElementById('user-name');
+            userNameElement.textContent = kakaoNickname;
+        }
+    });
+</script>
+    <!-- Preloader -->
+    <div id="overlayer"></div>
+    <div class="loader">
+    	<div class="spinner-border" role="status">
+    		<span class="visually-hidden">Loading...</span>
+    	</div>
     </div>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/tiny-slider.js"></script>
@@ -154,52 +191,7 @@
     <script src="js/custom.js"></script>
 	<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 	<script src="5_recipe.js"></script>
-    <script src="9-1_communication.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const kakaoNickname = localStorage.getItem('kakaoNickname');
-            if (kakaoNickname) {
-                document.getElementById('login-menu').style.display = 'none';
-                const userNameMenu = document.getElementById('user-name-menu');
-                userNameMenu.style.display = 'block';
-                const userNameElement = document.getElementById('user-name');
-                userNameElement.textContent = kakaoNickname;
-    
-                // 로그인 메뉴와 동일한 스타일 적용
-                userNameElement.style.color = '#fff';
-                userNameElement.style.fontFamily = 'Work Sans, sans-serif';
-                userNameElement.style.fontSize = '1rem';
-                userNameElement.style.textDecoration = 'none';
-            }
-        });
+<script src="9-1_newcommuni.js"></script>
 
-        document.getElementById('postForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            var title = document.getElementById('title').value;
-            var content = document.getElementById('content').value;
-            var date = new Date().toISOString().slice(0, 10);
-
-            var post = {
-                title: title,
-                content: content,
-                date: date
-            };
-
-            var storedPosts = localStorage.getItem('posts');
-            var posts = storedPosts ? JSON.parse(storedPosts) : [];
-            posts.push(post);
-            localStorage.setItem('posts', JSON.stringify(posts));
-
-            alert('게시글이 저장되었습니다.');
-            window.location.href = '9_communication.html';
-        });
-
-        function performSearch() {
-            const searchValue = document.getElementById('search-bar').value;
-            localStorage.setItem('searchQuery', searchValue);
-            window.location.href = '5_recipe_result.html';
-        }
-    </script>
-    
 </body>
 </html>
