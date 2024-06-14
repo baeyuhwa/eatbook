@@ -1,69 +1,69 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="author" content="Untree.co">
-	<link rel="shortcut icon" href="favicon.png">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Untree.co">
+    <link rel="shortcut icon" href="favicon.png">
 
-	<meta name="description" content="" />
-	<meta name="keywords" content="bootstrap, bootstrap5" />
-	
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="fonts/icomoon/style.css">
-	<link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
-	<link rel="stylesheet" href="css/tiny-slider.css">
-	<link rel="stylesheet" href="css/aos.css">
-	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="7_newrecipe.css">
-	<script src="qrcode.min.js"></script>
-	<title>작성한 레시피</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="bootstrap, bootstrap5" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="css/tiny-slider.css">
+    <link rel="stylesheet" href="css/aos.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="7_newrecipe.css">
+    <script src="qrcode.min.js"></script>
+    <title>작성한 레시피</title>
 </head>
 
 <body>
-	<div class="site-mobile-menu site-navbar-target">
-		<div class="site-mobile-menu-header">
-			<div class="site-mobile-menu-close">
-				<span class="icofont-close js-menu-toggle"></span>
-			</div>
-		</div>
-		<div class="site-mobile-menu-body"></div>
-	</div>
+    <div class="site-mobile-menu site-navbar-target">
+        <div class="site-mobile-menu-header">
+            <div class="site-mobile-menu-close">
+                <span class="icofont-close js-menu-toggle"></span>
+            </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+    </div>
 
-	<div class="site-nav">
-		<div class="container">
-			<div class="menu-bg-wrap">
-				<div class="site-navigation" style="display: flex; justify-content: space-between; align-items: center;">
-					<div class="nav-left">
-						<a href="4_main.html" class="logo m-0 float-start">EatBooks</a>
-						<div class="search-bar-container">
-							<input id="search-bar" type="text" placeholder="레시피를 검색하세요!" onkeypress="if(event.key === 'Enter') performSearch(this.value)">
-							<img id="search-icon" src="search.png" alt="Search Icon" onclick="performSearch()"> 
-						</div>
-					</div>
-					<ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu float-end">
-						<li><a href="6_recipe.html">나만의 냉장고</a></li>
-						<li class="active"><a href="8_myrecipes.html">내 레시피</a></li>
-						<li><a href="7_newrecipe.html">레시피 만들기</a></li>
-						<li class="has-children">
-							<a href="#" class="no-link">게시판</a>
-							<ul class="dropdown">
-								<li><a href="9_communication.html">소통</a></li>
-								<li><a href="10_qna.html">문의사항</a></li>
-							</ul>
-						</li>
-					</ul>
-					<a href="#" class="burger light me-auto float-end mt-1 site-menu-toggle js-menu-toggle d-inline-block d-lg-none" data-toggle="collapse" data-target="#main-navbar">
-						<span></span>
-					</a>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div class="site-nav">
+        <div class="container">
+            <div class="menu-bg-wrap">
+                <div class="site-navigation" style="display: flex; justify-content: space-between; align-items: center;">
+                    <div class="nav-left">
+                        <a href="4_main.html" class="logo m-0 float-start">EatBooks</a>
+                        <div class="search-bar-container">
+                            <input id="search-bar" type="text" placeholder="레시피를 검색하세요!" onkeypress="if(event.key === 'Enter') performSearch(this.value)">
+                            <img id="search-icon" src="search.png" alt="Search Icon" onclick="performSearch()"> 
+                        </div>
+                    </div>
+                    <ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu float-end">
+                        <li><a href="6_recipe.html">나만의 냉장고</a></li>
+                        <li class="active"><a href="8_myrecipes.html">내 레시피</a></li>
+                        <li><a href="7_newrecipe.html">레시피 만들기</a></li>
+                        <li class="has-children">
+                            <a href="#" class="no-link">게시판</a>
+                            <ul class="dropdown">
+                                <li><a href="9_communication.html">소통</a></li>
+                                <li><a href="10_qna.html">문의사항</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <a href="#" class="burger light me-auto float-end mt-1 site-menu-toggle js-menu-toggle d-inline-block d-lg-none" data-toggle="collapse" data-target="#main-navbar">
+                        <span></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 
-	<div class="hero page-inner overlay" style="background-image: url('header.jpg');">
+    <div class="hero page-inner overlay" style="background-image: url('header.jpg');">
         <div class="container">
             <div class="row justify-content-center align-items-center">
                 <div class="col-lg-9 text-center mt-5">
@@ -71,7 +71,7 @@
                     <nav aria-label="breadcrumb" data-aos="fade-up" data-aos-delay="200">
                         <ol class="breadcrumb text-center justify-content-center">
                             <li class="breadcrumb-item"><a href="4_main.html">Home</a></li>
-							<li class="breadcrumb-item"><a href="8_myrecipes.html">내 레시피</a></li>
+                            <li class="breadcrumb-item"><a href="8_myrecipes.html">내 레시피</a></li>
                             <li class="breadcrumb-item active text-white-50" aria-current="page">작성한 레시피</li>
                         </ol>
                     </nav>
@@ -80,34 +80,33 @@
         </div>
     </div>
 
-	<div class="content">
-		<div class="container-xxl py-6">
-			<div class="container">
-				<div class="row justify-content-between">
-					<div class="recipe-info col-lg-6">
-						<div id="photo-container" style="padding-bottom: 20px;">
-							<img id="recipe-photo" src="" alt="Recipe Photo">
-						</div>
-					</div>
-					<div class="recipe-description col-lg-6" style="background-color: #fff">
-						<h1 id="recipe-name"></h1>
-						<p><strong>재료</strong></p>
-						<div id="recipe-ingredient"></div>
-						<p><strong>카테고리</strong></p>
-						<div id="recipe-category"></div>
-						<p><strong>레시피 요약</strong></p>
-						<div id="recipe-sumup"></div>
-						<p><strong>조리 과정</strong></p> 
-						<div id="recipe-process"></div>
-						<div id="qrcode" title="http://127.0.0.1:5500/8-1_see.html?index=9"><canvas width="128" height="128" style="display: none;"></canvas><img src="data:image/png;base64,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" style="display: block;"></div>
-					</div>
-				</div>
-		
-			</div>
-		</div>
-	</div>
+    <div class="content">
+        <div class="container-xxl py-6">
+            <div class="container">
+                <div class="row justify-content-between">
+                    <div class="recipe-info col-lg-6">
+                        <div id="photo-container" style="padding-bottom: 20px;">
+                            <img id="recipe-photo" src="" alt="Recipe Photo">
+                        </div>
+                    </div>
+                    <div class="recipe-description col-lg-6" style="background-color: #fff">
+                        <h1 id="recipe-name"></h1>
+                        <p><strong>재료</strong></p>
+                        <div id="recipe-ingredient"></div>
+                        <p><strong>카테고리</strong></p>
+                        <div id="recipe-category"></div>
+                        <p><strong>레시피 요약</strong></p>
+                        <div id="recipe-sumup"></div>
+                        <p><strong>조리 과정</strong></p> 
+                        <div id="recipe-process"></div>
+                        <div id="qrcode" style="padding-top: 20px;"></div> <!-- QR code container -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-	<div class="site-footer">
+    <div class="site-footer">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4">
@@ -167,13 +166,12 @@
         </div>
     </div>
 
-
     <!-- Preloader -->
     <div id="overlayer"></div>
     <div class="loader">
-    	<div class="spinner-border" role="status">
-    		<span class="visually-hidden">Loading...</span>
-    	</div>
+        <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
     </div>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/tiny-slider.js"></script>
@@ -181,27 +179,26 @@
     <script src="js/navbar.js"></script>
     <script src="js/counter.js"></script>
     <script src="js/custom.js"></script>
-	<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
-	<script src="5_recipe.js"></script>
-	<script src="8-1_see.js"></script>
-	<script src="8-1_qr.js"></script>
-	<script>
-		document.addEventListener('DOMContentLoaded', function() {
-			const kakaoNickname = localStorage.getItem('kakaoNickname');
-			if (kakaoNickname) {
-				document.getElementById('login-menu').style.display = 'none';
-				const userNameMenu = document.getElementById('user-name-menu');
-				userNameMenu.style.display = 'block';
-				const userNameElement = document.getElementById('user-name');
-				userNameElement.textContent = kakaoNickname;
-	
-				// 로그인 메뉴와 동일한 스타일 적용
-				userNameElement.style.color = '#fff';
-				userNameElement.style.fontFamily = 'Work Sans, sans-serif';
-				userNameElement.style.fontSize = '1rem';
-				userNameElement.style.textDecoration = 'none';
-			}
-		});
-	</script>	
-    </body>
+    <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+    <script src="5_recipe.js"></script>
+    <script src="8-1_see.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const kakaoNickname = localStorage.getItem('kakaoNickname');
+            if (kakaoNickname) {
+                document.getElementById('login-menu').style.display = 'none';
+                const userNameMenu = document.getElementById('user-name-menu');
+                userNameMenu.style.display = 'block';
+                const userNameElement = document.getElementById('user-name');
+                userNameElement.textContent = kakaoNickname;
+
+                // 로그인 메뉴와 동일한 스타일 적용
+                userNameElement.style.color = '#fff';
+                userNameElement.style.fontFamily = 'Work Sans, sans-serif';
+                userNameElement.style.fontSize = '1rem';
+                userNameElement.style.textDecoration = 'none';
+            }
+        });
+    </script>    
+</body>
 </html>
