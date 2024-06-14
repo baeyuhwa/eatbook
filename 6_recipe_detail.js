@@ -18,6 +18,7 @@ window.onload = function() {
         recipeImage.src = selectedRecipe.image;
         recipeImage.alt = `이미지: ${selectedRecipe.name}`;
         recipeImage.style.maxWidth = '60%';
+        recipeImage.style.paddingLeft = '20px';
         recipeDetail.appendChild(recipeImage);
 
         const ingredientsTitle = document.createElement('h3');
