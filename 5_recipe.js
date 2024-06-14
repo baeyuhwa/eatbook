@@ -9,5 +9,5 @@ window.onload = function() {
 function performSearch() {
     const searchValue = document.getElementById('search-bar').value;
     localStorage.setItem('searchQuery', searchValue);
-    window.open('5_recipe_result.html', '_blank');
+    window.location.href = '5_recipe_result.html';
 }
