@@ -15,5 +15,5 @@ function saveQnaPost(event) {
     
     localStorage.setItem('qnaPosts', JSON.stringify(posts));
     
-    window.location.href = '10_qna.html';
+    window.location.href = '9_communication.html';
 }
