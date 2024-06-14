@@ -21,6 +21,6 @@ function onLoginSuccess(response) {
     const kakaoNickname = response.profile.nickname;
     localStorage.setItem('kakaoNickname', kakaoNickname);
     // 로그인 후 메인 페이지로 이동
-    window.location.href = 'index.html';
+    window.location.href = '4_main.html';
 }
 
