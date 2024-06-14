@@ -24,7 +24,6 @@ function displayPostDetail(post) {
             comment.classList.add('comment');
 
             // 사용자 이름과 시간, 날짜를 포함한 댓글 내용 생성
-            var userName = "사용자 이름"; // 여기에 사용자 이름을 가져오는 코드를 작성
             var currentDate = new Date();
             var commentContent = `
                 <span class="user-name">${userName}</span>

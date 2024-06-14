@@ -58,7 +58,9 @@ nav .logo:hover {
     color: #ccc;
     font-size: 14px;
 }
-
+.search-bar-container {
+    position: relative;
+}
 nav .site-menu {
     display: flex; /* 메뉴 항목을 가로로 배치 */
     gap: 15px; /* 메뉴 항목 사이 간격 */
@@ -164,9 +166,7 @@ h3 {
 .has-children:hover .dropdown {
     display: block;
 }
-.search-bar-container {
-    position: relative;
-}
+
 #search-icon {
     position: absolute;
     right: 10px;
