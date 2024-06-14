@@ -7,9 +7,18 @@ window.onload = function() {
         recipeTitle.textContent = selectedRecipe.name;
         recipeDetail.appendChild(recipeTitle);
 
+        const header = document.getElementById('searchHeader');
+        header.innerHTML = selectedRecipe.name;
+
         const recipeAuthor = document.createElement('h4');
         recipeAuthor.textContent = "작성자: " + selectedRecipe.author;
         recipeDetail.appendChild(recipeAuthor);
+
+        const recipeImage = document.createElement('img');
+        recipeImage.src = selectedRecipe.image;
+        recipeImage.alt = `이미지: ${selectedRecipe.name}`;
+        recipeImage.style.maxWidth = '60%';
+        recipeDetail.appendChild(recipeImage);
 
         const ingredientsTitle = document.createElement('h3');
         ingredientsTitle.textContent = '재료';
@@ -33,7 +42,7 @@ window.onload = function() {
         });
         recipeDetail.appendChild(ingredientsTable);
 
-        const stepsTitle = document.createElement('h3');
+        const stepsTitle = document.createElement('h5');
         stepsTitle.textContent = '조리순서';
         recipeDetail.appendChild(stepsTitle);
 
@@ -41,14 +50,9 @@ window.onload = function() {
             const stepContainer = document.createElement('div');
             stepContainer.classList.add('step-container');
 
-            const stepNumber = document.createElement('h4');
+            /*const stepNumber = document.createElement('h4');
             stepNumber.textContent = `${index + 1}.`;
-            stepContainer.appendChild(stepNumber);
-
-            const textContainer = document.createElement('div');
-            textContainer.classList.add('text-container');
-            textContainer.innerHTML = `<p>${step}</p>`;
-            stepContainer.appendChild(textContainer);
+            stepContainer.appendChild(stepNumber);*/
 
             const imgContainer = document.createElement('div');
             imgContainer.classList.add('img-container');
@@ -62,6 +66,11 @@ window.onload = function() {
                 stepContainer.appendChild(imgContainer);
             }
 
+            const textContainer = document.createElement('div');
+            textContainer.classList.add('text-container');
+            textContainer.innerHTML = `<p>${step}</p>`;
+
+            stepContainer.appendChild(textContainer);
             recipeDetail.appendChild(stepContainer);
         });
     } else {

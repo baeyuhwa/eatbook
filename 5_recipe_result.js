@@ -30,6 +30,7 @@ async function searchRecipe(foodName) {
                 recipeColumn.append(recipeAuthor);
 
                 const recipeDescription = document.createElement('div');
+                recipeDescription.classList.add('recipe-description');
                 recipeDescription.textContent = result.description;
                 recipeColumn.append(recipeDescription);
 

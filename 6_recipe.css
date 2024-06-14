@@ -112,7 +112,11 @@ body {
 }
 
 .content {
-    margin: 30px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
 }
 
 .form-section {
@@ -269,14 +273,8 @@ body {
 }
 
 
-#search-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#search-bar-container {
-    position: relative;
+.search-bar-container {
+    padding-left: 10px;
     display: flex;
     align-items: center;
 }
@@ -285,24 +283,91 @@ body {
     width: 300px;
     padding: 10px 15px;
     border-radius: 25px;
-    border: 2px solid #8bc34a;
     background-color: #fff;
-    color: #000000;
+    color: #333;
     font-size: 16px;
     outline: none;
 }
 
 #search-bar::placeholder {
     color: #ccc;
-    font-size: 16px; /* placeholder 글자 크기 조정 */
+    font-size: 14px;
 }
 
+.search-bar-container {
+    position: relative;
+}
 #search-icon {
-    width: 24px; /* 돋보기 이미지 크기 */
-    height: 24px; /* 돋보기 이미지 크기 */
     position: absolute;
-    right: 15px; /* 검색 바 오른쪽 끝에 위치 */
+    right: 10px;
     top: 50%;
-    transform: translateY(-50%); /* 돋보기 이미지를 검색 바의 세로 중앙에 맞춤 */
+    transform: translateY(-50%);
     cursor: pointer;
+}
+
+#recipe-detail h2 {
+    padding-top: 20px;
+    font-size: 40px;
+}
+
+#recipe-detail h4 {
+    padding-top: 10px;
+    font-size: 20px;
+}
+
+#recipe-detail h3 {
+    padding-top: 20px;
+    font-size: 25px;
+}
+
+#recipe-detail h5 {
+    padding-top: 20px;
+    padding-bottom: 10px;
+    font-size: 35px;
+}
+
+#recipe-detail table {
+    padding-top: 10px;
+    font-size: 18px;
+    color: #333;
+}
+
+.img-container img {
+    width: 400px; 
+    height: auto;
+    margin-right: 10px;
+}
+
+.text-container {
+    flex: 1;
+    font-size: 20px;
+    color: #243155;
+}
+
+.step-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.container nav {
+    background-color: transparent !important;
+    align-items: center;
+    justify-content: center;
+}
+
+.burger {
+    margin-left: auto;
+}
+
+@media (max-width: 991.98px) {
+    .site-navigation {
+        width: 100%;
+    }
+    .site-navigation .nav-left {
+        flex-grow: 1;
+    }
+    .burger {
+        order: 2;
+    }
 }
