@@ -35,19 +35,24 @@ nav .logo {
 }
 
 .search-bar-container {
-    display: flex;
-    align-items: center;
-}
-
-
-#search-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#search-bar-container {
     position: relative;
+    display: inline-block;
+}
+
+#search-bar {
+    padding-right: 40px; /* 오른쪽 여백으로 돋보기 아이콘 공간 확보 */
+}
+
+#search-icon {
+    position: absolute;
+    right: 10px; /* 검색창 오른쪽에 고정 */
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+.search-bar-container {
+    position: relative;
+    padding-left: 10px;
     display: flex;
     align-items: center;
 }
@@ -56,7 +61,6 @@ nav .logo {
     width: 300px;
     padding: 10px 15px;
     border-radius: 25px;
-    border: 2px solid #8bc34a;
     background-color: #fff;
     color: #333;
     font-size: 16px;
@@ -65,7 +69,7 @@ nav .logo {
 
 #search-bar::placeholder {
     color: #ccc;
-    font-size: 16px; /* placeholder 글자 크기 조정 */
+    font-size: 16px;
 }
 
 #search-icon {

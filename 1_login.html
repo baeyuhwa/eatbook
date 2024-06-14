@@ -7,6 +7,37 @@
     <script src="https://kit.fontawesome.com/a81368914c.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="1_login.css">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px; /* 원하는 만큼 조정 */
+        }
+        .btn {
+            background: none; /* 배경색 제거 */
+            border: none; /* 테두리 제거 */
+            padding: 0; /* 기본 패딩 제거 */
+            cursor: pointer; /* 커서 변경 */
+            margin-top: 20px; /* 원하는 만큼 조정 */
+            margin-right: 50px;
+        }
+        .login-img {
+            width: auto; /* 원하는 너비 설정 */
+            height: 50px; /* 원하는 높이 설정 */
+            object-fit: cover;
+            margin-right:50px;
+        }
+    </style>
 </head>
 <body>
     <img class="wave" src="https://raw.githubusercontent.com/sefyudem/Responsive-Login-Form/master/img/wave.png">
@@ -16,20 +47,13 @@
         </div>
         <div class="login-content">
             <form>
-                <img src="https://raw.githubusercontent.com/sefyudem/Responsive-Login-Form/master/img/avatar.svg">
-                <h2 class="title">Welcome</h2>
-                <div class="input-div one">
-                    <div class="i">
-                        <i class="fas fa-user"></i>
-                    </div>
-                </div>
-                <div class="input-div pass">
-                    <div class="i">
-                        <i class="fas fa-lock"></i>
-                    </div>
-                </div>
-                <input type="button" class="btn" value="Login with Kakao" onclick="loginWithKakao()">
+                <img src="https://raw.githubusercontent.com/sefyudem/Responsive-Login-Form/master/img/avatar.svg" alt="Avatar">
+                <h2 class="title">로그인 페이지</h2>
+                <button class="btn" onclick="loginWithKakao()">
+                    <img src="KAKAO LOGO.png" alt="Login with Kakao" class="login-img">
+                </button>
             </form>
+            
         </div>
     </div>
     <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
