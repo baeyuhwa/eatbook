@@ -84,3 +84,108 @@ document.addEventListener('DOMContentLoaded', function() {
         };
     }
 });
+
+// IndexedDB 설정
+let db;
+const dbName = "recipesDatabase";
+const storeName = "recipes";
+
+const openDBRequest = indexedDB.open(dbName, 1);
+
+openDBRequest.onupgradeneeded = function(event) {
+    db = event.target.result;
+    if (!db.objectStoreNames.contains(storeName)) {
+        db.createObjectStore(storeName, { keyPath: "id", autoIncrement: true });
+    }
+};
+
+openDBRequest.onsuccess = function(event) {
+    db = event.target.result;
+    console.log("IndexedDB opened successfully.");
+};
+
+openDBRequest.onerror = function(event) {
+    console.error("Failed to open IndexedDB:", event.target.errorCode);
+};
+
+function createQRCode() {
+    const recipeName = document.getElementById("recipeName").value;
+    const ingredients = document.getElementById("ingredients").value;
+    const category = document.getElementById("category").value;
+    const summary = document.getElementById("summary").value;
+    const process = document.getElementById("process").value;
+    const photoFile = document.getElementById("photo").files[0];
+
+    // 레시피 정보를 IndexedDB에 저장
+    const transaction = db.transaction([storeName], "readwrite");
+    const store = transaction.objectStore(storeName);
+
+    const recipe = {
+        name: recipeName,
+        ingredients: ingredients.split("\n"),
+        category: category,
+        summary: summary,
+        processes: process.split("\n"),
+        photo: null // 이미지 데이터는 여기에 Blob 형태로 저장될 예정
+    };
+
+    const addRequest = store.add(recipe);
+
+    addRequest.onsuccess = function(event) {
+        console.log("Recipe added to IndexedDB:", event.target.result);
+        const recipeId = event.target.result;
+
+        // 사진 데이터 처리
+        if (photoFile) {
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const photoDataUrl = event.target.result;
+                recipe.photo = photoDataUrl;
+
+                // QR 코드 생성
+                generateQRCode(recipeId, recipe);
+            };
+            reader.readAsDataURL(photoFile);
+        } else {
+            // 사진이 없는 경우도 QR 코드 생성
+            generateQRCode(recipeId, recipe);
+        }
+    };
+
+    addRequest.onerror = function(event) {
+        console.error("Failed to add recipe to IndexedDB:", event.target.error);
+    };
+}
+
+function generateQRCode(recipeId, recipe) {
+    // QR 코드 생성
+    const qrCodeContainer = document.createElement("div");
+    new QRCode(qrCodeContainer, {
+        text: `${window.location.origin}/view_recipe.html?id=${recipeId}`,
+        width: 200,
+        height: 200
+    });
+
+    // QR 코드를 화면에 추가
+    const app = document.getElementById("app");
+    app.appendChild(qrCodeContainer);
+
+    // 생성된 QR 코드 아래에 스캔된 레시피 정보 표시
+    displayScannedRecipe(recipe);
+}
+
+function displayScannedRecipe(recipe) {
+    document.getElementById("recipeNameDisplay").textContent = recipe.name;
+    document.getElementById("recipePhotoDisplay").src = recipe.photo ? recipe.photo : "no-photo.png"; // 사진 없을 시 기본 이미지
+    document.getElementById("ingredientsDisplay").textContent = recipe.ingredients.join(", ");
+    document.getElementById("categoryDisplay").textContent = recipe.category;
+    document.getElementById("summaryDisplay").textContent = recipe.summary;
+
+    // 조리 과정 처리
+    if (recipe.processes && recipe.processes.length > 0) {
+        const processList = recipe.processes.map((process, index) => `<div>${index + 1}. ${process}</div>`).join('');
+        document.getElementById("processDisplay").innerHTML = processList;
+    } else {
+        document.getElementById("processDisplay").textContent = "조리 과정 정보가 없습니다.";
+    }
+}
