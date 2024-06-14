@@ -192,6 +192,8 @@ label[for="category"], label[for="photo"] {
 
 .recipe-description {
     border: 1px solid #ccc;
+    color: #333;
+    font-size: 18px;
 }
 
 .recipe-description h1 {
@@ -271,4 +273,5 @@ label[for="category"], label[for="photo"] {
     color: #243155;
     padding: 20px;
     border: 1px solid #ccc;
+    font-size: 18px;
 }
