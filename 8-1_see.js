@@ -7,19 +7,6 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
     }
 
-    // 페이지 URL 가져오기
-    const pageURL = `${window.location.origin}${window.location.pathname}?index=${recipeIndex}`;
-    
-    // QR 코드 생성 및 표시
-    const qrCode = new QRCode(document.getElementById("qrcode"), {
-        text: pageURL,
-        width: 128,
-        height: 128,
-        colorDark: "#000000",
-        colorLight: "#ffffff",
-        correctLevel: QRCode.CorrectLevel.H // 오류 정정 레벨 설정
-    });
-
     let db;
     const request = indexedDB.open("recipesDatabase", 1);
 
